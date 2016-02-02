@@ -1,0 +1,19 @@
+<?php
+  require_once 'functions.php';
+  if (session_status() == PHP_SESSION_NONE) {
+    session_start();
+}
+?>
+<!DOCTYPE html>
+<html lang='en-US'>
+  <head>
+    <title>Corner Tailors</title>
+    <meta charset = "UTF-8" name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="keywords" content="restaurant, allergy, allergen, food, options">
+    <meta name="content" content="A database for various allergies and restaurants in Boone">
+    <link rel="stylesheet" type="text/css" href="../css/index.css">
+    <link rel="shortcut icon" href="../pictures/favicon.ico">
+    <link href='http://fonts.googleapis.com/css?family=Lora' rel='stylesheet' type='text/css'>
+    <script src="../js/index.js"></script>
+  </head>
+  <body>
