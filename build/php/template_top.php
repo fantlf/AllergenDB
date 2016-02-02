@@ -14,8 +14,8 @@
     <link rel="stylesheet" type="text/css" href="../css/index.css">
     <link rel="shortcut icon" href="../pictures/favicon.ico">
     <link href='http://fonts.googleapis.com/css?family=Lora' rel='stylesheet' type='text/css'>
-    <link rel="stylesheet" href="../../node_modules/foundation/scss/foundation.css">
-    <script src=' ../../node_modules/jquery/dist/jquery.js'></script>
+    <link rel="stylesheet" type="text/css" href="../../node_modules/foundation/scss/foundation.css">
+    <script src='../../node_modules/jquery/dist/jquery.js'></script>
   </head>
   <body>
     <p>From the template</p>
