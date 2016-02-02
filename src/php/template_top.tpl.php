@@ -13,8 +13,5 @@
     <meta name="content" content="A database for various allergies and restaurants in Boone">
     <link rel="stylesheet" type="text/css" href="../css/styles.css">
     <link rel="shortcut icon" href="../pictures/favicon.ico">
-    <link rel="stylesheet" type="text/css" href="../../node_modules/foundation/scss/foundation.css">
-    <script src='../../node_modules/jquery/dist/jquery.js'></script>
   </head>
   <body>
-    <p>From the template</p>

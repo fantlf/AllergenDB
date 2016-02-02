@@ -7,7 +7,21 @@ module.exports = function(grunt) {
           includePaths: ['bower_components/foundation/scss']
         },
         files: {
-          'build/css/styles.css' : 'src/scss/styles.scss'
+          'src/css/styles.css' : 'src/scss/styles.scss'
+        }
+      }
+    },
+    cssmin: {
+      dist: {
+        files: {
+          'build/css/styles.min.css': ['src/css/*.css']
+        }
+      }
+    },
+    uglify: {
+      dist: {
+        files: {
+          'build/js/index.min.js': ['src/js/index.js']
         }
       }
     },
@@ -20,5 +34,9 @@ module.exports = function(grunt) {
   });
   grunt.loadNpmTasks('grunt-sass');
   grunt.loadNpmTasks('grunt-contrib-watch');
+  grunt.loadNpmTasks('grunt-contrib-cssmin');
+  grunt.loadNpmTasks('grunt-contrib-uglify');
+
+  grunt.registerTask('build',['cssmin','uglify']);
   grunt.registerTask('default',['watch']);
 }
