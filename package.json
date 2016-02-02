@@ -1,0 +1,26 @@
+{
+  "name": "allergendb",
+  "version": "1.0.0",
+  "description": "Database of restraunts and allergy information in Boone",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/fantlf/AllergenDB.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/fantlf/AllergenDB/issues"
+  },
+  "homepage": "https://github.com/fantlf/AllergenDB#readme",
+  "devDependencies": {
+    "node-sass": "^3.4.2"
+  },
+  "dependencies": {
+    "foundation": "^4.2.1-1",
+    "jquery": "^2.2.0"
+  }
+}
