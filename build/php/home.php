@@ -1,9 +1,9 @@
 <?php require_once 'template_top.php' ?>
-// beginning of body tag
+<!-- Beginning of Body -->
 <p>Hello World!</p>
 <p id='test'></p>
 <script>
   $("#test").html(x);
 </script>
-//closed body tag
+<!-- End of Body -->
 <?php require_once 'template_bottom.php' ?>

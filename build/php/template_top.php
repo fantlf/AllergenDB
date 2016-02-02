@@ -14,6 +14,6 @@
     <link rel="stylesheet" type="text/css" href="../css/index.css">
     <link rel="shortcut icon" href="../pictures/favicon.ico">
     <link href='http://fonts.googleapis.com/css?family=Lora' rel='stylesheet' type='text/css'>
-    <script src="../js/index.js"></script>
+    <script src=' ../../node_modules/jquery/dist/jquery.js'></script>
   </head>
   <body>
