@@ -2,7 +2,7 @@
 // functions.php
 $dbhost = 'localhost';
 $dbname = 'allergydb';
-$dbuser = 'willow';
+$dbuser = 'allergen_team';
 $dbpass = 'dbpass';
 $appname = 'Allergy Database';
 
