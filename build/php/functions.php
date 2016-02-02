@@ -1,7 +1,7 @@
 <?php
 // functions.php
 $dbhost = 'localhost';
-$dbname = 'allergydb';
+$dbname = 'allergendb';
 $dbuser = 'allergen_team';
 $dbpass = 'dbpass';
 $appname = 'Allergy Database';
