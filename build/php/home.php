@@ -1,4 +1,4 @@
-<?php require_once 'template_top.php' ?>
+<?php require_once 'templates/base_template_top.php' ?>
 <!-- Beginning of Body -->
 <div class='row collapse'>
   <div class='large-6 columns'>
@@ -10,4 +10,4 @@
 </div>
 
 <!-- End of Body -->
-<?php require_once 'template_bottom.php' ?>
+<?php require_once 'templates/base_template_bottom.php' ?>
