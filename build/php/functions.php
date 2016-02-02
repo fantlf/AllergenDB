@@ -3,7 +3,7 @@
 $dbhost = 'localhost';
 $dbname = 'allergydb';
 $dbuser = 'willow';
-$dbpass = 'oE94Ir58';
+$dbpass = 'dbpass';
 $appname = 'Allergy Database';
 
 $connection = new mysqli ( $dbhost, $dbuser, $dbpass, $dbname );
