@@ -1,9 +1,5 @@
 <?php require_once 'template_top.php' ?>
 <!-- Beginning of Body -->
-<p>Hello World!</p>
-<p id='test'></p>
-<script>
-  $("#test").html(x);
-</script>
+<p class='row collapse'>Hello World!</p>
 <!-- End of Body -->
 <?php require_once 'template_bottom.php' ?>
