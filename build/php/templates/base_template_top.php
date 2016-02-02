@@ -11,9 +11,9 @@ if (session_status() == PHP_SESSION_NONE) {
     <meta charset = "UTF-8" name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="keywords" content="restaurant, allergy, allergen, food, options">
     <meta name="content" content="A database for various allergies and restaurants in Boone">
-    <link rel="stylesheet" type="text/css" href="../../css/styles.min.css">
+    <link rel="stylesheet" type="text/css" href="../css/styles.min.css">
     <link rel="shortcut icon" href="../pictures/favicon.ico">
-    <script src='../../../bower_components/jquery/dist/jquery.min.js'></script>
-    <script src='../../../bower_components/foundation/js/foundation.min.js'></script>
+    <script src='../../bower_components/jquery/dist/jquery.min.js'></script>
+    <script src='../../bower_components/foundation/js/foundation.min.js'></script>
   </head>
   <body>
