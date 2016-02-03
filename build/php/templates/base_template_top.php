@@ -13,8 +13,9 @@ if (session_status() == PHP_SESSION_NONE) {
     <meta name="content" content="A database for various allergies and restaurants in Boone">
     <link rel="stylesheet" type="text/css" href="../css/styles.min.css">
     <link rel="shortcut icon" href="../pictures/favicon.ico">
-    <script src='../../bower_components/jquery/dist/jquery.min.js'></script>
-    <script src='../../bower_components/foundation/js/foundation.min.js'></script>
+    <script src='../js/index.min.js'></script>
+    <script src='../js/jquery.min.js'></script>
+    <script src='../js/foundation.min.js'></script>
   </head>
   <body>
     <nav class="top-bar" data-topbar>
