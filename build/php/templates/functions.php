@@ -1,10 +1,11 @@
 <?php
 // functions.php
-$dbhost = 'localhost';
-$dbname = 'allergendb';
-$dbuser = 'allergen_team';
-$dbpass = 'dbpass';
+$dbhost  = 'localhost';
+$dbname  = 'allergendb';
+$dbuser  = 'allergen_team';
+$dbpass  = 'dbpass';
 $appname = 'Allergy Database';
+$tagline = 'A';
 
 $connection = new mysqli ( $dbhost, $dbuser, $dbpass, $dbname );
 if ($connection->connect_error)
