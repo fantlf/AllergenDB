@@ -1,2 +1,2 @@
 var jquery = require('jquery');
-var foundation = require('foundation-sites');
+var foundation = require('foundation');

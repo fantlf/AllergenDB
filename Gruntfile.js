@@ -18,7 +18,7 @@ module.exports = function(grunt) {
           'src/js/bundle.js': ['src/js/index.js']
         },
         options: {
-
+          watch: true
         }
       }
     },
