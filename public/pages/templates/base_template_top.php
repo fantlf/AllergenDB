@@ -20,7 +20,7 @@ if (session_status() == PHP_SESSION_NONE) {
       <ul class="title-area">
         <li class="name">
           <h1>
-            <a href="#"><?php echo $appname ?></a>
+            <a href="<?php echo $path_home?>"><?php echo $appname ?></a>
           </h1>
         </li>
         <li class="toggle-topbar menu-icon"><a href="#"><span>menu</span></a></li>
@@ -28,8 +28,12 @@ if (session_status() == PHP_SESSION_NONE) {
       <section class="top-bar-section">
         <ul class="right">
           <li class="divider"></li>
+          <li><a href="<?php echo $path_search?>">Search Restaurants</a></li>
+          <li class="divider"></li>
+          <li><a href="<?php echo $path_allergyinfo?>">Allergy Information</a></li>
+          <li class="divider"></li>
           <li class="has-dropdown">
-            <a href="#">Main Item 1</a>
+            <a href="#">Other</a>
             <ul class="dropdown">
               <li><label>Section Name</label></li>
               <li><a href="#">Dropdown Option</a></li>
@@ -43,10 +47,6 @@ if (session_status() == PHP_SESSION_NONE) {
               <li class="divider"></li>
             </ul>
           </li>
-          <li class="divider"></li>
-          <li><a href="#">Main Item 2</a></li>
-          <li class="divider"></li>
-          <li><a href="#">Main Item 3</a></li>
         </ul>
       </section>
     </nav>

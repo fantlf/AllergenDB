@@ -1,4 +1,9 @@
-<?php require_once '../templates/base_template_top.php' ?>
+<?php
+$path_home = './';
+$path_search = '../search/';
+$path_allergyinfo = '../allergyinfo/';
+require_once '../templates/base_template_top.php'
+?>
 <!-- Beginning of Body -->
 <div class="row">
   <div class="large-12 columns">
