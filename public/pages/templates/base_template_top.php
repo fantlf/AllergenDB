@@ -1,8 +1,6 @@
 <?php
 require_once 'functions.php';
-if (session_status() == PHP_SESSION_NONE) {
-    session_start();
-}
+require_once 'sessions.php';
 ?>
 <!DOCTYPE html>
 <html lang='en-US'>
@@ -11,9 +9,9 @@ if (session_status() == PHP_SESSION_NONE) {
     <meta charset = "UTF-8" name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="keywords" content="restaurant, allergy, allergen, food, options">
     <meta name="content" content="A database for various allergies and restaurants in Boone">
-    <link rel="stylesheet" type="text/css" href="../../css/styles.min.css">
+    <link rel="stylesheet" type="text/css" href="<?php echo $path_css?>">
     <link rel="shortcut icon" href="../pictures/favicon.ico">
-    <script src='../../js/index.min.js'></script>
+    <script src="../../js/index.min.js"></script>
   </head>
   <body>
     <nav class="top-bar" data-topbar>
@@ -32,6 +30,7 @@ if (session_status() == PHP_SESSION_NONE) {
           <li class="divider"></li>
           <li><a href="<?php echo $path_allergyinfo?>">Allergy Information</a></li>
           <li class="divider"></li>
+          <li class="divider"></li>
           <li class="has-dropdown">
             <a href="#">Other</a>
             <ul class="dropdown">
@@ -44,6 +43,15 @@ if (session_status() == PHP_SESSION_NONE) {
               <li><a href="#">Dropdown Option</a></li>
               <li><a href="#">Dropdown Option</a></li>
               <li><a href="#">Dropdown Option</a></li>
+              <li class="divider"></li>
+            </ul>
+          </li>
+          <li class="divider"></li>
+          <li class="has-dropdown">
+            <a href="<?php echo $path_account?>">Account</a>
+            <ul class="dropdown">
+              <li><a href="<?php echo $path_account?>">Account Details</a></li>
+              <li><a href="<?php echo $path_signout?>">Sign Out</a></li>
               <li class="divider"></li>
             </ul>
           </li>

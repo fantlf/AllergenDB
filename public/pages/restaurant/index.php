@@ -1,6 +1,6 @@
 <?php
 require_once '../templates/paths.php';
-$path_search = './';
+$path_restaurant = './';
 require_once '../templates/base_template_top.php'
 ?>
 <!-- Beginning of Body -->

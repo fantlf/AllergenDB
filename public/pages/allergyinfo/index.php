@@ -1,6 +1,5 @@
 <?php
-$path_home = '../home/';
-$path_search = '../search/';
+require_once '../templates/paths.php';
 $path_allergyinfo = './';
 require_once '../templates/base_template_top.php'
 ?>
