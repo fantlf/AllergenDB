@@ -14,10 +14,6 @@ if (session_status() == PHP_SESSION_NONE) {
     <link rel="stylesheet" type="text/css" href="css/styles.min.css">
     <link rel="shortcut icon" href="../pictures/favicon.ico">
     <script src='js/index.min.js'></script>
-
-    <!--<script src='js/jquery.js'></script>
-    <script src='js/foundation.js'></script>-->
-
   </head>
   <body>
     <nav class="top-bar" data-topbar>
