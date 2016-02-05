@@ -8,7 +8,7 @@ module.exports = function(grunt) {
           outputStyle: 'compressed'
         },
         files: {
-          'build/css/styles.min.css' : 'src/scss/styles.scss'
+          'build/css/styles.min.css' : 'src/scss/*.scss'
         }
       }
     },
@@ -33,6 +33,10 @@ module.exports = function(grunt) {
       css: {
         files: 'src/scss/*.scss',
         tasks: ['sass']
+      },
+      js: {
+        files: 'src/js/bundle.js',
+        tasks: ['uglify']
       }
     }
   });
