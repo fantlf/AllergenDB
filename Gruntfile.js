@@ -4,41 +4,43 @@ module.exports = function(grunt) {
     sass: {
       dist: {
         options: {
-          includePaths: ['bower_components/foundation/scss']
+          includePaths: ['node_modules/foundation-sites/scss'],
+          outputStyle: 'compressed'
         },
         files: {
-          'src/css/styles.css' : 'src/scss/styles.scss'
+          'build/css/styles.min.css' : 'src/scss/styles.scss'
         }
       }
     },
-    cssmin: {
+    browserify: {
       dist: {
         files: {
-          'build/css/styles.min.css': ['src/css/*.css']
+          'src/js/bundle.js': ['src/js/index.js']
+        },
+        options: {
+
         }
       }
     },
     uglify: {
       dist: {
         files: {
-          'build/js/index.min.js': 'src/js/index.js',
-          'build/js/foundation.min.js': 'bower_components/foundation/js/foundation.min.js',
-          'build/js/jquery.min.js': 'bower_components/jquery/dist/jquery.min.js'
+          'build/js/index.min.js': 'src/js/bundle.js',
         }
       }
     },
     watch: {
       css: {
         files: 'src/scss/*.scss',
-        tasks: ['sass','cssmin']
+        tasks: ['sass']
       }
     }
   });
   grunt.loadNpmTasks('grunt-sass');
   grunt.loadNpmTasks('grunt-contrib-watch');
-  grunt.loadNpmTasks('grunt-contrib-cssmin');
   grunt.loadNpmTasks('grunt-contrib-uglify');
+  grunt.loadNpmTasks('grunt-browserify');
 
-  grunt.registerTask('build',['cssmin','uglify']);
+  grunt.registerTask('build',['sass','browserify','uglify']);
   grunt.registerTask('default',['watch']);
 }
