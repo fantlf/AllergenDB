@@ -1,0 +1,71 @@
+!!!THIS IS NOT A SCRIPT FILE!!!
+This file describes in english, not sql, how the database should be designed.
+This include tables, attributes, and so forth
+
+Main Tables:
+-Users
+-Restaurants
+-Dietary Restrictions
+-Recipes
+-Stores (places in Boone to buy items in recipes)
+
+Attributes:
+-Users:
+  -fname
+  -sname
+  -username (could just be the email)
+  -email (Primary key)
+  -password
+
+-Restaurants:
+  -Id (Primary key, created by us)
+  -Name
+  -location
+  -food genre
+
+-Dietary Restrictions
+  -Id (Primary key, created by us)
+  -Name
+
+-Stores
+  -Id (Primary key, created by us)
+  -Name
+  -location
+  -type (grocery, hardware, etc)
+
+-Recipes
+  -Id (Primary key, created by us)
+  -Name
+  -Creator
+
+-Products (things to buy in stores)
+  -Id (Primary key, created by us)
+  -name
+
+-Menu_Items (things to buy in restaurants)
+  -Id (Primary key, created by us)
+  -name
+
+Relational Tables:
+-recipe_dietary
+-restaurant_dietary
+-store_products
+-restaurant_menuitems
+
+Attributes
+-recipe_dietary
+  -recipe id
+  -dietry rest id
+
+-restaurant_dietary
+  -restaurant id
+  -dietry rest id
+
+-store_products
+  -store id
+  -product id
+
+-restaurant_menuitems
+  -restaurant id
+  -menuitem id
+  
