@@ -1,3 +1,169 @@
+/* CREATE THE DATABASE */
+
 CREATE DATABASE IF NOT EXISTS allergendb;
-CREATE USER 'allergen_team'@'localhost' IDENTIFIED BY 'dbpass';
+
+
+/* CREATE THE PRIMARY USER */
+
+CREATE USER IF NOT EXISTS 'allergen_team'@'localhost' IDENTIFIED BY 'dbpass';
 GRANT ALL PRIVILEGES ON allergendb.* TO 'allergen_team'@'localhost';
+
+
+/* SWITCH TO THE CREATED DATABASE */
+USE allergendb;
+
+
+/* CREATE THE BASE TABLES */
+
+CREATE TABLE IF NOT EXISTS ingredient (
+  id          INT UNSIGNED NOT NULL AUTO_INCREMENT,
+  name        VARCHAR(255) NOT NULL,
+  description BLOB         NOT NULL
+);
+
+CREATE TABLE IF NOT EXISTS recipe (
+  id          INT UNSIGNED NOT NULL AUTO_INCREMENT,
+  name        VARCHAR(255) NOT NULL,
+  description BLOB         NOT NULL,
+  directions  BLOB         NOT NULL,
+  creator     VARCHAR(255) NOT NULL
+);
+
+CREATE TABLE IF NOT EXISTS user (
+  id    INT UNSIGNED NOT NULL AUTO_INCREMENT,
+  email VARCHAR(255) NOT NULL UNIQUE,
+  fname VARCHAR(255) NOT NULL,
+  sname VARCHAR(255) NOT NULL
+);
+
+CREATE TABLE IF NOT EXISTS pass (
+  id   INT UNSIGNED NOT NULL,
+  pass VARCHAR(255) NOT NULL
+);
+
+CREATE TABLE IF NOT EXISTS dietaryreq (
+  id          INT UNSIGNED NOT NULL AUTO_INCREMENT,
+  name        VARCHAR(255) NOT NULL,
+  description VARCHAR(255) NOT NULL
+);
+
+CREATE TABLE IF NOT EXISTS menuitem(
+  id          INT UNSIGNED NOT NULL AUTO_INCREMENT,
+  name        VARCHAR(255) NOT NULL,
+  description VARCHAR(255) NOT NULL
+);
+
+CREATE TABLE IF NOT EXISTS restaurant(
+  id          INT UNSIGNED NOT NULL AUTO_INCREMENT,
+  name        VARCHAR(255) NOT NULL,
+  type        VARCHAR(255) NOT NULL,
+  description VARCHAR(255) NOT NULL,
+  address     VARCHAR(255) NOT NULL,
+  website     VARCHAR(255),
+  phone       CHAR(10)
+);
+
+
+/* CREATE THE RELATION TABLES */
+
+CREATE TABLE IF NOT EXISTS reqingredient (
+  recipeid     INT UNSIGNED NOT NULL,
+  ingredientid INT UNSIGNED NOT NULL
+);
+
+CREATE TABLE IF NOT EXISTS dietaryrecipe (
+  recipeid     INT UNSIGNED NOT NULL,
+  dietaryreqid INT UNSIGNED NOT NULL
+);
+
+CREATE TABLE IF NOT EXISTS dietarymenuitem (
+  menuitemid   INT UNSIGNED NOT NULL,
+  dietaryreqid INT UNSIGNED NOT NULL
+);
+
+CREATE TABLE IF NOT EXISTS dietaryrestaurant (
+ restaurantid INT UNSIGNED NOT NULL,
+ dietaryreqid INT UNSIGNED NOT NULL
+);
+
+CREATE TABLE IF NOT EXISTS restaurantmenuitem (
+ restaurantid INT UNSIGNED NOT NULL,
+ menuitemid   INT UNSIGNED NOT NULL
+);
+
+CREATE TABLE IF NOT EXISTS commentrestaurant (
+ userid       INT UNSIGNED NOT NULL,
+ restaurantid INT UNSIGNED NOT NULL,
+ commenttext  BLOB         NOT NULL
+);
+
+CREATE TABLE IF NOT EXISTS commentrecipe (
+ userid      INT UNSIGNED NOT NULL,
+ recipeid    INT UNSIGNED NOT NULL,
+ commenttext BLOB         NOT NULL
+);
+
+/* CREATE THE CONSTRAINTS FOR BASE TABLES */
+
+ALTER TABLE ingredient
+  ADD CONSTRAINT pk_ingredient PRIMARY KEY (id),
+
+ALTER TABLE recipe
+  ADD CONSTRAINT pk_recipe         PRIMARY KEY (id),
+  ADD CONSTRAINT fk_recipe_creator FOREIGN KEY (creator) REFERENCES user(id);
+
+ALTER TABLE user
+  ADD CONSTRAINT pk_user PRIMARY KEY (id);
+
+ALTER TABLE pass
+  ADD CONSTRAINT pk_pass     PRIMARY KEY (userid, pass),
+  ADD CONSTRAINT fk_pass_uid FOREIGN KEY (userid) REFERENCES user(id);
+
+ALTER TABLE dietaryreq
+  ADD CONSTRAINT pk_dietaryreq PRIMARY KEY (id);
+
+ALTER TABLE menuitem
+  ADD CONSTRAINT pk_menuitem PRIMARY KEY (id);
+
+ALTER TABLE restaurant
+  ADD CONSTRAINT pk_restaurant PRIMARY KEY (id);
+
+
+/* CREATE THE CONSTRAINTS FOR RELATIONAL TABLES */
+ALTER TABLE reqingredient
+  ADD CONSTRAINT pk_reqingredient     PRIMARY KEY (recipeid, ingredientid),
+  ADD CONSTRAINT fk_reqingredient_iid FOREIGN KEY (ingredientid) REFERENCES ingredient(id),
+  ADD CONSTRAINT fk_reqingredient_rid FOREIGN KEY (recipeid) REFERENCES recipe(id);
+
+ALTER TABLE dietaryrecipe
+  ADD CONSTRAINT pk_dietaryrecipe     PRIMARY KEY (recipeid, dietaryreqid),
+  ADD CONSTRAINT fk_dietaryrecipe_rid FOREIGN KEY (recipeid)     REFERENCES recipe(id),
+  ADD CONSTRAINT fk_dietaryrecipe_did FOREIGN KEY (dietaryreqid) REFERENCES dietaryreq(id);
+
+ALTER TABLE dietarymenuitem
+  ADD CONSTRAINT pk_dietarymenuitem     PRIMARY KEY (menuitemid, dietaryreqid),
+  ADD CONSTRAINT fk_dietarymenuitem_mid FOREIGN KEY (menuitemid)   REFERENCES menuitem(id),
+  ADD CONSTRAINT fk_dietarymenuitem_did FOREIGN KEY (dietaryreqid) REFERENCES dietaryreq(id);
+
+ALTER TABLE dietaryrestaurant
+  ADD CONSTRAINT pk_dietaryrestaurant     PRIMARY KEY (restaurantid, dietaryreqid),
+  ADD CONSTRAINT fk_dietaryrestaurant_rid FOREIGN KEY (restaurantid) REFERENCES restaurant(id),
+  ADD CONSTRAINT fk_dietaryrestaurant_did FOREIGN KEY (dietaryreqid) REFERENCES dietaryreq(id);
+
+ALTER TABLE restaurantmenuitem
+  ADD CONSTRAINT pk_restaurantmenuitem     PRIMARY KEY (restaurantid, menuitemid),
+  ADD CONSTRAINT fk_restaurantmenuitem_rid FOREIGN KEY (restaurantid) REFERENCES restaurant(id),
+  ADD CONSTRAINT fk_restaurantmenuitem_mid FOREIGN KEY (menuitemid)   REFERENCES menuitem(id);
+
+ALTER TABLE commentrestaurant
+  ADD CONSTRAINT pk_commentrestaurant     PRIMARY KEY (userid, restaurantid),
+  ADD CONSTRAINT fk_commentrestaurant_uid FOREIGN KEY (userid)       REFERENCES user(id),
+  ADD CONSTRAINT fk_commentrestaurant_rid FOREIGN KEY (restaurantid) REFERENCES restaurant(id);
+
+ALTER TABLE commentrecipe
+  ADD CONSTRAINT pk_commentrecipe     PRIMARY KEY (userid, recipeid),
+  ADD CONSTRAINT fk_commentrecipe_uid FOREIGN KEY (userid)   REFERENCES user(id),
+  ADD CONSTRAINT fk_commentrecipe_rid FOREIGN KEY (recipeid) REFERENCES recipe(id);
+
+
+/* CREATE THE INDICES */

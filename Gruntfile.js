@@ -1,6 +1,30 @@
+var jshint_options = {
+  'predef': [
+    'angular'
+  ],
+  'bitwise': true,
+  'eqeqeq': true,
+  'forin': true,
+  'freeze': true,
+  'maxdepth': 5,
+  'noarg': true,
+  'nonew': true,
+  'singleGroups': false,
+  'undef': true
+};
+
 module.exports = function(grunt) {
   grunt.initConfig({
     pkg: grunt.file.readJSON('package.json'),
+    concat: {
+      options: {
+        separator: ';',
+      },
+      dist: {
+        src: ['node_modules/angular/angular.js', 'node_modules/angular-new-router/dist/router.es5.js', 'node_modules/angular-foundation/mm-foundation-tpls.js', 'src/js/app.js', 'src/js/controller/**/*.js', 'src/js/component/**/*.js'],
+        dest: 'public/js/bundle.js',
+      },
+    },
     sass: {
       dist: {
         options: {
@@ -8,43 +32,47 @@ module.exports = function(grunt) {
           outputStyle: 'compressed'
         },
         files: {
-          'build/css/styles.min.css' : 'src/scss/*.scss'
+          'public/css/styles.min.css' : 'src/scss/styles.scss'
         }
       }
     },
-    browserify: {
-      dist: {
-        files: {
-          'src/js/bundle.js': ['src/js/index.js']
-        },
-        options: {
-          watch: true
-        }
-      }
+    jshint: {
+      files: ['Gruntfile.js', 'src/**/*.js']
     },
-    uglify: {
-      dist: {
-        files: {
-          'build/js/index.min.js': 'src/js/bundle.js',
-        }
-      }
+    copy: {
+      main: {
+        files: [
+          {
+            expand: true,
+            cwd: 'src/',
+            src: ['**/*.html', '**/*.php'],
+            dest: 'public/'
+          },
+        ],
+      },
     },
     watch: {
       css: {
-        files: 'src/scss/*.scss',
+        files: ['src/scss/*.scss'],
         tasks: ['sass']
       },
       js: {
-        files: 'src/js/bundle.js',
-        tasks: ['uglify']
+        files: ['<%= jshint.files %>'],
+        tasks: ['jshint', 'concat']
+      },
+      html: {
+        files: ['src/**/*.html'],
+        tasks: ['copy']
       }
     }
   });
   grunt.loadNpmTasks('grunt-sass');
   grunt.loadNpmTasks('grunt-contrib-watch');
-  grunt.loadNpmTasks('grunt-contrib-uglify');
   grunt.loadNpmTasks('grunt-browserify');
+  grunt.loadNpmTasks('grunt-contrib-concat');
+  grunt.loadNpmTasks('grunt-contrib-jshint');
+  grunt.loadNpmTasks('grunt-contrib-copy');
 
-  grunt.registerTask('build',['sass','browserify','uglify']);
-  grunt.registerTask('default',['watch']);
-}
+  grunt.registerTask('build',['sass', 'jshint', 'concat', 'copy']);
+  grunt.registerTask('default',['build','watch']);
+};
