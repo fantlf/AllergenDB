@@ -1,21 +1,13 @@
 {
-  "name": "allergendb",
-  "version": "1.0.0",
-  "description": "Database of restraunts and allergy information in Boone",
+  "name": "AppalachianWillow",
+  "version": "0.0.0",
+  "description": "",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/fantlf/AllergenDB.git"
-  },
   "author": "",
   "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/fantlf/AllergenDB/issues"
-  },
-  "homepage": "https://github.com/fantlf/AllergenDB#readme",
   "devDependencies": {
     "grunt": "^0.4.5",
     "grunt-browserify": "^4.0.1",
@@ -23,13 +15,14 @@
     "grunt-contrib-copy": "^1.0.0",
     "grunt-contrib-jshint": "^1.0.0",
     "grunt-contrib-watch": "^0.6.1",
-    "grunt-sass": "^1.1.0",
-    "grunt-shell": "^1.1.2"
+    "grunt-sass": "^1.1.0"
   },
   "dependencies": {
-    "angular": "^1.5.0",
-    "angular-new-router": "^0.5.3",
+    "angular": "^1.4.9",
+    "angular-cookies": "^1.5.3",
+    "angular-foundation": "^0.8.0",
+    "angular-route": "^1.5.3",
     "foundation-sites": "^5.5.1",
-    "angular-foundation": "^0.8.0"
+    "jquery": "^2.2.2"
   }
 }

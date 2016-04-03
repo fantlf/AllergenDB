@@ -1,0 +1,9 @@
+<?php
+$dbhost = 'localhost';
+$dbname = 'hcdiets';
+$dbuser = 'hcdiets_team';
+$dbpass = 'dbpass';
+$connection = new mysqli ( $dbhost, $dbuser, $dbpass, $dbname );
+if ($connection->connect_error)
+	die ( $connection->connect_error );
+?>

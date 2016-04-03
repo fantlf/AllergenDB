@@ -1,60 +1,60 @@
 /* CREATE THE DATABASE */
 
-CREATE DATABASE IF NOT EXISTS allergendb;
-
+CREATE DATABASE IF NOT EXISTS hcdiets;
 
 /* CREATE THE PRIMARY USER */
 
-CREATE USER IF NOT EXISTS 'allergen_team'@'localhost' IDENTIFIED BY 'dbpass';
-GRANT ALL PRIVILEGES ON allergendb.* TO 'allergen_team'@'localhost';
+CREATE USER IF NOT EXISTS 'hcdiets_team'@'localhost' IDENTIFIED BY 'dbpass';
+GRANT ALL PRIVILEGES ON hcdiets.* TO 'hcdiets_team'@'localhost';
 
 
 /* SWITCH TO THE CREATED DATABASE */
-USE allergendb;
+USE hcdiets;
 
 
 /* CREATE THE BASE TABLES */
 
 CREATE TABLE IF NOT EXISTS ingredient (
-  id          INT UNSIGNED NOT NULL AUTO_INCREMENT,
+  id          INT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
   name        VARCHAR(255) NOT NULL,
   description BLOB         NOT NULL
 );
 
 CREATE TABLE IF NOT EXISTS recipe (
-  id          INT UNSIGNED NOT NULL AUTO_INCREMENT,
+  id          INT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
   name        VARCHAR(255) NOT NULL,
   description BLOB         NOT NULL,
   directions  BLOB         NOT NULL,
-  creator     VARCHAR(255) NOT NULL
+  creator     INT UNSIGNED NOT NULL
 );
 
 CREATE TABLE IF NOT EXISTS user (
-  id    INT UNSIGNED NOT NULL AUTO_INCREMENT,
+  id    INT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
   email VARCHAR(255) NOT NULL UNIQUE,
   fname VARCHAR(255) NOT NULL,
-  sname VARCHAR(255) NOT NULL
+  sname VARCHAR(255) NOT NULL,
+  uname VARCHAR(255)
 );
 
 CREATE TABLE IF NOT EXISTS pass (
-  id   INT UNSIGNED NOT NULL,
+  userid   INT UNSIGNED NOT NULL,
   pass VARCHAR(255) NOT NULL
 );
 
 CREATE TABLE IF NOT EXISTS dietaryreq (
-  id          INT UNSIGNED NOT NULL AUTO_INCREMENT,
+  id          INT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
   name        VARCHAR(255) NOT NULL,
   description VARCHAR(255) NOT NULL
 );
 
 CREATE TABLE IF NOT EXISTS menuitem(
-  id          INT UNSIGNED NOT NULL AUTO_INCREMENT,
+  id          INT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
   name        VARCHAR(255) NOT NULL,
   description VARCHAR(255) NOT NULL
 );
 
 CREATE TABLE IF NOT EXISTS restaurant(
-  id          INT UNSIGNED NOT NULL AUTO_INCREMENT,
+  id          INT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
   name        VARCHAR(255) NOT NULL,
   type        VARCHAR(255) NOT NULL,
   description VARCHAR(255) NOT NULL,
@@ -105,31 +105,15 @@ CREATE TABLE IF NOT EXISTS commentrecipe (
 
 /* CREATE THE CONSTRAINTS FOR BASE TABLES */
 
-ALTER TABLE ingredient
-  ADD CONSTRAINT pk_ingredient PRIMARY KEY (id),
-
-ALTER TABLE recipe
-  ADD CONSTRAINT pk_recipe         PRIMARY KEY (id),
-  ADD CONSTRAINT fk_recipe_creator FOREIGN KEY (creator) REFERENCES user(id);
-
-ALTER TABLE user
-  ADD CONSTRAINT pk_user PRIMARY KEY (id);
+ALTER TABLE recipe ADD CONSTRAINT fk_recipe_creator FOREIGN KEY (creator) REFERENCES user(id);
 
 ALTER TABLE pass
   ADD CONSTRAINT pk_pass     PRIMARY KEY (userid, pass),
   ADD CONSTRAINT fk_pass_uid FOREIGN KEY (userid) REFERENCES user(id);
 
-ALTER TABLE dietaryreq
-  ADD CONSTRAINT pk_dietaryreq PRIMARY KEY (id);
-
-ALTER TABLE menuitem
-  ADD CONSTRAINT pk_menuitem PRIMARY KEY (id);
-
-ALTER TABLE restaurant
-  ADD CONSTRAINT pk_restaurant PRIMARY KEY (id);
-
 
 /* CREATE THE CONSTRAINTS FOR RELATIONAL TABLES */
+
 ALTER TABLE reqingredient
   ADD CONSTRAINT pk_reqingredient     PRIMARY KEY (recipeid, ingredientid),
   ADD CONSTRAINT fk_reqingredient_iid FOREIGN KEY (ingredientid) REFERENCES ingredient(id),

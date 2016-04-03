@@ -117,16 +117,23 @@ $font-family-sans-serif: Helvetica, Roboto, Arial, sans-serif;
 // $jet         : #222222;
 // $black       : #000000;
 
+//These are the colors for my (Willow's) color scheme
+//The theme is brown and lavender
+$darkbrown: #50423d;
+$lightbrown: #8d7361;
+$tan: #c9bbae;
+$white: #eeebe7;
+$greyblue: #8b8da0;
 // We use these as default colors throughout
-$primary-color: #d67f12;
-$secondary-color: #eab93b;
+$primary-color: $darkbrown;
+$secondary-color: $tan;
 // $alert-color: #f04124;
 // $success-color: #43AC6A;
 // $warning-color: #f08a24;
 // $info-color: #a0d3e8;
 
 // We use these to control various global styles
-$body-bg: #fffae6 url('../img/bg-body.svg') bottom center repeat-x fixed;
+$body-bg: $white;
 $body-font-color: #444444;
 // $body-font-family: $font-family-sans-serif;
 // $body-font-weight: $font-weight-normal;
@@ -436,8 +443,8 @@ $alert-padding-top: rem-calc(9);
 // $button-margin-bottom: rem-calc(20);
 
 // We use these to control button text styles.
-// $button-font-family: $body-font-family;
-// $button-font-color: $white;
+//$button-font-family: $body-font-family;
+   $button-font-color: #ffffff;
 // $button-font-color-alt: $oil;
 // $button-font-tny: rem-calc(11);
 // $button-font-sml: rem-calc(13);
@@ -452,7 +459,7 @@ $alert-padding-top: rem-calc(9);
 // We use these to control button border styles.
 // $button-border-width: 0;
 // $button-border-style: solid;
-// $button-bg-color: $primary-color;
+$button-bg-color: $greyblue;
 // $button-bg-hover: scale-color($button-bg-color, $lightness: $button-function-factor);
 // $button-border-color: $button-bg-hover;
 // $secondary-button-bg-hover: scale-color($secondary-color, $lightness: $button-function-factor);
@@ -648,9 +655,9 @@ $alert-padding-top: rem-calc(9);
 // $input-include-glowing-effect: true;
 
 // We use these to style the fieldset border and spacing.
-// $fieldset-border-style: solid;
-// $fieldset-border-width: 1px;
-// $fieldset-border-color: $gainsboro;
+   $fieldset-border-style: solid;
+   $fieldset-border-width: 1px;
+   $fieldset-border-color: $primary-color;
 // $fieldset-padding: rem-calc(20);
 // $fieldset-margin: rem-calc(18 0);
 
@@ -1273,13 +1280,13 @@ $side-nav-link-padding: 0; //rem-calc(7 14);
 // $include-html-table-classes: $include-html-classes;
 
 // These control the background color for the table and even rows
-// $table-bg: $white;
-// $table-even-row-bg: $snow;
+   $table-bg: $body-bg;
+   $table-even-row-bg: $body-bg;
 
 // These control the table cell border style
-// $table-border-style: solid;
-// $table-border-size: 1px;
-// $table-border-color: $gainsboro;
+   $table-border-style: solid;
+   $table-border-size: 0px;
+   $table-border-color: $darkbrown;
 
 // These control the table head styles
 // $table-head-bg: $white-smoke;
@@ -1381,8 +1388,8 @@ $side-nav-link-padding: 0; //rem-calc(7 14);
 // $include-html-top-bar-classes: $include-html-classes;
 
 // Background color for the top bar
-// $topbar-bg-color: $oil;
-// $topbar-bg: $topbar-bg-color;
+$topbar-bg-color: $primary-color;
+$topbar-bg: $topbar-bg-color;
 
 // Height and margin
 $topbar-height: rem-calc(47);
@@ -1400,11 +1407,11 @@ $topbar-link-color-hover: $secondary-color;
 // $topbar-link-weight: $font-weight-bold;
 $topbar-link-font-size: rem-calc(14);
 // $topbar-link-hover-lightness: -10%; // Darken by 10%
-// $topbar-link-bg: $topbar-bg;
-// $topbar-link-bg-hover: $oil;
-// $topbar-link-bg-color-hover: $charcoal;
-$topbar-link-bg-active: $secondary-color;
-$topbar-link-bg-active-hover: scale-color($secondary-color, $lightness: -14%);
+$topbar-link-bg: $topbar-bg;
+$topbar-link-bg-hover: scale-color($topbar-bg, $lightness: -14%);
+$topbar-link-bg-color-hover: $topbar-bg;
+$topbar-link-bg-active: $topbar-bg;
+$topbar-link-bg-active-hover: $topbar-bg;
 // $topbar-link-font-family: $body-font-family;
 // $topbar-link-text-transform: none;
 // $topbar-link-padding: ($topbar-height / 3);
@@ -1414,11 +1421,11 @@ $topbar-back-link-size: rem-calc(16);
 // $topbar-button-top: 7px;
 
 // Style the top bar dropdown elements
-// $topbar-dropdown-bg: $oil;
-// $topbar-dropdown-link-color: $white;
-// $topbar-dropdown-link-color-hover: $topbar-link-color-hover;
-// $topbar-dropdown-link-bg: $oil;
-// $topbar-dropdown-link-bg-hover: $oil;
+$topbar-dropdown-bg: $topbar-bg;
+$topbar-dropdown-link-color: $topbar-link-color;
+$topbar-dropdown-link-color-hover: $topbar-link-color-hover;
+$topbar-dropdown-link-bg: $topbar-link-bg;
+$topbar-dropdown-link-bg-hover: $topbar-link-bg-hover;
 // $topbar-dropdown-link-weight: $font-weight-normal;
 // $topbar-dropdown-toggle-size: 5px;
 // $topbar-dropdown-toggle-color: $white;

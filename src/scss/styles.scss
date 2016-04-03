@@ -1,3 +1,21 @@
 @import "settings";
-@import "normalize";
 @import "foundation";
+
+.table-center {
+  margin: 0 auto;
+}
+
+.table-deliminated {
+  border-collapse: collapse;
+}
+.table-deliminated tr {
+  border: solid;
+  border-width: 0 0;
+  border-color: $primary-color;
+}
+.table-deliminated tr:first-child {
+  border-top: none;
+}
+.table-deliminated tr:last-child {
+  border-bottom: none;
+}

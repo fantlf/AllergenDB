@@ -1,0 +1,19 @@
+
+<div class="row large-12 large-centered columns text-center" data-equalizer>
+    <h3>Here is our search engine...</h3>
+</div>
+
+<div class="large-6 large-centered columns text-center" ng-app="searchApp" ng-controller="SearchCtrl">
+  <button ng-click="test()">Test: Query Users</button>
+  <table class="table-center">
+    <tr ng-repeat="x in names">
+      <td>{{ x.fname }}</td>
+      <td>{{ x.sname }}</td>
+      <td>{{ x.email }}</td>
+    </tr>
+</table>
+</div>
+
+<script>
+  $(document).foundation();
+</script>

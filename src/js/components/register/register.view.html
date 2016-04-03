@@ -1,0 +1,33 @@
+<div class="small-12 medium-6 large-4 columns large-centered medium-centered small-centered">
+  <form novalidate>
+    <fieldset  class="text-center">
+      <legend>Sign Up<span style="color:red"> INACTIVE!</span></legend>
+      <div>
+        <label for="email">Email</label>
+        <input type="email" name='email' id='email' ng-model="user.email" required>
+      </div>
+      <div>
+        <label for="pass">Password</label>
+        <input type="text" name='pass' id='pass' ng-model="user.pass" required>
+      </div>
+      <div>
+        <label for="uname">Username</label>
+        <input type="text" name='uname' id='uname' ng-model="user.uname" required>
+      </div>
+      <div>
+        <label for="fname">First Name</label>
+        <input type="text" name='fname' id='fname' ng-model="user.fname" required>
+      </div>
+      <div>
+        <label for="sname">Last Name</label>
+        <input type="text" name='sname' id='sname' ng-model="user.sname" required>
+      </div>
+      <div>
+          <button ng-click="">Register</button>
+          <a href="#/login">Cancel</a>
+      </div>
+      <!--{{myData}}
+      <div ng-repeat="x in users">{{x[0]}}</div>-->
+    </fieldset>
+  </form>
+</div>
