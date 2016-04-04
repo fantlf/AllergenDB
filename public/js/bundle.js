@@ -58277,8 +58277,9 @@ function UserService($http) {
   });
 ;HCDietsApp.controller('HomeCtrl', HomeCtrl);
 
-HomeCtrl.$inject = ['UserService', '$rootScope', '$scope'];
-function HomeCtrl(UserService, $rootScope, $scope) {
+HomeCtrl.$inject = ['$rootScope', '$scope'];
+function HomeCtrl($rootScope, $scope) {
+
 }
 ;HCDietsApp.controller('LoginCtrl', LoginCtrl);
 
@@ -58288,7 +58289,7 @@ function LoginCtrl($location, $scope, UserService, $http, $rootScope, $cookies) 
 
     function login() {
       UserService.GetByEmail($scope.user.email).then(function (response) {
-          if(response.data.user.records.length == 1) {
+          if(response.data.user && response.data.user.records.length == 1) {
             var id = response.data.user.records[0][0];
             $http.get('/3430/161/team7/api.php/pass?filter[]=userid,eq,' + id).then(function(response) {
               var code = CryptoJS.SHA256($scope.user.pass).toString();
@@ -58475,13 +58476,13 @@ function RegisterCtrl(UserService, $location, $rootScope, $scope) {
       return;
     }
     UserService.GetByEmail($scope.user.email).then(function (response) {
-      if (response.success) {
+      if (response.success && response.data.user) {
         if (response.data.user.records.length > 0) {
           $scope.mainError = "A user with this email already exists";
         }
         else {
           UserService.GetByUname($scope.user.uname).then(function (response) {
-            if (response.success) {
+            if (response.success && response.data.user) {
               if (response.data.user.records.length > 0) {
                 $scope.mainError = "A user with this username already exists";
               }
@@ -58490,13 +58491,13 @@ function RegisterCtrl(UserService, $location, $rootScope, $scope) {
                   $location.path('/login');
                 });
               }
-            }
+            } else { $scope.mainError = "A user with this username already exists"; }
           });
         }
-      }
-    });
-
-  };
+      } else { $scope.mainError = "A user with this email already exists"; }
+    }
+  );
+};
 
   $scope.checkEmail = function() {
     var result = testEmail($scope.user.email);
@@ -58505,7 +58506,7 @@ function RegisterCtrl(UserService, $location, $rootScope, $scope) {
     $scope.email.error = result.error;
 
     UserService.GetByEmail($scope.user.email).then(function (response) {
-      if (response.success) {
+      if (response.success && response.data.user) {
         if (response.data.user.records.length > 0) {
           $scope.email.errorMessage = "A user with this email already exists";
           $scope.email.inputClass = 'invalidInput';
@@ -58556,7 +58557,7 @@ function RegisterCtrl(UserService, $location, $rootScope, $scope) {
     $scope.uname.error = result.error;
 
     UserService.GetByUname($scope.user.uname).then(function (response) {
-      if (response.success) {
+      if (response.success && response.data.user) {
         if (response.data.user.records.length > 0) {
           $scope.uname.errorMessage = "A user with this username already exists";
           $scope.uname.inputClass = 'invalidInput';
@@ -58643,7 +58644,7 @@ function RegisterCtrl(UserService, $location, $rootScope, $scope) {
 }
 ;HCDietsApp.controller('SearchCtrl', function SearchCtrl($scope, $http) {
   $scope.test = function() {
-    $http.get("php/search.php")
+    $http.get("/3430/161/team7/AllergenDB/public/php/search.php")
     .then(function (response) {$scope.names = response.data.records;});
   };
 });

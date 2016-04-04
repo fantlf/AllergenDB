@@ -6,7 +6,7 @@ function LoginCtrl($location, $scope, UserService, $http, $rootScope, $cookies) 
 
     function login() {
       UserService.GetByEmail($scope.user.email).then(function (response) {
-          if(response.data.user.records.length == 1) {
+          if(response.data.user && response.data.user.records.length == 1) {
             var id = response.data.user.records[0][0];
             $http.get('/3430/161/team7/api.php/pass?filter[]=userid,eq,' + id).then(function(response) {
               var code = CryptoJS.SHA256($scope.user.pass).toString();

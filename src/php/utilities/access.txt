@@ -1,8 +1,8 @@
 <?php
 $dbhost = 'localhost';
-$dbname = 'hcdiets';
-$dbuser = 'hcdiets_team';
-$dbpass = 'dbpass';
+$dbname = 'DBS16T7';
+$dbuser = 'vashawkw';
+$dbpass = '900578511';
 $connection = new mysqli ( $dbhost, $dbuser, $dbpass, $dbname );
 if ($connection->connect_error)
 	die ( $connection->connect_error );

@@ -1,5 +1,6 @@
 HCDietsApp.controller('HomeCtrl', HomeCtrl);
 
-HomeCtrl.$inject = ['UserService', '$rootScope', '$scope'];
-function HomeCtrl(UserService, $rootScope, $scope) {
+HomeCtrl.$inject = ['$rootScope', '$scope'];
+function HomeCtrl($rootScope, $scope) {
+
 }

@@ -41,13 +41,13 @@ function RegisterCtrl(UserService, $location, $rootScope, $scope) {
       return;
     }
     UserService.GetByEmail($scope.user.email).then(function (response) {
-      if (response.success) {
+      if (response.success && response.data.user) {
         if (response.data.user.records.length > 0) {
           $scope.mainError = "A user with this email already exists";
         }
         else {
           UserService.GetByUname($scope.user.uname).then(function (response) {
-            if (response.success) {
+            if (response.success && response.data.user) {
               if (response.data.user.records.length > 0) {
                 $scope.mainError = "A user with this username already exists";
               }
@@ -56,13 +56,13 @@ function RegisterCtrl(UserService, $location, $rootScope, $scope) {
                   $location.path('/login');
                 });
               }
-            }
+            } else { $scope.mainError = "A user with this username already exists"; }
           });
         }
-      }
-    });
-
-  };
+      } else { $scope.mainError = "A user with this email already exists"; }
+    }
+  );
+};
 
   $scope.checkEmail = function() {
     var result = testEmail($scope.user.email);
@@ -71,7 +71,7 @@ function RegisterCtrl(UserService, $location, $rootScope, $scope) {
     $scope.email.error = result.error;
 
     UserService.GetByEmail($scope.user.email).then(function (response) {
-      if (response.success) {
+      if (response.success && response.data.user) {
         if (response.data.user.records.length > 0) {
           $scope.email.errorMessage = "A user with this email already exists";
           $scope.email.inputClass = 'invalidInput';
@@ -122,7 +122,7 @@ function RegisterCtrl(UserService, $location, $rootScope, $scope) {
     $scope.uname.error = result.error;
 
     UserService.GetByUname($scope.user.uname).then(function (response) {
-      if (response.success) {
+      if (response.success && response.data.user) {
         if (response.data.user.records.length > 0) {
           $scope.uname.errorMessage = "A user with this username already exists";
           $scope.uname.inputClass = 'invalidInput';
