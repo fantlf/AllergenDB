@@ -19,3 +19,40 @@
 .table-deliminated tr:last-child {
   border-bottom: none;
 }
+
+input[type="email"].noInput {
+
+}
+input[type="email"].invalidInput {
+  border-color: red;
+}
+
+input[type="email"].validInput {
+  border-color: lightgreen;
+}
+
+input[type="password"].noInput {
+
+}
+input[type="password"].invalidInput {
+  border-color: red;
+}
+
+input[type="password"].validInput {
+  border-color: lightgreen;
+}
+
+input[type="text"].noInput {
+
+}
+input[type="text"].invalidInput {
+  border-color: red;
+}
+
+input[type="text"].validInput {
+  border-color: lightgreen;
+}
+.errorMessage {
+  margin:5px;
+  font-size: 12px;
+}

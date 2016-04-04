@@ -20,15 +20,18 @@
           <li><a href="#/search">Search</a></li>
           <li><a href="#/about">About</a></li>
           <li has-dropdown>
-            <a href="#/account">Account</a>
-            <ul top-bar-dropdown>
-              <li><a href="#/register">Sign Up</a></li>
-              <li><a href="#/login">Log in</a></li>
+            <a>Account</a>
+            <ul top-bar-dropdown ng-if="loggedIn()">
+              <li ng-repeat="x in loggedInLinks"><a href="{{x.link}}">{{x.title}}</a></li>
+            </ul>
+            <ul top-bar-dropdown ng-if="!loggedIn()">
+              <li ng-repeat="x in loggedOutLinks"><a href="{{x.link}}">{{x.title}}</a></li>
             </ul>
           </li>
         </ul>
       </top-bar-section>
     </top-bar>
+
   </div>
   <br>
   <div ng-view></div>

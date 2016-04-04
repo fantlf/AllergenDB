@@ -1,19 +1,20 @@
 <div class="row large-centered medium-centered small-centered">
   <div class=" large-4 medium-6 small-12 columns large-centered medium-centered small-centered">
-    <form novalidate>
-      <fieldset  class="text-center">
-        <legend>Login<span style="color:red"> INACTIVE!</span></legend>
+    <form novalidate ng-submit="login()">
+      <fieldset class="text-center">
+        <legend>Login</legend>
           <div>
-              <label for="username">Username</label>
-              <input type="text" name="username" id="username" ng-model="username" required />
+              <label for="email">Email</label>
+              <input type="email" name="email" id="email" ng-model="user.email" required />
           </div>
           <div>
-              <label for="password">Password</label>
-              <input type="password" name="password" id="password" ng-model="password" required />
+              <label for="pass">Password</label>
+              <input type="password" name="pass" id="pass" ng-model="user.pass" required />
           </div>
+          <span ng-show="error" class="errorMessage">{{error}}</span>
           <div>
-              <button ng-click="">Login</button>
-              <a href="#/register" class="btn btn-link">Register</a>
+              <button type="submit">Login</button>
+              <a href="#/register">Register</a>
           </div>
       </fieldset>
     </form>

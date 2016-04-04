@@ -29,6 +29,7 @@ module.exports = function(grunt) {
           'node_modules/angular-foundation/mm-foundation-tpls.js',
           'node_modules/foundation-sites/js/foundation.js',
           'node_modules/foundation-sites/js/foundation/foundation.equalizer.js',
+          'node_modules/crypto-js/crypto-js.js',
           'src/js/app.js',
           'src/js/app-services/**/*.js',
           'src/js/components/**/*.js',

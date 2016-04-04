@@ -1,33 +1,44 @@
-<div class="small-12 medium-6 large-4 columns large-centered medium-centered small-centered">
-  <form novalidate>
-    <fieldset  class="text-center">
-      <legend>Sign Up<span style="color:red"> INACTIVE!</span></legend>
-      <div>
-        <label for="email">Email</label>
-        <input type="email" name='email' id='email' ng-model="user.email" required>
-      </div>
-      <div>
-        <label for="pass">Password</label>
-        <input type="text" name='pass' id='pass' ng-model="user.pass" required>
-      </div>
-      <div>
-        <label for="uname">Username</label>
-        <input type="text" name='uname' id='uname' ng-model="user.uname" required>
-      </div>
-      <div>
-        <label for="fname">First Name</label>
-        <input type="text" name='fname' id='fname' ng-model="user.fname" required>
-      </div>
-      <div>
-        <label for="sname">Last Name</label>
-        <input type="text" name='sname' id='sname' ng-model="user.sname" required>
-      </div>
-      <div>
-          <button ng-click="">Register</button>
-          <a href="#/login">Cancel</a>
-      </div>
-      <!--{{myData}}
-      <div ng-repeat="x in users">{{x[0]}}</div>-->
-    </fieldset>
-  </form>
+<div class="large-12 columns">
+  <div class="small-8 medium-6 large-4 large-offset-4 medium-offset-3 columns" >
+    <form name="registerForm" novalidate ng-submit="register(user)">
+      <fieldset  class="text-center">
+        <legend>Register</legend>
+        <div data-equalizer-watch>
+          <label for="email">Email</label>
+          <span ng-show="email.error" class="errorMessage">{{email.errorMessage}}</span>
+          <input type="email" name='email' id='email' ng-model="user.email" ng-blur="checkEmail()" ng-class="email.inputClass" maxlength="255" required>
+        </div>
+        <div>
+          <label for="pass">Password</label>
+          <span ng-show="pass.error" class="errorMessage">{{pass.errorMessage}}</span>
+          <input type="password" name='pass' id='pass' ng-model="user.pass" ng-blur="checkPass()" ng-class="pass.inputClass" maxlength="255" required>
+        </div>
+        <div>
+          <label for="uname">Username</label>
+          <span ng-show="uname.error" class="errorMessage">{{uname.errorMessage}}</span>
+          <input type="text" name='uname' id='uname' ng-model="user.uname" ng-blur="checkUname()" ng-class="uname.inputClass" maxlength="23" required>
+        </div>
+        <div>
+          <label for="fname">First Name</label>
+          <span ng-show="fname.error" class="errorMessage">{{fname.errorMessage}}</span>
+          <input type="text" name='fname' id='fname' ng-model="user.fname" ng-blur="checkFname()" ng-class="fname.inputClass" maxlength="255" required>
+        </div>
+        <div>
+          <label for="sname">Last Name</label>
+          <span ng-show="sname.error" class="errorMessage">{{sname.errorMessage}}</span>
+          <input type="text" name='sname' id='sname' ng-model="user.sname" ng-blur="checkSname()" ng-class="sname.inputClass" maxlength="255" required>
+        </div>
+        <span ng-show="mainError" class="errorMessage">{{mainError}}</span>
+        <div>
+            <button class="submitButton" type="submit" ng-disabled="registerForm.$invalid">Register</button>
+            <a href="#/login">Cancel</a>
+        </div>
+        {{myData}}<br>
+        {{myData2}}
+        <div ng-repeat="x in users">{{x[0]}}</div>
+      </fieldset>
+    </form>
 </div>
+<script>
+  $(document).foundation();
+</script>

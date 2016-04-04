@@ -108,7 +108,7 @@ CREATE TABLE IF NOT EXISTS commentrecipe (
 ALTER TABLE recipe ADD CONSTRAINT fk_recipe_creator FOREIGN KEY (creator) REFERENCES user(id);
 
 ALTER TABLE pass
-  ADD CONSTRAINT pk_pass     PRIMARY KEY (userid, pass),
+  ADD CONSTRAINT pk_pass     PRIMARY KEY (userid),
   ADD CONSTRAINT fk_pass_uid FOREIGN KEY (userid) REFERENCES user(id);
 
 

@@ -26,9 +26,9 @@ HCDietsApp.run(run);
           controller:  'SearchCtrl',
           controllerAs:'ctrl'
         })
-        .when('/account',   {
-          templateUrl: 'components/account/account.view.html',
-          controller:  'AccountCtrl',
+        .when('/profile',   {
+          templateUrl: 'components/profile/profile.view.html',
+          controller:  'ProfileCtrl',
           controllerAs:'ctrl'
         })
         .when('/login', {
@@ -41,14 +41,23 @@ HCDietsApp.run(run);
             templateUrl: 'components/register/register.view.html',
             controllerAs: 'ctrl'
         })
-        .otherwise({ redirectTo: '/login' });
+        .when('/logout', {
+            controller: 'LogoutCtrl',
+            templateUrl: 'components/logout/logout.view.html',
+            controllerAs: 'ctrl'
+        })
+        .otherwise({ redirectTo: '/' });
   }
 
   run.$inject = ['$rootScope', '$location', '$cookieStore', '$http'];
   function run($rootScope, $location, $cookieStore, $http) {
-      
+      // keep user logged in after page refresh
+      $rootScope.globals = $cookieStore.get('globals') || {};
+      if ($rootScope.globals.currentUser) {
+          $http.defaults.headers.common['Authorization'] = 'Basic ' + $rootScope.globals.currentUser.authdata; // jshint ignore:line
+      }
   }
 
-  HCDietsApp.controller("HCDietsAppCtrl", function HCDietsAppCtrl($scope) {
+  HCDietsApp.controller("HCDietsAppCtrl", function HCDietsAppCtrl($scope, $rootScope) {
 
   });
