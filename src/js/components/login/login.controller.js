@@ -1,6 +1,6 @@
 HCDietsApp.controller('LoginCtrl', LoginCtrl);
 
-function LoginCtrl($location, $scope, UserService, $http, $rootScope, $cookieStore) {
+function LoginCtrl($location, $scope, UserService, $http, $rootScope, $cookies) {
     $scope.login = login;
     clearCredentials();
 
@@ -8,7 +8,7 @@ function LoginCtrl($location, $scope, UserService, $http, $rootScope, $cookieSto
       UserService.GetByEmail($scope.user.email).then(function (response) {
           if(response.data.user.records.length == 1) {
             var id = response.data.user.records[0][0];
-            $http.get('/api.php/pass?filter[]=userid,eq,' + id).then(function(response) {
+            $http.get('/3430/161/team7/api.php/pass?filter[]=userid,eq,' + id).then(function(response) {
               var code = CryptoJS.SHA256($scope.user.pass).toString();
               if (code == response.data.pass.records[0][1]) {
                 SetCredentials($scope.user.email, code);
@@ -35,12 +35,12 @@ function LoginCtrl($location, $scope, UserService, $http, $rootScope, $cookieSto
             }
         };
 
-        $cookieStore.put('globals', $rootScope.globals);
+        $cookies.putObject('globals', $rootScope.globals);
     }
 
     function clearCredentials() {
         $rootScope.globals = {};
-        $cookieStore.remove('globals');
+        $cookies.remove('globals');
         $http.defaults.headers.common['Authorization'] = 'Basic '// jshint ignore:line
     }
 

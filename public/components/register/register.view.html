@@ -9,9 +9,14 @@
           <input type="email" name='email' id='email' ng-model="user.email" ng-blur="checkEmail()" ng-class="email.inputClass" maxlength="255" required>
         </div>
         <div>
-          <label for="pass">Password</label>
-          <span ng-show="pass.error" class="errorMessage">{{pass.errorMessage}}</span>
-          <input type="password" name='pass' id='pass' ng-model="user.pass" ng-blur="checkPass()" ng-class="pass.inputClass" maxlength="255" required>
+          <label for="pass1">Password</label>
+          <span ng-show="pass1.error" class="errorMessage">{{pass1.errorMessage}}</span>
+          <input type="password" name='pass1' id='pass1' ng-model="user.pass1" ng-blur="checkPass()" ng-class="pass1.inputClass" maxlength="255" required>
+        </div>
+        <div>
+          <label for="pass2">Re-type Password</label>
+          <span ng-show="pass2.error" class="errorMessage">{{pass2.errorMessage}}</span>
+          <input type="password" name='pass2' id='pass2' ng-model="user.pass2" ng-blur="checkPass()" ng-class="pass2.inputClass" maxlength="255" required>
         </div>
         <div>
           <label for="uname">Username</label>
@@ -33,9 +38,6 @@
             <button class="submitButton" type="submit" ng-disabled="registerForm.$invalid">Register</button>
             <a href="#/login">Cancel</a>
         </div>
-        {{myData}}<br>
-        {{myData2}}
-        <div ng-repeat="x in users">{{x[0]}}</div>
       </fieldset>
     </form>
 </div>

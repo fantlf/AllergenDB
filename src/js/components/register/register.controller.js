@@ -1,19 +1,25 @@
 HCDietsApp.controller('RegisterCtrl', RegisterCtrl);
 
-function RegisterCtrl(UserService, $location, $rootScope, $scope, $http) {
+function RegisterCtrl(UserService, $location, $rootScope, $scope) {
   $scope.email = { error : false, errorMessage : "", inputClass : "noInput"};
-  $scope.pass  = { error : false, errorMessage : "", inputClass : "noInput"};
+  $scope.pass1 = { error : false, errorMessage : "", inputClass : "noInput"};
+  $scope.pass2 = { error : false, errorMessage : "", inputClass : "noInput"};
   $scope.uname = { error : false, errorMessage : "", inputClass : "noInput"};
   $scope.fname = { error : false, errorMessage : "", inputClass : "noInput"};
   $scope.sname = { error : false, errorMessage : "", inputClass : "noInput"};
   $scope.mainError = "";
 
   $scope.register = function(user) {
-    var res1 = testPass($scope.user.pass);
+    var res0 = testPass1($scope.user.pass1);
+    var res1 = testPass2($scope.user.pass1, $scope.user.pass2);
     var res2 = testName($scope.user.fname);
     var res3 = testName($scope.user.sname);
     var res4 = testEmail($scope.user.email);
     var res5 = testUname($scope.user.uname);
+    if (res0.error) {
+      $scope.mainError = res0.message;
+      return;
+    }
     if (res1.error) {
       $scope.mainError = res1.message;
       return;
@@ -76,15 +82,36 @@ function RegisterCtrl(UserService, $location, $rootScope, $scope, $http) {
   };
 
   $scope.checkPass = function() {
-    if (typeof $scope.user.pass == 'undefined') {
+    if (typeof $scope.user.pass1 == 'undefined' && $scope.user.pass2 == 'undefined') { // neither has been entered
       return;
     }
-    var result = testPass($scope.user.pass);
-    $scope.pass.errorMessage= result.message;
-    $scope.pass.inputClass = result.newClass;
-    $scope.pass.error = result.error;
+    else if (typeof $scope.user.pass2 == 'undefined') { // the first password field has been entered, but not the second
+      var resultOnly1 = testPass1($scope.user.pass1);
+      $scope.pass1.errorMessage= resultOnly1.message;
+      $scope.pass1.inputClass = resultOnly1.newClass;
+      $scope.pass1.error = resultOnly1.error;
+    }
+    else if (typeof $scope.user.pass1 == 'undefined') { // the second password field has been entered, but not the first
+      var resultOnly2 = testPass1($scope.user.pass2);
+      $scope.pass2.errorMessage= resultOnly2.message;
+      $scope.pass2.inputClass = resultOnly2.newClass;
+      $scope.pass2.error = resultOnly2.error;
+    }
+    else { // both passwords have bee entered
+      var result2 = testPass2($scope.user.pass1, $scope.user.pass2);
+      $scope.pass1.errorMessage= result2.message;
+      $scope.pass1.inputClass = result2.newClass;
+      $scope.pass2.inputClass = result2.newClass;
+      $scope.pass1.error = result2.error;
+      if (!result2.error) { // the passwords match
+        var result1 = testPass1($scope.user.pass1);
+        $scope.pass1.errorMessage = result1.message;
+        $scope.pass1.inputClass = result1.newClass;
+        $scope.pass2.inputClass = result1.newClass;
+        $scope.pass1.error = result1.error;
+      }
+    }
   };
-
   $scope.checkUname = function() {
     if (typeof $scope.user.uname == 'undefined') {
       return;
@@ -135,10 +162,19 @@ function RegisterCtrl(UserService, $location, $rootScope, $scope, $http) {
     return result;
   }
 
-  function testPass(password) {
+  function testPass1(password) {
     var result = {error : false, message : "", newClass : "validInput"};
     if (password.length < 6) {
       result.message = "Password must be at least 6 characters long";
+      result.error = true;
+      result.newClass = "invalidInput";
+    }
+    return result;
+  }
+  function testPass2(pass1, pass2) {
+    var result = {error : false, message : "", newClass : "validInput"};
+    if (pass1 != pass2) {
+      result.message = "Passwords must match";
       result.error = true;
       result.newClass = "invalidInput";
     }

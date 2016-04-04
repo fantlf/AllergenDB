@@ -1,4 +1,4 @@
-HCDietsApp.controller('TopBarCtrl', function ($scope, $rootScope, $location, $cookieStore, $http) {
+HCDietsApp.controller('TopBarCtrl', function ($scope, $rootScope) {
   $scope.loggedInLinks = [{link : "#/profile", title : "Profile" }, {link : '#/logout', title : "Logout" }];
   $scope.loggedOutLinks = [{link : "#/register", title : "Register"}, {link : "#/login",    title : "Login"}];
   $scope.loggedIn = function() {

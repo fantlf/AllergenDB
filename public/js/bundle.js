@@ -58194,11 +58194,10 @@ HCDietsApp.run(run);
         })
         .otherwise({ redirectTo: '/' });
   }
-
-  run.$inject = ['$rootScope', '$location', '$cookieStore', '$http'];
-  function run($rootScope, $location, $cookieStore, $http) {
+  run.$inject = ['$rootScope', '$location', '$cookies', '$http'];
+  function run($rootScope, $location, $cookies, $http) {
       // keep user logged in after page refresh
-      $rootScope.globals = $cookieStore.get('globals') || {};
+      $rootScope.globals = $cookies.getObject('globals') || {};
       if ($rootScope.globals.currentUser) {
           $http.defaults.headers.common['Authorization'] = 'Basic ' + $rootScope.globals.currentUser.authdata; // jshint ignore:line
       }
@@ -58222,25 +58221,25 @@ function UserService($http) {
     return service;
 
     function GetById(id) {
-      return $http.get('/api.php/user?filter[]=id,eq,' + id).then(handleSuccess, handleError('Error getting user by id'));
+      return $http.get('/3430/161/team7/api.php/user?filter[]=id,eq,' + id).then(handleSuccess, handleError('Error getting user by id'));
     }
 
     function GetByEmail(emailvalue) {
-      return $http.get('/api.php/user?filter[]=email,eq,' + emailvalue).then(handleSuccess, handleError('Error getting user by email'));
+      return $http.get('/3430/161/team7/api.php/user?filter[]=email,eq,' + emailvalue).then(handleSuccess, handleError('Error getting user by email'));
     }
 
     function GetByUname(unamevalue) {
-      return $http.get('/api.php/user?filter[]=uname,eq,' + unamevalue).then(handleSuccess, handleError('Error getting user by email'));
+      return $http.get('/3430/161/team7/api.php/user?filter[]=uname,eq,' + unamevalue).then(handleSuccess, handleError('Error getting user by email'));
     }
 
     function Create(user) {
       if (validateUserInfo(user)) {
         // Create user to generate id
-        return $http.post('/api.php/user', { email : user.email, fname : user.fname, sname : user.sname, uname : user.uname} ).then(function() {
-          $http.get('/api.php/user?filter[]=email,eq,' + user.email).then(function(response) {
+        return $http.post('/3430/161/team7/api.php/user', { email : user.email, fname : user.fname, sname : user.sname, uname : user.uname} ).then(function() {
+          $http.get('/3430/161/team7/api.php/user?filter[]=email,eq,' + user.email).then(function(response) {
             var id = response.data.user.records[0][0];
-            var code = CryptoJS.SHA256(user.pass).toString();
-            $http.post('/api.php/pass', { userid : id, pass: code } ).then(handleSuccess, handleError('Failed to create password'));
+            var code = CryptoJS.SHA256(user.pass1).toString();
+            $http.post('/3430/161/team7/api.php/pass', { userid : id, pass: code } ).then(handleSuccess, handleError('Failed to create password'));
           }, handleError("Failed to query user id"));
         }, handleError("Failed to create user"));
       }
@@ -58250,11 +58249,11 @@ function UserService($http) {
     }
 
     function Update(user) {
-      return $http.put('/api.php/user/' + user.id, user).then(handleSuccess, handleError('Error updating user'));
+      return $http.put('/3430/161/team7/api.php/user/' + user.id, user).then(handleSuccess, handleError('Error updating user'));
     }
 
     function Delete(id) {
-      return $http.delete('/api.php/user/' + id).then(handleSuccess, handleError('Error deleting user'));
+      return $http.delete('/3430/161/team7/api.php/user/' + id).then(handleSuccess, handleError('Error deleting user'));
     }
 
     // private functions
@@ -58278,13 +58277,12 @@ function UserService($http) {
   });
 ;HCDietsApp.controller('HomeCtrl', HomeCtrl);
 
-HomeCtrl.$inject = ['UserService', '$rootScope'];
-function HomeCtrl(UserService, $rootScope) {
-
+HomeCtrl.$inject = ['UserService', '$rootScope', '$scope'];
+function HomeCtrl(UserService, $rootScope, $scope) {
 }
 ;HCDietsApp.controller('LoginCtrl', LoginCtrl);
 
-function LoginCtrl($location, $scope, UserService, $http, $rootScope, $cookieStore) {
+function LoginCtrl($location, $scope, UserService, $http, $rootScope, $cookies) {
     $scope.login = login;
     clearCredentials();
 
@@ -58292,7 +58290,7 @@ function LoginCtrl($location, $scope, UserService, $http, $rootScope, $cookieSto
       UserService.GetByEmail($scope.user.email).then(function (response) {
           if(response.data.user.records.length == 1) {
             var id = response.data.user.records[0][0];
-            $http.get('/api.php/pass?filter[]=userid,eq,' + id).then(function(response) {
+            $http.get('/3430/161/team7/api.php/pass?filter[]=userid,eq,' + id).then(function(response) {
               var code = CryptoJS.SHA256($scope.user.pass).toString();
               if (code == response.data.pass.records[0][1]) {
                 SetCredentials($scope.user.email, code);
@@ -58319,12 +58317,12 @@ function LoginCtrl($location, $scope, UserService, $http, $rootScope, $cookieSto
             }
         };
 
-        $cookieStore.put('globals', $rootScope.globals);
+        $cookies.putObject('globals', $rootScope.globals);
     }
 
     function clearCredentials() {
         $rootScope.globals = {};
-        $cookieStore.remove('globals');
+        $cookies.remove('globals');
         $http.defaults.headers.common['Authorization'] = 'Basic '// jshint ignore:line
     }
 
@@ -58412,9 +58410,9 @@ function LoginCtrl($location, $scope, UserService, $http, $rootScope, $cookieSto
 }
 ;HCDietsApp.controller('LogoutCtrl', LogoutCtrl);
 
-function LogoutCtrl($location, $http, $rootScope, $cookieStore) {
+function LogoutCtrl($location, $http, $rootScope, $cookies) {
   $rootScope.globals = {};
-  $cookieStore.remove('globals');
+  $cookies.remove('globals');
   $http.defaults.headers.common['Authorization'] = 'Basic '// jshint ignore:line
   $location.path('/');
 }
@@ -58436,20 +58434,26 @@ function ProfileCtrl(UserService, $rootScope, $scope) {
 }
 ;HCDietsApp.controller('RegisterCtrl', RegisterCtrl);
 
-function RegisterCtrl(UserService, $location, $rootScope, $scope, $http) {
+function RegisterCtrl(UserService, $location, $rootScope, $scope) {
   $scope.email = { error : false, errorMessage : "", inputClass : "noInput"};
-  $scope.pass  = { error : false, errorMessage : "", inputClass : "noInput"};
+  $scope.pass1 = { error : false, errorMessage : "", inputClass : "noInput"};
+  $scope.pass2 = { error : false, errorMessage : "", inputClass : "noInput"};
   $scope.uname = { error : false, errorMessage : "", inputClass : "noInput"};
   $scope.fname = { error : false, errorMessage : "", inputClass : "noInput"};
   $scope.sname = { error : false, errorMessage : "", inputClass : "noInput"};
   $scope.mainError = "";
 
   $scope.register = function(user) {
-    var res1 = testPass($scope.user.pass);
+    var res0 = testPass1($scope.user.pass1);
+    var res1 = testPass2($scope.user.pass1, $scope.user.pass2);
     var res2 = testName($scope.user.fname);
     var res3 = testName($scope.user.sname);
     var res4 = testEmail($scope.user.email);
     var res5 = testUname($scope.user.uname);
+    if (res0.error) {
+      $scope.mainError = res0.message;
+      return;
+    }
     if (res1.error) {
       $scope.mainError = res1.message;
       return;
@@ -58512,15 +58516,36 @@ function RegisterCtrl(UserService, $location, $rootScope, $scope, $http) {
   };
 
   $scope.checkPass = function() {
-    if (typeof $scope.user.pass == 'undefined') {
+    if (typeof $scope.user.pass1 == 'undefined' && $scope.user.pass2 == 'undefined') { // neither has been entered
       return;
     }
-    var result = testPass($scope.user.pass);
-    $scope.pass.errorMessage= result.message;
-    $scope.pass.inputClass = result.newClass;
-    $scope.pass.error = result.error;
+    else if (typeof $scope.user.pass2 == 'undefined') { // the first password field has been entered, but not the second
+      var resultOnly1 = testPass1($scope.user.pass1);
+      $scope.pass1.errorMessage= resultOnly1.message;
+      $scope.pass1.inputClass = resultOnly1.newClass;
+      $scope.pass1.error = resultOnly1.error;
+    }
+    else if (typeof $scope.user.pass1 == 'undefined') { // the second password field has been entered, but not the first
+      var resultOnly2 = testPass1($scope.user.pass2);
+      $scope.pass2.errorMessage= resultOnly2.message;
+      $scope.pass2.inputClass = resultOnly2.newClass;
+      $scope.pass2.error = resultOnly2.error;
+    }
+    else { // both passwords have bee entered
+      var result2 = testPass2($scope.user.pass1, $scope.user.pass2);
+      $scope.pass1.errorMessage= result2.message;
+      $scope.pass1.inputClass = result2.newClass;
+      $scope.pass2.inputClass = result2.newClass;
+      $scope.pass1.error = result2.error;
+      if (!result2.error) { // the passwords match
+        var result1 = testPass1($scope.user.pass1);
+        $scope.pass1.errorMessage = result1.message;
+        $scope.pass1.inputClass = result1.newClass;
+        $scope.pass2.inputClass = result1.newClass;
+        $scope.pass1.error = result1.error;
+      }
+    }
   };
-
   $scope.checkUname = function() {
     if (typeof $scope.user.uname == 'undefined') {
       return;
@@ -58571,10 +58596,19 @@ function RegisterCtrl(UserService, $location, $rootScope, $scope, $http) {
     return result;
   }
 
-  function testPass(password) {
+  function testPass1(password) {
     var result = {error : false, message : "", newClass : "validInput"};
     if (password.length < 6) {
       result.message = "Password must be at least 6 characters long";
+      result.error = true;
+      result.newClass = "invalidInput";
+    }
+    return result;
+  }
+  function testPass2(pass1, pass2) {
+    var result = {error : false, message : "", newClass : "validInput"};
+    if (pass1 != pass2) {
+      result.message = "Passwords must match";
       result.error = true;
       result.newClass = "invalidInput";
     }
@@ -58613,7 +58647,7 @@ function RegisterCtrl(UserService, $location, $rootScope, $scope, $http) {
     .then(function (response) {$scope.names = response.data.records;});
   };
 });
-;HCDietsApp.controller('TopBarCtrl', function ($scope, $rootScope, $location, $cookieStore, $http) {
+;HCDietsApp.controller('TopBarCtrl', function ($scope, $rootScope) {
   $scope.loggedInLinks = [{link : "#/profile", title : "Profile" }, {link : '#/logout', title : "Logout" }];
   $scope.loggedOutLinks = [{link : "#/register", title : "Register"}, {link : "#/login",    title : "Login"}];
   $scope.loggedIn = function() {
