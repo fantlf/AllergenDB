@@ -5,7 +5,6 @@ function AuthenticationService(UserService, $rootScope, $cookies, $http) {
 
     var service = {};
 
-    service.login = login;
     service.setCredentials = setCredentials;
     service.clearCredentials = clearCredentials;
     service.simpleTestEmail = simpleTestEmail;
@@ -18,20 +17,7 @@ function AuthenticationService(UserService, $rootScope, $cookies, $http) {
 
     return service;
 
-    function login(email, pass) {
-      UserService.GetByEmail(email).then(function (response) {
-        if(response.data.user && response.data.user.records.length == 1) {
-          var id = response.data.user.records[0][0];
-          UserService.GetPass(id).then(function(response) {
-            var code = CryptoJS.SHA256(pass).toString();
-            if (code == response.data.pass.records[0][1]) {
-              AuthenticationService.setCredentials(email, code);
-              return true;
-            } else return "Username or password is incorrect";
-          });
-        } else return "Username or password is incorrect";
-      });
-    }
+
 
     function setCredentials(email, password) {
         var authdata = Base64.encode(email + ':' + password);

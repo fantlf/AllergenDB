@@ -1,15 +1,21 @@
 HCDietsApp.controller('LoginCtrl', LoginCtrl);
 
-function LoginCtrl($location, $scope, AuthenticationService) {
+function LoginCtrl($location, $scope, AuthenticationService, UserService) {
   $scope.login = login;
   AuthenticationService.clearCredentials();
 
   function login() {
-    AuthenticationService.login(user.email, user.pass).then(function(response) {
-      if (response)
-        $location.path('/');
-      else
-        $scope.error = response.error;
+    UserService.GetByEmail($scope.user.email).then(function (response) {
+      if(response.data.user && response.data.user.records.length == 1) {
+        var id = response.data.user.records[0][0];
+        UserService.GetPass(id).then(function(response) {
+          var code = CryptoJS.SHA256($scope.user.pass).toString();
+          if (code == response.data.pass.records[0][1]) {
+            AuthenticationService.setCredentials($scope.user.email, code);
+            $location.path('/');
+          } else $scope.error = "Username or password is incorrect";
+        });
+      } else $scope.error = "Username or password is incorrect";
     });
   }
 }
