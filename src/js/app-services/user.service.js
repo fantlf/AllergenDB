@@ -1,19 +1,24 @@
 HCDietsApp.factory('UserService', UserService);
 
+UserService.$inject = ['$http'];
 function UserService($http) {
     var service = {};
-
     service.GetById = GetById;
     service.GetByEmail = GetByEmail;
     service.GetByUname = GetByUname;
     service.Create = Create;
     service.Update = Update;
     service.Delete = Delete;
+    service.GetPass = GetPass;
 
     return service;
 
     function GetById(id) {
       return $http.get('/3430/161/team7/api.php/user?filter[]=id,eq,' + id).then(handleSuccess, handleError('Error getting user by id'));
+    }
+
+    function GetPass(id) {
+      return $http.get('/3430/161/team7/api.php/pass?filter[]=userid,eq,' + id).then(handleSuccess, handleError('Error getting password'));
     }
 
     function GetByEmail(emailvalue) {
@@ -25,19 +30,13 @@ function UserService($http) {
     }
 
     function Create(user) {
-      if (validateUserInfo(user)) {
-        // Create user to generate id
-        return $http.post('/3430/161/team7/api.php/user', { email : user.email, fname : user.fname, sname : user.sname, uname : user.uname} ).then(function() {
-          $http.get('/3430/161/team7/api.php/user?filter[]=email,eq,' + user.email).then(function(response) {
-            var id = response.data.user.records[0][0];
-            var code = CryptoJS.SHA256(user.pass1).toString();
-            $http.post('/3430/161/team7/api.php/pass', { userid : id, pass: code } ).then(handleSuccess, handleError('Failed to create password'));
-          }, handleError("Failed to query user id"));
+      return $http.post('/3430/161/team7/api.php/user', { email : user.email, fname : user.fname, sname : user.sname, uname : user.uname} ).then(function() {
+        $http.get('/3430/161/team7/api.php/user?filter[]=email,eq,' + user.email).then(function(response) {
+          var id = response.data.user.records[0][0];
+          var code = CryptoJS.SHA256(user.pass1).toString();
+          $http.post('/3430/161/team7/api.php/pass', { userid : id, pass: code } ).then(handleSuccess, handleError("Failed to create user"));
         }, handleError("Failed to create user"));
-      }
-      else {
-        return handleError("Invalid Input"); // should never happen. input should be validated on the client side before submission
-      }
+      }, handleError("Failed to create user"));
     }
 
     function Update(user) {
@@ -58,9 +57,5 @@ function UserService($http) {
       return function () {
           return { success: false, message: error };
       };
-    }
-
-    function validateUserInfo(user) {
-      return true;
     }
 }

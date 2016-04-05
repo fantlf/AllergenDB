@@ -1,6 +1,16 @@
 HCDietsApp.controller('RegisterCtrl', RegisterCtrl);
 
-function RegisterCtrl(UserService, $location, $rootScope, $scope) {
+RegisterCtrl.$inject = ['UserService', 'AuthenticationService', '$location', '$rootScope', '$scope'];
+function RegisterCtrl(UserService, AuthenticationService, $location, $rootScope, $scope) {
+
+  $scope.register = register;
+
+  $scope.checkEmail = checkEmail;
+  $scope.checkPass  = checkPass;
+  $scope.checkUname = checkUname;
+  $scope.checkFname = checkFname;
+  $scope.checkSname = checkSname;
+
   $scope.email = { error : false, errorMessage : "", inputClass : "noInput"};
   $scope.pass1 = { error : false, errorMessage : "", inputClass : "noInput"};
   $scope.pass2 = { error : false, errorMessage : "", inputClass : "noInput"};
@@ -8,202 +18,147 @@ function RegisterCtrl(UserService, $location, $rootScope, $scope) {
   $scope.fname = { error : false, errorMessage : "", inputClass : "noInput"};
   $scope.sname = { error : false, errorMessage : "", inputClass : "noInput"};
   $scope.mainError = "";
-
-  $scope.register = function(user) {
-    var res0 = testPass1($scope.user.pass1);
-    var res1 = testPass2($scope.user.pass1, $scope.user.pass2);
-    var res2 = testName($scope.user.fname);
-    var res3 = testName($scope.user.sname);
-    var res4 = testEmail($scope.user.email);
-    var res5 = testUname($scope.user.uname);
-    if (res0.error) {
+  $scope.user = { email : "", pass : "", uname : "", fname : "", sname : "" };
+  function register(user) {
+    var res0 = AuthenticationService.simpleTestPass1($scope.user.pass1);
+    var res1 = AuthenticationService.simpleTestPass2($scope.user.pass1, $scope.user.pass2);
+    var res2 = AuthenticationService.simpleTestName($scope.user.fname);
+    var res3 = AuthenticationService.simpleTestName($scope.user.sname);
+    var res4 = AuthenticationService.simpleTestEmail($scope.user.email);
+    var res5 = AuthenticationService.simpleTestUname($scope.user.uname);
+    if (res0.error)
       $scope.mainError = res0.message;
-      return;
-    }
-    if (res1.error) {
+    else if (res1.error)
       $scope.mainError = res1.message;
-      return;
-    }
-    else if (res2.error) {
+    else if (res2.error)
       $scope.mainError = res2.message;
-      return;
-    }
-    else if (res3.error) {
+    else if (res3.error)
       $scope.mainError = res3.message;
-      return;
-    }
-    else if (res4.error) {
+    else if (res4.error)
       $scope.mainError = res4.message;
-      return;
-    }
-    else if (res5.error) {
+    else if (res5.error)
       $scope.mainError = res5.message;
-      return;
-    }
-    UserService.GetByEmail($scope.user.email).then(function (response) {
-      if (response.success && response.data.user) {
-        if (response.data.user.records.length > 0) {
-          $scope.mainError = "A user with this email already exists";
-        }
+    else {
+      AuthenticationService.complexTestEmail($scope.user.email).then(function(response) {
+        if (response.error)
+          $scope.mainError = response.message;
         else {
-          UserService.GetByUname($scope.user.uname).then(function (response) {
-            if (response.success && response.data.user) {
-              if (response.data.user.records.length > 0) {
-                $scope.mainError = "A user with this username already exists";
-              }
-              else {
-                UserService.Create(user).then(function(response) {
-                  $location.path('/login');
-                });
-              }
-            } else { $scope.mainError = "A user with this username already exists"; }
+          AuthenticationService.complexTestUname($scope.user.uname).then(function(response) {
+            if (response.error)
+              $scope.mainError = response.message;
+            else {
+              UserService.Create(user).then(function(response) {
+                $location.path('/login');
+              });
+            }
           });
         }
-      } else { $scope.mainError = "A user with this email already exists"; }
+      });
     }
-  );
-};
+  }
 
-  $scope.checkEmail = function() {
-    var result = testEmail($scope.user.email);
+  function checkEmail() {
+    var result = AuthenticationService.simpleTestEmail($scope.user.email);
     $scope.email.errorMessage = result.message;
     $scope.email.inputClass = result.newClass;
     $scope.email.error = result.error;
 
-    UserService.GetByEmail($scope.user.email).then(function (response) {
-      if (response.success && response.data.user) {
-        if (response.data.user.records.length > 0) {
-          $scope.email.errorMessage = "A user with this email already exists";
-          $scope.email.inputClass = 'invalidInput';
-          $scope.email.error = true;
-        }
-      }
-    });
-  };
+    if (!result.error) {
+      AuthenticationService.complexTestEmail($scope.user.email).then(function(response) {
+        $scope.email.errorMessage = response.message;
+        $scope.email.inputClass = response.newClass;
+        $scope.email.error = response.error;
+      });
+    }
+    if ($scope.mainError !== "") updateMainError();
+  }
 
-  $scope.checkPass = function() {
-    if (typeof $scope.user.pass1 == 'undefined' && $scope.user.pass2 == 'undefined') { // neither has been entered
+  function checkPass() {
+    if (typeof $scope.user.pass1 == 'undefined' && typeof $scope.user.pass2 == 'undefined') { // neither has been entered
       return;
     }
     else if (typeof $scope.user.pass2 == 'undefined') { // the first password field has been entered, but not the second
-      var resultOnly1 = testPass1($scope.user.pass1);
+      var resultOnly1 = AuthenticationService.simpleTestPass1($scope.user.pass1);
       $scope.pass1.errorMessage= resultOnly1.message;
       $scope.pass1.inputClass = resultOnly1.newClass;
       $scope.pass1.error = resultOnly1.error;
     }
     else if (typeof $scope.user.pass1 == 'undefined') { // the second password field has been entered, but not the first
-      var resultOnly2 = testPass1($scope.user.pass2);
+      var resultOnly2 = AuthenticationService.simpleTestPass1($scope.user.pass2);
       $scope.pass2.errorMessage= resultOnly2.message;
       $scope.pass2.inputClass = resultOnly2.newClass;
       $scope.pass2.error = resultOnly2.error;
     }
     else { // both passwords have bee entered
-      var result2 = testPass2($scope.user.pass1, $scope.user.pass2);
+      var result2 = AuthenticationService.simpleTestPass2($scope.user.pass1, $scope.user.pass2);
       $scope.pass1.errorMessage= result2.message;
       $scope.pass1.inputClass = result2.newClass;
       $scope.pass2.inputClass = result2.newClass;
       $scope.pass1.error = result2.error;
       if (!result2.error) { // the passwords match
-        var result1 = testPass1($scope.user.pass1);
+        var result1 = AuthenticationService.simpleTestPass1($scope.user.pass1);
         $scope.pass1.errorMessage = result1.message;
         $scope.pass1.inputClass = result1.newClass;
         $scope.pass2.inputClass = result1.newClass;
         $scope.pass1.error = result1.error;
       }
     }
-  };
-  $scope.checkUname = function() {
-    if (typeof $scope.user.uname == 'undefined') {
-      return;
-    }
-    var result = testUname($scope.user.uname);
-    $scope.uname.errorMessage = result.message;
-    $scope.uname.inputClass = result.newClass;
-    $scope.uname.error = result.error;
+    if ($scope.mainError !== "") updateMainError();
+  }
 
-    UserService.GetByUname($scope.user.uname).then(function (response) {
-      if (response.success && response.data.user) {
-        if (response.data.user.records.length > 0) {
-          $scope.uname.errorMessage = "A user with this username already exists";
-          $scope.uname.inputClass = 'invalidInput';
-          $scope.uname.error = true;
-        }
+  function checkUname() {
+    if (typeof $scope.user.uname !== 'undefined' && $scope.user.uname !== null && $scope.user.uname !== "") {
+      var result = AuthenticationService.simpleTestUname($scope.user.uname);
+      $scope.uname.errorMessage = result.message;
+      $scope.uname.inputClass = result.newClass;
+      $scope.uname.error = result.error;
+
+      if (!result.error) {
+        AuthenticationService.complexTestUname($scope.user.uname).then(function(response) {
+          $scope.uname.errorMessage = response.message;
+          $scope.uname.inputClass = response.newClass;
+          $scope.uname.error = response.error;
+        });
       }
-    });
-  };
-
-  $scope.checkFname = function() {
-    if (typeof $scope.user.fname == 'undefined') {
-      return;
+      if ($scope.mainError !== "") updateMainError();
     }
-    var result = testName($scope.user.fname);
-    $scope.fname.errorMessage = result.message;
-    $scope.fname.inputClass = result.newClass;
-    $scope.fname.error = result.error;
-  };
-
-  $scope.checkSname = function() {
-    if (typeof $scope.user.sname == 'undefined') {
-      return;
-    }
-    var result = testName($scope.user.sname);
-    $scope.sname.errorMessage = result.message;
-    $scope.sname.inputClass = result.newClass;
-    $scope.sname.error = result.error;
-  };
-
-  function testEmail(email) {
-    var result = {error : false, message : "", newClass : "validInput"};
-    if ($scope.registerForm.email.$invalid) {
-      result.message = "Please enter a valid email address";
-      result.newClass = 'invalidInput';
-      result.error = true;
-    }
-    return result;
   }
 
-  function testPass1(password) {
-    var result = {error : false, message : "", newClass : "validInput"};
-    if (password.length < 6) {
-      result.message = "Password must be at least 6 characters long";
-      result.error = true;
-      result.newClass = "invalidInput";
+  function checkFname() {
+    if (typeof $scope.user.fname !== 'undefined' && $scope.user.fname !== null && $scope.user.fname !== "") {
+      var result = AuthenticationService.simpleTestName($scope.user.fname);
+      $scope.fname.errorMessage = result.message;
+      $scope.fname.inputClass = result.newClass;
+      $scope.fname.error = result.error;
     }
-    return result;
-  }
-  function testPass2(pass1, pass2) {
-    var result = {error : false, message : "", newClass : "validInput"};
-    if (pass1 != pass2) {
-      result.message = "Passwords must match";
-      result.error = true;
-      result.newClass = "invalidInput";
-    }
-    return result;
+    if ($scope.mainError !== "") updateMainError();
   }
 
-  function testUname(uname) {
-    var result = {error : false, message : "", newClass : "validInput"};
-    var patt = /^[a-z0-9]+$/i;
-    if (!patt.test(uname)) {
-      result.message = "Usernames may only contain letters and numbers";
-      result.newClass = 'invalidInput';
-      result.error = true;
+  function checkSname() {
+    if (typeof $scope.user.sname !== 'undefined' && $scope.user.sname !== null && $scope.user.sname !== "") {
+      var result = AuthenticationService.simpleTestName($scope.user.sname);
+      $scope.sname.errorMessage = result.message;
+      $scope.sname.inputClass = result.newClass;
+      $scope.sname.error = result.error;
     }
-    else if (uname.length > 22){
-      result.message = "Usernames must have no more than 22 characters";
-      result.newClass = 'invalidInput';
-      result.error = true;
-    }
-    return result;
+    if ($scope.mainError !== "") updateMainError();
   }
-  function testName(name) {
-    var patt = /^[a-z]+$/i;
-    var result = {error : false, message : "", newClass : "validInput"};
-    if (!patt.test(name)) {
-      result.message = "Names may only contain letters";
-      result.error = true;
-      result.newClass = "invalidInput";
+
+  function updateMainError() {
+    if ($scope.email.error)
+      $scope.mainError = $scope.email.errorMessage;
+    else if($scope.pass1.error)
+      $scope.mainError = $scope.pass1.errorMessage;
+    else if($scope.pass2.error)
+      $scope.mainError = $scope.pass2.errorMessage;
+    else if ($scope.uname.error)
+      $scope.mainError = $scope.uname.errorMessage;
+    else if ($scope.fname.error)
+      $scope.mainError = $scope.fname.errorMessage;
+    else if ($scope.sname.error)
+      $scope.mainError = $scope.sname.errorMessage;
+    else {
+      $scope.mainError = "";
     }
-    return result;
   }
 }
