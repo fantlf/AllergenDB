@@ -7,16 +7,35 @@
     <h3>Here is our search engine...</h3>
 </div>
 
-<div class="large-6 large-centered columns text-center">
-  <button ng-click="test()">Test: Query Users</button>
-  <table class="table-center">
-    <tr ng-repeat="x in names">
-      <td>{{ x.fname }}</td>
-      <td>{{ x.sname }}</td>
-      <td>{{ x.email }}</td>
-    </tr>
-</table>
-</div>
+<form novalidate ng-submit="search()" formAutofillFix>
+
+  <!-- Primary Search Options -->
+  <div class="row large-12 medium-12 small-12 columns large-centered text-center">
+    <div class="large-6 columns large-centered text-center">
+      <label for="query">Enter Query</label><input type="text" ng-model="query" id="query" name="">
+      <button type="submit">Search</button>
+    </div>
+  </div>
+
+  <!-- Narrow Search Options -->
+  <div class="large-3 medium-4 columns">
+    <div class="large-12 columns panel">
+      <p>Filters</p>
+    </div>
+  </div>
+
+  <!-- Search Display -->
+  <div class="large-9 medium-8 columns">
+    <div class="large-12 columns panel">
+      <p>Here are the search results</p>
+      <div ng-repeat="result in searchResults" class="large-12 columns panel">
+        <div ng-repeat="(key, value) in result" >
+            <p>{{key}} = {{value}}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</form>
 
 <script>
   $(document).foundation();
