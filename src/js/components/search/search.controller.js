@@ -1,7 +1,7 @@
 HCDietsApp.controller('SearchCtrl', SearchCtrl);
 
 SearchCtrl.$inject = ['$scope', '$http'];
-
+  
 function SearchCtrl($scope, $http) {
   $scope.search = search;
 

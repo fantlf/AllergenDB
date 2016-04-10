@@ -10,8 +10,8 @@ if ($queryType[0] == 'S' || $queryType[0] == 's') { // SELECT
   $result = queryMysql($query);
   while($rs = $result->fetch_array(MYSQLI_NUM)) {
       if ($outp != "") {$outp .= ",";}
-      $outp .= '{';
-      for ($i = 0; $i < count($rs) - 1; $i++) {
+      $outp .= '{"' . $attributes[0] . '":"' . $rs[0] . '", ';
+      for ($i = 1; $i < count($rs) - 1; $i++) {
         $outp .= '"' .$attributes[$i] . '":"' . $rs[$i] . '", ';
       }
       $outp .= '"' . $attributes[count($rs) - 1] . '":"' . $rs[count($rs)-1] . '"} ';
