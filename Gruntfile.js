@@ -27,6 +27,7 @@ module.exports = function(grunt) {
           'node_modules/angular-route/angular-route.js',
           'node_modules/angular-cookies/angular-cookies.js',
           'node_modules/angular-foundation/mm-foundation-tpls.js',
+          'node_modules/angular-local-storage/dist/angular-local-storage.js',
           'node_modules/foundation-sites/js/foundation.js',
           'node_modules/foundation-sites/js/foundation/foundation.equalizer.js',
           'node_modules/crypto-js/crypto-js.js',

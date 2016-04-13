@@ -16,7 +16,7 @@ function AuthenticationService(UserService, $rootScope, $cookies, $http) {
     service.complexTestUname = complexTestUname;
 
     return service;
-
+    
     function setCredentials(email, password) {
         var authdata = Base64.encode(email + ':' + password);
         $rootScope.globals = {

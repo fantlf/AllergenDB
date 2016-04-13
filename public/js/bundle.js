@@ -58204,7 +58204,12 @@ HCDietsApp.run(run);
   }
 
   HCDietsApp.controller("HCDietsAppCtrl", function HCDietsAppCtrl($scope, $rootScope) {
-
+    $scope.loggedInLinks = [{link : "#/profile", title : "Profile" }, {link : '#/logout', title : "Logout" }];
+    $scope.loggedOutLinks = [{link : "#/register", title : "Register"}, {link : "#/login",    title : "Login"}];
+    $scope.loggedIn = function() {
+      if ($rootScope.globals.currentUser) return true;
+      else return false;
+    };
   });
 ;HCDietsApp.factory('AuthenticationService', AuthenticationService);
 
@@ -58225,6 +58230,11 @@ function AuthenticationService(UserService, $rootScope, $cookies, $http) {
 
     return service;
 
+<<<<<<< HEAD
+=======
+
+
+>>>>>>> origin/master
     function setCredentials(email, password) {
         var authdata = Base64.encode(email + ':' + password);
         $rootScope.globals = {
@@ -58450,7 +58460,10 @@ function HomeCtrl($rootScope, $scope) {
 }
 ;HCDietsApp.controller('LoginCtrl', LoginCtrl);
 
+<<<<<<< HEAD
 LoginCtrl.$inject = ['$location', '$scope', 'AuthenticationService', 'UserService'];
+=======
+>>>>>>> origin/master
 function LoginCtrl($location, $scope, AuthenticationService, UserService) {
   $scope.login = login;
   AuthenticationService.clearCredentials();
@@ -58658,6 +58671,7 @@ function RegisterCtrl(UserService, AuthenticationService, $location, $rootScope,
     }
   }
 }
+<<<<<<< HEAD
 ;HCDietsApp.controller('SearchCtrl', SearchCtrl);
 
 SearchCtrl.$inject = ['$scope', '$http'];
@@ -58673,6 +58687,15 @@ function SearchCtrl($scope, $http) {
   }
 
 }
+=======
+;HCDietsApp.controller('SearchCtrl', function SearchCtrl($scope, $http) {
+  $scope.test = function() {
+    $http.get("/3430/161/team7/AllergenDB/public/php/search.php")
+    .then(function (response) {$scope.names = response.data.records;});
+  };
+  $scope.error = "";
+});
+>>>>>>> origin/master
 ;HCDietsApp.controller('TopBarCtrl', function ($scope, $rootScope) {
   $scope.loggedInLinks = [{link : "#/profile", title : "Profile" }, {link : '#/logout', title : "Logout" }];
   $scope.loggedOutLinks = [{link : "#/register", title : "Register"}, {link : "#/login",    title : "Login"}];

@@ -21,6 +21,7 @@
     "angular": "^1.4.9",
     "angular-cookies": "^1.5.3",
     "angular-foundation": "^0.8.0",
+    "angular-local-storage": "^0.2.7",
     "angular-route": "^1.5.3",
     "crypto-js": "^3.1.6",
     "foundation-sites": "^5.5.1",
