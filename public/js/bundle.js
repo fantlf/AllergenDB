@@ -58204,7 +58204,12 @@ HCDietsApp.run(run);
   }
 
   HCDietsApp.controller("HCDietsAppCtrl", function HCDietsAppCtrl($scope, $rootScope) {
-
+    $scope.loggedInLinks = [{link : "#/profile", title : "Profile" }, {link : '#/logout', title : "Logout" }];
+    $scope.loggedOutLinks = [{link : "#/register", title : "Register"}, {link : "#/login",    title : "Login"}];
+    $scope.loggedIn = function() {
+      if ($rootScope.globals.currentUser) return true;
+      else return false;
+    };
   });
 ;HCDietsApp.factory('AuthenticationService', AuthenticationService);
 
