@@ -1,9 +1,8 @@
-<<<<<<< HEAD
 HCDietsApp.controller('SearchCtrl', SearchCtrl);
 
-SearchCtrl.$inject = ['$scope', '$http'];
 
-function SearchCtrl($scope, $http) {
+SearchCtrl.$inject = ['$scope', SearchService];
+function SearchCtrl($scope, SearchService) {
   $scope.search = search;
 
   function search() {
@@ -14,5 +13,3 @@ function SearchCtrl($scope, $http) {
   }
 
 }
-=======
->>>>>>> origin/master

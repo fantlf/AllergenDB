@@ -2,7 +2,6 @@
     <h3>Here is our search engine...</h3>
 </div>
 
-<<<<<<< HEAD
 <form novalidate ng-submit="search()" formAutofillFix>
 
   <!-- Primary Search Options -->
@@ -10,32 +9,17 @@
     <div class="large-6 columns large-centered text-center">
       <label for="query">Enter Query</label><input type="text" ng-model="query" id="query">
       <button type="submit">Search</button>
-=======
-<form name="search" ng-submit="search()" novalidate>
-
-  <!-- Primary Search Options -->
-  <div class="large-12 large-centered columns text-center">
-    <div class="large-12 columns panel">
-      <h4>Here are the primary search options</h4>
->>>>>>> origin/master
     </div>
   </div>
 
   <!-- Narrow Search Options -->
-<<<<<<< HEAD
   <div class="large-3 medium-4 columns">
     <div class="large-12 columns panel">
       <p>Filters</p>
-=======
-  <div class="large-2 columns">
-    <div class="large-12 columns panel">
-      <p>Here are the 'narrowing search' options</p>
->>>>>>> origin/master
     </div>
   </div>
 
   <!-- Search Display -->
-<<<<<<< HEAD
   <div class="large-9 medium-8 columns">
     <div class="large-12 columns panel">
       <p>Here are the search results</p>
@@ -43,35 +27,11 @@
         <div ng-repeat="(key, value) in result" >
             <p>{{key}} = {{value}}</p>
         </div>
-=======
-  <div class="large-10 columns">
-    <div class="large-12 columns panel">
-      <p>Here are the search results</p>
-      <div ng-repeat="result in searchResults" class="large-12 columns {{result.classes}}">
-        <h4>Name: {{result.name}}</h4>
-        <h4>Description: {{result.description}}</h4>
-      </div>
->>>>>>> origin/master
       </div>
     </div>
   </div>
 
 </form>
-<<<<<<< HEAD
-=======
-
-<!-- testing, remove before release -->
-<div class="large-6 large-centered columns text-center">
-  <button ng-click="test()">Test: Query Users</button>
-  <table class="table-center">
-    <tr ng-repeat="x in names">
-      <td>{{ x.fname }}</td>
-      <td>{{ x.sname }}</td>
-      <td>{{ x.email }}</td>
-    </tr>
-</table>
-</div>
->>>>>>> origin/master
 
 <script>
   if(typeof HCDietsApp === 'undefined'){

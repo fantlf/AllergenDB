@@ -58153,8 +58153,8 @@ angular.module("template/typeahead/typeahead-popup.html", []).run(["$templateCac
 HCDietsApp.config(config);
 HCDietsApp.run(run);
 
-  config.$inject = ['$routeProvider', '$locationProvider'];
-  function config($routeProvider, $locationProvider) {
+  config.$inject = ['$routeProvider'];
+  function config($routeProvider) {
       $routeProvider
         .when('/',       {redirectTo:'/home'})
         .when('/home',   {
@@ -58229,12 +58229,7 @@ function AuthenticationService(UserService, $rootScope, $cookies, $http) {
     service.complexTestUname = complexTestUname;
 
     return service;
-
-<<<<<<< HEAD
-=======
-
-
->>>>>>> origin/master
+    
     function setCredentials(email, password) {
         var authdata = Base64.encode(email + ':' + password);
         $rootScope.globals = {
@@ -58388,6 +58383,42 @@ var Base64 = {
       return output;
   }
 };
+;HCDietsApp.factory('SearchService', SearchService);
+
+SearchService.$inject = ['$http'];
+function SearchService($http) {
+
+  var service = {};
+
+  service.recipeById = recipeById;
+  service.restaurantById = restaurantById;
+
+  function recipeById(id) {
+    return $http.get('/3430/161/team7/api.php/recipe?filter[]=id,eq,' + id).then(handleSuccess, handleError('Error getting user by id'));
+  }
+
+  function recipeByDietaryReqs(reqList) {
+
+  }
+
+  function restaurantById(id) {
+    return $http.get('/3430/161/team7/api.php/restaurant?filter[]=id,eq,' + id).then(handleSuccess, handleError('Error getting user by id'));
+  }
+
+  return service;
+
+  // private functions
+
+  function handleSuccess(res) {
+    return { success: true, data: res.data };
+  }
+
+  function handleError(error) {
+    return function () {
+        return { success: false, message: error };
+    };
+  }
+}
 ;HCDietsApp.factory('UserService', UserService);
 
 UserService.$inject = ['$http'];
@@ -58460,10 +58491,7 @@ function HomeCtrl($rootScope, $scope) {
 }
 ;HCDietsApp.controller('LoginCtrl', LoginCtrl);
 
-<<<<<<< HEAD
 LoginCtrl.$inject = ['$location', '$scope', 'AuthenticationService', 'UserService'];
-=======
->>>>>>> origin/master
 function LoginCtrl($location, $scope, AuthenticationService, UserService) {
   $scope.login = login;
   AuthenticationService.clearCredentials();
@@ -58671,12 +58699,11 @@ function RegisterCtrl(UserService, AuthenticationService, $location, $rootScope,
     }
   }
 }
-<<<<<<< HEAD
 ;HCDietsApp.controller('SearchCtrl', SearchCtrl);
 
-SearchCtrl.$inject = ['$scope', '$http'];
-  
-function SearchCtrl($scope, $http) {
+
+SearchCtrl.$inject = ['$scope', SearchService];
+function SearchCtrl($scope, SearchService) {
   $scope.search = search;
 
   function search() {
@@ -58687,20 +58714,3 @@ function SearchCtrl($scope, $http) {
   }
 
 }
-=======
-;HCDietsApp.controller('SearchCtrl', function SearchCtrl($scope, $http) {
-  $scope.test = function() {
-    $http.get("/3430/161/team7/AllergenDB/public/php/search.php")
-    .then(function (response) {$scope.names = response.data.records;});
-  };
-  $scope.error = "";
-});
->>>>>>> origin/master
-;HCDietsApp.controller('TopBarCtrl', function ($scope, $rootScope) {
-  $scope.loggedInLinks = [{link : "#/profile", title : "Profile" }, {link : '#/logout', title : "Logout" }];
-  $scope.loggedOutLinks = [{link : "#/register", title : "Register"}, {link : "#/login",    title : "Login"}];
-  $scope.loggedIn = function() {
-    if ($rootScope.globals.currentUser) return true;
-    else return false;
-  };
-});
