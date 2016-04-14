@@ -1,0 +1,18 @@
+Order allow,deny
+Allow from all
+
+<Files "Gruntfile.js">
+    Deny from all
+</Files>
+
+<Files ".gitignore">
+    Deny from all
+</Files>
+
+<Files "package.json">
+    Deny from all
+</Files>
+
+<Files "README.md">
+    Deny from all
+</Files>
