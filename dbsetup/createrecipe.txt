@@ -1,8 +1,10 @@
+USE DBS16T7;
+
 /* Should insert the Recipes and Ingredients into the Created Database */
 
 INSERT INTO recipe (name, description, directions, creator)
-  VALUES ('The World’s Easiest Cinnamon Rolls by Minimalist Baker',
-  `Description From Minimalist Baker's Website: I once drove 2 hours before work at 5:30 in the morning in the pitch black just to get a cinnamon roll at an Amish bakery. That’s how much I love cinnamon rolls, and apparently how unwilling I am to make them myself. Go figure.
+  VALUES ("The World’s Easiest Cinnamon Rolls by Minimalist Baker",
+  "Description From Minimalist Baker's Website: I once drove 2 hours before work at 5:30 in the morning in the pitch black just to get a cinnamon roll at an Amish bakery. That’s how much I love cinnamon rolls, and apparently how unwilling I am to make them myself. Go figure.
   Why doesn't anyone make cinnamon rolls? They're complicated, difficult and time consuming. That's why.
   But these cinnamon rolls are different:
   7 ingredients
@@ -13,42 +15,42 @@ INSERT INTO recipe (name, description, directions, creator)
 
   Oh yeah, and they're vegan. Holy friggin' delicious
 
-  I was able to keep the ingredients to a minimum by narrowing down what you really need in a cinnamon roll and forgetting the rest. And then I went a step further and tested the true need for “scalding the milk” and letting them rise a second (sometimes third) time.
+  I was able to keep the ingredients to a minimum by narrowing down what you really need in a cinnamon roll and forgetting the rest. And then I went a step further and tested the true need for 'scalding the milk' and letting them rise a second (sometimes third) time.
 
-Turns out? Not necessary. And they turned out JUST AS DELICIOUS as bakery fresh cinnamon rolls. This, my friends, is my new go-to cinnamon roll recipe and it just so happens to require 7 ingredients and one lazy morning’s preparation. Behold, the World’s Easiest Cinnamon Rolls.`,
-`Instructions
+Turns out? Not necessary. And they turned out JUST AS DELICIOUS as bakery fresh cinnamon rolls. This, my friends, is my new go-to cinnamon roll recipe and it just so happens to require 7 ingredients and one lazy morning’s preparation. Behold, the World’s Easiest Cinnamon Rolls.",
+"Instructions
 1. In a large sauce pan (or in a bowl in the microwave at 30 sec increments), heat the almond milk and 3 Tbsp Earth Balance until warm and melted, never reaching boiling. Remove from heat and let cool to 110 degrees F (43 C), or the temperature of bath water. It should be warm but not too hot or it will kill the yeast.
 2. Transfer mixture to a large mixing bowl and sprinkle on yeast. Let activate for 10 minutes, then add 1 Tbsp sugar and the salt and stir.
 3. Next add in flour 1/2 cup (68 g) at a time, stirring as you go. The dough will be sticky. When it is too thick to stir, transfer to a lightly floured surface and knead for a minute or so until it forms a loose ball. Rinse your mixing bowl out, coat it with canola or grapeseed oil, and add your dough ball back in. Cover with plastic wrap and set in a warm place to rise for about 1 hour, or until doubled in size (see photo).
 4. On a lightly floured surface, roll out the dough into a thin rectangle. Brush with 3 Tbsp melted Earth Balance and top with 1/4 cup sugar and 1/2 - 1 Tbsp cinnamon (to taste).
 5. Starting at one end, tightly roll up the dough and situate seam side down. Then with a serrated knife or a string of floss, cut the dough into 1.5 - 2 inch sections and position in a well-buttered 8x8-inch square or comparable sized round pan (you should have about 10 rolls). Brush with remaining 2 Tbsp Earth Balance (melted) and cover with plastic wrap. Set on top of the oven to let rise again while you preheat oven to 350 degrees F (176 C).
 6. Once the oven is hot, bake rolls for 25-30 minutes or until slightly golden brown. Let cool for a few minutes and then serve immediately.
-http://minimalistbaker.com/the-worlds-easiest-cinnamon-rolls/`, '1');
+http://minimalistbaker.com/the-worlds-easiest-cinnamon-rolls/", '1');
 
-INSERT INTO ingredient (name', 'description')
+INSERT INTO ingredient (name, description)
   VALUES ('almond milk', 'Preferably unsweetened and plain. Cashew milk has also worked for this.');
 
-INSERT INTO ingredient ('name', 'description')
+INSERT INTO ingredient (name, description)
   VALUES ('instant yeast', 'A packet of it or rapid rise will work.');
 
-INSERT INTO ingredient ('name', 'description')
+INSERT INTO ingredient (name, description)
   VALUES ('earth balance', 'This or other vegan butter will work.');
 
-INSERT INTO ingredient ('name', 'description')
+INSERT INTO ingredient (name, description)
   VALUES ('salt', '');
 
-INSERT INTO ingredient ('name', 'description')
+INSERT INTO ingredient (name, description)
   VALUES ('unbleached all purpose flour', '');
 
-INSERT INTO ingredient ('name', 'description')
+INSERT INTO ingredient (name, description)
   VALUES ('ground cinnamon', '');
 
-INSERT INTO ingredient ('name', 'description')
+INSERT INTO ingredient (name, description)
   VALUES ('organic cane sugar', 'This or other vegan sugar, if you are not vegan any granulated sugar will work.');
 
 INSERT INTO recipe (name, description, directions, creator)
   VALUES('5 minute Vegan Hot Cocoa',
-  `Decription From Minimalist Baker's Website:
+  "Decription From Minimalist Baker's Website:
   You guys, it’s cold. I mean, seriously cold.
 
   We may have narrowly escaped the polar vortex but I’m still feeling its aftermath. Most days John and I hunker down inside next to space heaters. But when I just can’t kick a chill – or am having a serious chocolate craving – I make my favorite 5 minute (or less) vegan hot cocoa.
@@ -64,15 +66,15 @@ INSERT INTO recipe (name, description, directions, creator)
 
   You can make this in the microwave in a big mug – I use my big yellow cereal mug that I’ve had since high school and have carried with me like an adult blankie. Or, if you’re not into the microwave or would rather go old school, simply add ingredients to a small saucepan, bring to a simmer and whisk away. Creamy perfection is just 5 minutes away.
 
-  Next I like to add a little extract. I know everyone usually recommends adding vanilla to “bring out the flavor of the chocolate” or something like that. But I’ve been on a chocolate peppermint kick for the last few months, so I put in a drop or two of peppermint extract and it sends my tastebuds straight to heaven.
+  Next I like to add a little extract. I know everyone usually recommends adding vanilla to 'bring out the flavor of the chocolate' or something like that. But I’ve been on a chocolate peppermint kick for the last few months, so I put in a drop or two of peppermint extract and it sends my tastebuds straight to heaven.
 
-The last element? Coconut whipped cream. I mean, hubba hubba. Also, WHY NOT? It really does put the finishing touch on the cocoa and gives it that luscious, creamy effect I just adore.`,
-  `Instructions
+The last element? Coconut whipped cream. I mean, hubba hubba. Also, WHY NOT? It really does put the finishing touch on the cocoa and gives it that luscious, creamy effect I just adore.",
+  "Instructions
   1. Add almond milk to a large mug and microwave for 1 minute. Alternatively, add to a saucepan over medium heat.
   2. Once milk is warm, add cocoa powder, chocolate and sweetener and whisk to combine.
   3. Put back in microwave or continue cooking on stove top until completely combined and has reached your preferred temperature.
   4. Taste and adjust sweetness as needed.
-  http://minimalistbaker.com/5-minute-vegan-hot-cocoa/`, '1');
+  http://minimalistbaker.com/5-minute-vegan-hot-cocoa/", '1');
 
 INSERT INTO ingredient (name, description)
   VALUES ('unsweetened cocoa powder', '');
@@ -85,11 +87,11 @@ INSERT INTO ingredient (name, description)
 
 INSERT INTO recipe (name, description, directions, creator)
   VALUES ('Cheesy Egg Muffins',
-  `Description taken from Nom Nom Paleo:
+  "Description taken from Nom Nom Paleo:
   In my attempts to raise little cave kids, I’ve been making a ton of savory grain-free muffins lately. This morning, Little-O requested cheesy egg muffins but “no meat or vegetables because I don’t like them.” Le sigh.
 
-  Since I knew egg muffins with no fillings would probably collapse upon themselves, I searched the interwebs for cheesy egg muffin recipes with some heft. I found a really tasty looking recipe on Cheeseslave for bacon, egg, & cheese muffins with coconut flour. Since my little bugger requested no meat, I modified the recipe a little by omitting the bacon(!), subbing in Greek yogurt for the bacon grease (I know it’s not EVEN the same), adding an extra egg, and decreasing the oven temperature a little. My version turned out pretty good and they LOOKED like muffins, too. So much so that Little-O actually ate one!`,
-  `Instructions
+  Since I knew egg muffins with no fillings would probably collapse upon themselves, I searched the interwebs for cheesy egg muffin recipes with some heft. I found a really tasty looking recipe on Cheeseslave for bacon, egg, & cheese muffins with coconut flour. Since my little bugger requested no meat, I modified the recipe a little by omitting the bacon(!), subbing in Greek yogurt for the bacon grease (I know it’s not EVEN the same), adding an extra egg, and decreasing the oven temperature a little. My version turned out pretty good and they LOOKED like muffins, too. So much so that Little-O actually ate one!",
+  "Instructions
   1. Preheat oven to 375 F
   2. Combine eggs, yogurt, and a dash of salt in a medium bowl and whisk until blended.
   3. Add coconut flour and baking powder to the egg mixture and mix until it is smooth.
@@ -97,7 +99,7 @@ INSERT INTO recipe (name, description, directions, creator)
   5. In either silicone baking cups or in cupcake liners coated in coconut oil divide up the batter. It should be around 6 cupcakes.
   6. Bake for approximately 20 minutes, rotating the tray halfway through the cooking time. You will be able to tell that they are done when the tops of the muffins should spring back when you poke them.
   7. Move to a cooling rack and cool for about 10 minutes.
-  http://nomnompaleo.com/post/3739232374/cheesy-egg-muffins`,'1');
+  http://nomnompaleo.com/post/3739232374/cheesy-egg-muffins",'1');
 
 INSERT INTO ingredient (name, description)
   VALUES ('large egg', 'Beaten.');
@@ -119,14 +121,14 @@ INSERT INTO ingredient (name, description)
 
 INSERT INTO recipe (name, description, directions, creator)
   VALUES ('Basic Oatmeal Packet',
-  `Description taken from The Yummy Life:
+  "Description taken from The Yummy Life:
   These DIY instant oatmeal packets are so easy to assemble. Make a bunch in advance to keep on hand for those busy mornings when you don't have time to make breakfast. You can mix these oatmeal packets with hot water and enjoy a healthy hot breakfast in a jiffy. They're also great to take along to work or on trips. It's easy to make these gluten-free, dairy-free, and vegan.
 
-  Why make your own packets? Because they are so much healthier and tastier! I decided to experiment with making my own instant oat packets when I was helping King-Man prepare for a backpacking trip. He's always taken the store-bought instant oat packets for an easy breakfast on the trail. When I read the ingredient list on the packaging with all it's mystery ingredients, high sodium, and artificial flavors, sweeteners, and preservatives, I decided to figure out how to make a healthier version at home.`,
-  `Instructions
+  Why make your own packets? Because they are so much healthier and tastier! I decided to experiment with making my own instant oat packets when I was helping King-Man prepare for a backpacking trip. He's always taken the store-bought instant oat packets for an easy breakfast on the trail. When I read the ingredient list on the packaging with all it's mystery ingredients, high sodium, and artificial flavors, sweeteners, and preservatives, I decided to figure out how to make a healthier version at home.",
+  "Instructions
   1. Mix all ingredients together and store in small snack size baggie.
-  2. When you are ready to eat it, Pour dry mix in microwave safe bowl and pour ¾ cups of cold water and microwave for 1 minute.
-  http://www.theyummylife.com/Instant_Oatmeal_Packets`, '1');
+  2. When you are ready to eat it, Pour dry mix in microwave safe bowl and pour 3/4 cups of cold water and microwave for 1 minute.
+  http://www.theyummylife.com/Instant_Oatmeal_Packets", '1');
 
 INSERT INTO ingredient (name, description)
   VALUES ('instant rolled oats', 'I prefer to use the 1 minute kind.');
@@ -139,12 +141,12 @@ INSERT INTO ingredient (name, description)
 
 INSERT INTO recipe (name, description, directions, creator)
   VALUES ('Apple Raisin Cakes',
-  `Description from Allrecipes:
-  Small cakes make great snacks. Serve with additional applesauce. Preparation Time: 10 Minutes. This recipe is from The WEBB Cooks, articles and recipes by Robyn Webb, courtesy of the American Diabetes Association.`,
-  `Instructions
+  "Description from Allrecipes:
+  Small cakes make great snacks. Serve with additional applesauce. Preparation Time: 10 Minutes. This recipe is from The WEBB Cooks, articles and recipes by Robyn Webb, courtesy of the American Diabetes Association.",
+  "Instructions
   1. In a large mixing bowl, combine all the ingredients together. Form small cakes out of the batter.
   2. Heat a nonstick griddle over medium heat, fry the cakes until both sides are browned, about 5 to 7 minutes.
-  http://allrecipes.com/recipe/19575/apple-raisin-cakes/?internalSource=staff%20pick&referringId=1692&referringContentType=recipe%20hub`, '1');
+  http://allrecipes.com/recipe/19575/apple-raisin-cakes/?internalSource=staff%20pick&referringId=1692&referringContentType=recipe%20hub", '1');
 
 INSERT INTO ingredient (name, description)
   VALUES ('applesauce', '');
@@ -165,17 +167,17 @@ INSERT INTO ingredient (name, description)
   VALUES ('raisins', '');
 
 INSERT INTO recipe (name, description, directions, creator)
-  VALUES (`Ellen's Salmon and Shrimp Spread`,
-  `Description taken from Ketogenic Diet Resource:
+  VALUES ("Ellen's Salmon and Shrimp Spread",
+  "Description taken from Ketogenic Diet Resource:
   This tasty salmon spread is so easy to make and has a rich, creamy texture.  It's a great way to combine the flavors of salmon and shrimp, and increase your intake of healthy Omega 3 fats.
 
   You can use any canned pink salmon.  I think the Member's Mark brand from Sam's club is pretty tasty, and cheaper than buying salmon in the grocery store.  Of course, leftover  fresh salmon that has been baked or grilled would be good as well.  I threw in some steamed shrimp I had in the fridge and it really round out the flavor well, so I've included that last minute edition in this recipe.
 
-  Both salmon and shrimp are high in Omega 3 fatty acids. I'm not a big fan of taking large amounts of fish oil, since you don't need much.  Having this spread once or twice a week would probably fit the omega-3 intake recommendations nicely.`,
-  `Instructions
+  Both salmon and shrimp are high in Omega 3 fatty acids. I'm not a big fan of taking large amounts of fish oil, since you don't need much.  Having this spread once or twice a week would probably fit the omega-3 intake recommendations nicely.",
+  "Instructions
   1. In a glass bowl, soften the cream cheese in the microwave for about 50 seconds. Remove and whisk with mayonnaise until smooth. Whisk in spices and lemon juice.
   2. Add the salmon and shrimp to a food processor bowl fit with an S-blade. Add the cream cheese mixture and processed for about 30 - 60 seconds to a spread consistency. You can eat immediately or chill until ready to serve.
-  http://www.ketogenic-diet-resource.com/salmon-spread.html`, '1');
+  http://www.ketogenic-diet-resource.com/salmon-spread.html", '1');
 
 INSERT INTO ingredient (name, description)
   VALUES ('cream cheese', '');
@@ -196,10 +198,10 @@ INSERT INTO ingredient (name, description)
   VALUES ('shrimp', 'Boil or steam before beginning this recipe.');
 
 INSERT INTO recipe (name, description, directions, creator)
-      VALUES (`Ellen's Low Carb Meatloaf`,
-      `Description from Ketogenic Diet Resource:
-      Most of the basic low carb meatloaf recipes I've tried are either bland or include binders or tomato sauces which add too many carbs. So I came up with my own recipe, and it is totally delicious. I've made lots of meatloaf in my quest for one that was moist, flavorful and low carb to boot, and I've finally gotten the combination of ingredients to my liking. I hope you like it too.`,
-      `Instructions
+      VALUES ("Ellen's Low Carb Meatloaf",
+      "Description from Ketogenic Diet Resource:
+      Most of the basic low carb meatloaf recipes I've tried are either bland or include binders or tomato sauces which add too many carbs. So I came up with my own recipe, and it is totally delicious. I've made lots of meatloaf in my quest for one that was moist, flavorful and low carb to boot, and I've finally gotten the combination of ingredients to my liking. I hope you like it too.",
+      "Instructions
       1. Preheat oven to 350 degrees. Grease a 10 x 15 glass baking dish with butter. Set aside.
       2. In a small deep bowl, whisk almond flour and Parmesan cheese together. Set aside.
       3. Heat butter in a medium skillet over medium heat. Add onion, garlic and pepper; sauté until softened, about 8 minutes. Set aside to cool while preparing remaining ingredients. Once the mixture is cooled enough, run through a food processor for several seconds to mince the vegetables to fine consistency.
@@ -209,7 +211,7 @@ INSERT INTO recipe (name, description, directions, creator)
       7. Add the almond flour mixture. Mix until evenly blended and meat mixture is no longer sticky. (If mixture is still sticking, add additional shredded Parmesan, a tablespoon at a time until the meat no longer sticks.)
       8. Place in the glass baking dish, forming it into a loaf and leaving about an inch of room on all sides. Flatten the top of the loaf shape a little so that it cooks evenly.
       9. Bake loaf until browned and an inserted cooking thermometer registers 160 degrees. Estimated cooking time is about 1 hour. Cool at least 20 minutes. Slice meat loaf and serve.
-      http://www.ketogenic-diet-resource.com/low-carb-meatloaf.html`, '1');
+      http://www.ketogenic-diet-resource.com/low-carb-meatloaf.html", '1');
 
 INSERT INTO ingredient (name, description)
   VALUES ('almond flour', '');
@@ -242,7 +244,7 @@ INSERT INTO ingredient (name, description)
   VALUES ('dijon mustard', '');
 
 INSERT INTO ingredient (name, description)
-  VALUES (`Ellen's Low Carb Barbecue sauce`, 'This could be replaced with another Barbecue sauce.');
+  VALUES ("Ellen's Low Carb Barbecue sauce", 'This could be replaced with another Barbecue sauce.');
 
 INSERT INTO ingredient (name, description)
   VALUES ('heavy cream', '');
@@ -258,7 +260,7 @@ INSERT INTO ingredient (name, description)
 
 INSERT INTO recipe (name, description, directions, creator)
   VALUES ('The Best Damn Vegan Biscuits',
-  `Description taken from Minimalist Baker's Website:
+  "Description taken from Minimalist Baker's Website:
   Before you suggest there’s no way vegan biscuits can taste just as good if not BETTER than regular biscuits, everyone I’ve fed these to agree that these are in fact LEGIT, amazing, fluffy, buttery biscuits.
 
   As in, serve them to your 80-year old grandmother who’s been making biscuits for centuries and she wouldn’t know the difference. As in, slap some gravy on it and you’d think you died and gone to heaven. As in, fluffy, buttery, savory, biscuit perfection. It’s true.
@@ -269,13 +271,13 @@ INSERT INTO recipe (name, description, directions, creator)
 3. Make sure yo’ butter is cold.
 4. Baking powder and soda are a must for fluff.
 5. Brush the tops with butter to achieve that crusty, buttery top.
-6. Make a divot in the middle with your fingers to prevent them from rising in a “dome.”
+6. Make a divot in the middle with your fingers to prevent them from rising in a 'dome.'
 7. A hot oven (450 degrees) is essential. Don’t ask questions.
 8. Biscuits must touch while baking to help them rise properly.
 
-I would include a # 9. but it’s simply to eat biscuits immediately.  I shouldn’t have to tell you that. A BISCUIT FRESH OUT OF THE OVEN > A BISCUIT REHEATED 3 DAYS LATER. Duh.`,
-`Instructions
-1. Preheat oven to 450 degrees F (232 C), and add lemon juice to almond milk to make "vegan buttermilk." Set aside.
+I would include a # 9. but it’s simply to eat biscuits immediately.  I shouldn’t have to tell you that. A BISCUIT FRESH OUT OF THE OVEN > A BISCUIT REHEATED 3 DAYS LATER. Duh.",
+"Instructions
+1. Preheat oven to 450 degrees F (232 C), and add lemon juice to almond milk to make 'vegan buttermilk.' Set aside.
 2. In a large mixing bowl, whisk together dry ingredients.
 3. Add cold butter and use fingers or a pastry cutter to combine the two until only small pieces remain and it looks like sand. Work quickly so the butter doesn’t get too warm.
 4. Make a well in the dry ingredients and, using a wooden spoon, stir gently while pouring in the almond milk mixture 1/4 cup at a time. You may not need all of it. Stir until just slightly combined – it will be sticky.
@@ -284,17 +286,17 @@ I would include a # 9. but it’s simply to eat biscuits immediately.  I shouldn
 7. Use a 1-inch thick dough cutter or a similar-shape object with sharp edges (such as a cocktail shaker) and push straight down through the dough, then slightly twist. Repeat and place biscuits on a baking sheet in two rows, making sure they just touch – this will help them rise uniformly. Gently reform the dough and cut out one or two more biscuits – you should have 7-8.
 8. Next brush the tops with a bit more of melted non-dairy butter and gently press a small divot in the center using two fingers. This will also help them rise evenly, so the middle won’t form a dome.
 9. Bake in a 450 degree oven for 10-15 minutes or until fluffy and slightly golden brown. Serve immediately. Let remaining biscuits cool completely before storing them in an airtight container or bag.
-http://minimalistbaker.com/the-best-damn-vegan-biscuits/`, '1');
+http://minimalistbaker.com/the-best-damn-vegan-biscuits/", '1');
 
 
 INSERT INTO recipe (name, description, directions, creator)
   VALUES ('Hearty Ham and Potato Soup',
-  ``,
-  `Instructions
+  "",
+  "Instructions
   1. In a small microwave-safe bowl combine cauliflower and the water. Cover with vented plastic wrap. Microwave on 100 percent power (high) 3 to 5 minutes or until cauliflower is very tender. Cool slightly; drain. Place cooked cauliflower in a food processor or blender. Cover and process or blend until pureed. Set aside. Meanwhile, in a large saucepan cook ham in 1 teaspoon of the hot oil over medium-high heat 3 to 5 minutes or until lightly browned. Using a slotted spoon, remove ham; set aside.
   2. In the same large saucepan cook sweet pepper and garlic in the remaining 1 teaspoon hot oil 3 minutes. Stir in potatoes, broth, and crushed red pepper. Bring to boiling over high heat; reduce heat. Simmer, covered, about 10 minutes or just until potatoes are tender.
   3. In a small bowl combine evaporated milk and cornstarch, stirring until smooth. Add to saucepan; cook and stir until thickened and bubbly. Stir in 1/4 cup of the green onions, the margarine, sage, ham, and pureed cauliflower. Cook over medium-low heat 5 minutes to heat through and allow flavors to blend. Serve topped with cheese and the remaining 1/4 cup green onions.
-  http://www.diabeticlivingonline.com/recipe/hearty-ham-and-potato--soup/`, '1');
+  http://www.diabeticlivingonline.com/recipe/hearty-ham-and-potato--soup/", '1');
 
 INSERT INTO ingredient (name, description)
   VALUES ('small cauliflower florets', '');
