@@ -9,6 +9,7 @@ function SearchCtrl($scope, SearchService) {
     $http.get("/3430/161/team7/AllergenDB/public/php/search.php?query=" + $scope.query)
     .then(function (response) {
       $scope.searchResults = response.data.records;
+
     });
   }
 
