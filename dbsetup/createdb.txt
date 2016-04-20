@@ -4,7 +4,7 @@ CREATE DATABASE IF NOT EXISTS DBS16T7;
 
 /* CREATE THE PRIMARY USER */
 
-CREATE USER IF NOT EXISTS 'vashawkw'@'localhost' IDENTIFIED BY '900578511';
+/*CREATE USER IF NOT EXISTS 'vashawkw'@'localhost' IDENTIFIED BY '900578511';*/
 GRANT ALL PRIVILEGES ON DBS16T7.* TO 'vashawkw'@'localhost';
 
 
@@ -44,7 +44,7 @@ CREATE TABLE IF NOT EXISTS pass (
 CREATE TABLE IF NOT EXISTS dietaryreq (
   id          INT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
   name        VARCHAR(255) NOT NULL,
-  description VARCHAR(255) NOT NULL
+  description BLOB         NOT NULL
 );
 
 CREATE TABLE IF NOT EXISTS menuitem(
@@ -68,7 +68,8 @@ CREATE TABLE IF NOT EXISTS restaurant(
 
 CREATE TABLE IF NOT EXISTS reqingredient (
   recipeid     INT UNSIGNED NOT NULL,
-  ingredientid INT UNSIGNED NOT NULL
+  ingredientid INT UNSIGNED NOT NULL,
+  quantity     VARCHAR(255) NOT NULL
 );
 
 CREATE TABLE IF NOT EXISTS dietaryrecipe (
@@ -83,7 +84,8 @@ CREATE TABLE IF NOT EXISTS dietarymenuitem (
 
 CREATE TABLE IF NOT EXISTS dietaryrestaurant (
  restaurantid INT UNSIGNED NOT NULL,
- dietaryreqid INT UNSIGNED NOT NULL
+ dietaryreqid INT UNSIGNED NOT NULL,
+ rating       INT UNSIGNED NOT NULL
 );
 
 CREATE TABLE IF NOT EXISTS restaurantmenuitem (

@@ -8733,6 +8733,14 @@ input[type="text"].validInput {
   border-color: lightgreen;
 }
 
+button.selected {
+  background-color: #5e6073;
+}
+
+button.notSelected {
+  background-color: #8b8da0;
+}
+
 .errorMessage {
   margin: 5px;
   font-size: 12px;

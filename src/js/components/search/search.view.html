@@ -1,33 +1,24 @@
 <div class="row large-12 large-centered columns text-center">
     <h3>Here is our search engine...</h3>
+
 </div>
 
 <form novalidate ng-submit="search()" formAutofillFix>
-
-  <!-- Primary Search Options -->
-  <div class="row large-12 medium-12 small-12 columns large-centered text-center">
-    <div class="large-6 columns large-centered text-center">
-      <label for="query">Enter Query</label><input type="text" ng-model="query" id="query">
-      <button type="submit">Search</button>
-    </div>
+  <div class="large-centered text-center">
+    <button type="submit" class="button">Search</button>
   </div>
 
   <!-- Narrow Search Options -->
   <div class="large-3 medium-4 columns">
-    <div class="large-12 columns panel">
-      <p>Filters</p>
+    <div class="button-group panel">
+      <button ng-repeat="dreq in dietaryreqs" type="button" class="{{dreq.class}} button" ng-model="dreq.input" ng-click="dreqSelect($index)" btn-checkbox>{{dreq.name}}</button>
     </div>
   </div>
 
   <!-- Search Display -->
   <div class="large-9 medium-8 columns">
     <div class="large-12 columns panel">
-      <p>Here are the search results</p>
-      <div ng-repeat="result in searchResults" class="large-12 columns panel">
-        <div ng-repeat="(key, value) in result" >
-            <p>{{key}} = {{value}}</p>
-        </div>
-      </div>
+      <p>{{results}}</p>
     </div>
   </div>
 
