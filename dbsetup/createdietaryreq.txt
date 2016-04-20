@@ -1,0 +1,76 @@
+use DBS16T7;
+
+insert into dietaryreq (name, description) values
+  ('Peanut', 'Food allergy due to peanuts. It is a type one hypersensitivity reaction to dietary substances from peanuts that causes an overreaction of the immune system. It is recognized \"as one of the most severe food allergies due to its prevalence, persistency and potential severity of allergic reaction.\"
+More info at: http://www.foodallergy.org/allergens/peanut-allergy');
+
+insert into dietaryreq (name, description) values
+  ('Tree Nuts', 'Tree nut allergy, a hypersensitivity to dietary substances from tree nuts and edible tree seeds causing an overreaction of the immune system, may lead to severe physical symptoms. Tree nuts include, but are not limited to, Brazil nuts (are seeds), cashews (are seeds), chestnuts, filberts/hazelnuts, macadamia nuts, pecans, pistachios (are seeds),pine nuts (are seeds), and walnuts (are seeds).
+Tree nut allergy is distinct from peanut allergy or almond allergy, as peanuts are legumes and almonds are drupe seeds, whereas a tree nut is a hard-shelled fruit.
+More info at: http://www.foodallergy.org/allergens/tree-nut-allergy');
+
+insert into dietaryreq (name, description) values
+  ('Diary', 'A dairy allergy is a food allergy, an adverse immune reaction to one or more of the constituents of milk from any animal (most commonly alpha S1-casein, a protein in cow\'s milk). This milk-induced allergic reaction can involve anaphylaxis, a potentially life-threatening condition.
+More info at: http://www.foodallergy.org/allergens/milk-allergy');
+
+insert into dietaryreq (name, description) values
+  ('Egg', 'Egg allergy is a type of food allergy. It is a hypersensitivity to dietary substances from the yolk or whites of eggs, causing an overreaction of the immune system which may lead to severe physical symptoms for millions of people around the world.
+
+Egg allergy appears mainly, but not exclusively, in children. In fact, it is the second most common food allergy in children. (The most common is cows\' milk allergy.) It is usually treated with an exclusion diet and vigilant avoidance of foods that may be contaminated with egg. The most severe food allergy reaction is called anaphylaxis and is an emergency requiring immediate attention and treatment with epinephrine. The Asthma and Allergy Foundation of America estimates that most children outgrow egg allergy by the age of five, but some people remain allergic for a lifetime.
+More info at: http://www.foodallergy.org/allergens/egg-allergy');
+
+insert into dietaryreq (name, description) values
+  ('Wheat', 'Wheat allergy is an allergy which typically presents itself as a food allergy, but can also be a contact allergy resulting from occupational exposure to wheat. Like all allergies, wheat allergy involves immunoglobulin E and mast cell response. Typically the allergy is limited to the seed storage proteins of wheat, some reactions are restricted to wheat proteins, while others can react across many varieties of seeds and other plant tissues. Wheat allergy may be a misnomer since there are many allergenic components in wheat, for example serine protease inhibitors, glutelins and prolamins and different responses are often attributed to different proteins. Twenty-seven potential wheat allergens have been successfully identified. The most severe response is exercise/aspirin induced anaphylaxis attributed to one omega gliadin that is a relative of the protein that causes celiac disease. Other more common symptoms include nausea, urticaria, atopy. Gluten sensitivity is not usually classified as a wheat allergy.
+More info at: http://www.foodallergy.org/allergens/wheat-allergy');
+
+insert into dietaryreq (name, description) values
+  ('Soy', 'Soy allergy is a type of food allergy. It is a hypersensitivity to dietary substances from soy causing an overreaction of the immune system which may lead to severe physical symptoms for millions of people. The Asthma and Allergy Foundation of America estimates soy is among the nine most common food allergens for pediatric and adult food allergy patients. It is usually treated with an exclusion diet and vigilant avoidance of foods that may be contaminated with soy ingredients. The most severe food allergy reaction is called anaphylaxis and is a medical emergency requiring immediate attention and treatment with Epinephrine.
+More info at: http://www.foodallergy.org/allergens/soy-allergy');
+
+insert into dietaryreq (name, description) values
+  ('Fish', 'A seafood allergy (also known as a shellfish allergy) is a type of food allergy, specifically an adverse immune response to a food protein found in seafood.
+
+This hypersensitivity, to the proteins found in shellfish, scaly fish, or crustaceans, causes an overreaction of the immune system, which, for millions of people, may lead to severe physical symptoms, including anaphylaxis. The Asthma and Allergy Foundation of America estimates that the majority of pediatric and adult food allergy patients have a seafood allergy. It occurs mainly (but not exclusively) in adults.
+
+Allergic reactions may result when the susceptible person is not consuming the allergenic substance, by exposure to vapours resulting from cooking of seafood or even preparation or handling.
+More info at: http://www.foodallergy.org/allergens/fish-allergy');
+
+insert into dietaryreq (name, description) values
+  ('Shellfish', 'Shellfish can cause severe allergic reactions (such as anaphylaxis). Approximately 60 percent of people with shellfish allergy experienced their first allergic reaction as adults. Shrimp, crab and lobster cause most shellfish allergies. Finned fish and shellfish do not come from related families of foods, so being allergic to one does not necessarily mean that you must avoid both. To prevent a reaction, strict avoidance of shellfish and shellfish products is essential. Always read ingredient labels to identify shellfish ingredients.
+More info at: http://www.foodallergy.org/allergens/shellfish-allergy');
+
+insert into dietaryreq (name, description) values
+  ('Corn', 'Corn/Maize allergy is a type of food allergy. It can be a difficult allergy to manage, particularly in the United States, due to the high number of food products which contain various forms of corn, such as corn starch, modified food starch, vinegar, and vanilla extract, among many others. However, it is an allergy that often goes unrecognized.
+More info at: http://acaai.org/allergies/types/food-allergies/types-food-allergy/corn-allergy');
+
+insert into dietaryreq (name, description) values
+  ('Gelatin', 'Gelatin is a protein that is formed when skin or connective tissue is boiled. Although rare, allergic reactions to gelatin have been reported.
+More info at: https://www.foodallergy.org/allergens/other-allergens#gelatin');
+
+insert into dietaryreq (name, description) values
+  ('Meat', 'Allergies to meats, such as beef, chicken, mutton or pork, are also rare. A person who is allergic to one type of meat may not need to avoid other types of meat. Heating and cooking meat can reduce the allergenicity of product.
+More info at: https://www.foodallergy.org/allergens/other-allergens#meat');
+
+insert into dietaryreq (name, description) values
+  ('Seeds', 'Allergic reactions to seeds can be severe. Sesame, sunflower, and poppy seeds have been known to cause anaphylaxis.
+More info at: https://www.foodallergy.org/allergens/other-allergens#seed');
+
+insert into dietaryreq (name, description) values
+  ('Gluten', 'Gluten is a protein found primarily in wheat, barley and rye. If a person has a gluten intolerance, this protein can cause digestive problems such as gassiness, abdominal pain or diarrhea.
+More info at: https://www.aaaai.org/conditions-and-treatments/conditions-dictionary/gluten-intolerance');
+
+insert into dietaryreq (name, description) values
+  ('Vegan', 'Vegetarians do not eat meat, fish, or poultry. Vegans, in addition to being vegetarian, do not use other animal products and by-products such as eggs, dairy products, honey, leather, fur, silk, wool, cosmetics, and soaps derived from animal products
+More info at: https://www.vrg.org/nutshell/vegan.htm#what');
+
+insert into dietaryreq (name, description) values
+  ('Vegetarian', 'Someone who lives on a diet of grains, pulses, nuts, seeds, vegetables and fruits with, or without, the use of dairy products and eggs. A vegetarian does not eat any meat, poultry, game, fish, shellfish* or by-products of slaughter.
+More info at: https://www.vegsoc.org/sslpage.aspx?pid=508');
+
+insert into dietaryreq (name, description) values
+  ('Paleo', 'Paleo diet is a diet based on the types of foods presumed to have been eaten by early humans, consisting chiefly of meat, fish, vegetables, and fruit, and excluding dairy or grain products and processed food.
+More info at: https://en.wikipedia.org/wiki/Paleolithic_diet');
+
+insert into dietaryreq (name, description) values
+  ('Ketogenic', 'Ketogenic is a high-fat, adequate-protein, low-carbohydrate diet that in medicine is used primarily to treat difficult-to-control (refractory) epilepsy in children. The diet forces the body to burn fats rather than carbohydrates.
+More info at: https://en.wikipedia.org/wiki/Ketogenic_diet');
