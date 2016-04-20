@@ -7,13 +7,14 @@ function SearchService($http) {
 
   service.recipeById = recipeById;
   service.restaurantById = restaurantById;
+  service.getDietaryreqs = getDietaryreqs;
 
   function recipeById(id) {
     return $http.get('/3430/161/team7/api.php/recipe?filter[]=id,eq,' + id).then(handleSuccess, handleError('Error getting user by id'));
   }
 
-  function recipeByDietaryReqs(reqList) {
-
+  function getDietaryreqs() {
+    return $http.get('/3430/161/team7/api.php/dietaryreq').then(handleSuccess, handleError('Error retrieving dietary reqs'));
   }
 
   function restaurantById(id) {

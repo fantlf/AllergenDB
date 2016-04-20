@@ -58994,13 +58994,14 @@ function SearchService($http) {
 
   service.recipeById = recipeById;
   service.restaurantById = restaurantById;
+  service.getDietaryreqs = getDietaryreqs;
 
   function recipeById(id) {
     return $http.get('/3430/161/team7/api.php/recipe?filter[]=id,eq,' + id).then(handleSuccess, handleError('Error getting user by id'));
   }
 
-  function recipeByDietaryReqs(reqList) {
-
+  function getDietaryreqs() {
+    return $http.get('/3430/161/team7/api.php/dietaryreq').then(handleSuccess, handleError('Error retrieving dietary reqs'));
   }
 
   function restaurantById(id) {
@@ -59344,6 +59345,9 @@ function SearchCtrl($scope, SearchService) {
     class <- the css class that is applied to its button
     input <- is it checked, ng-model
   */
+  SearchService.getDietaryreqs().then(function(response) {
+    $scope.results = response.data;
+  });
   $scope.dietaryreqs = [
     {id : 1, name : "Vegetarian", class : "notSelected", input : ""},
     {id : 2, name : "Gluten Free", class : "notSelected", input : ""}

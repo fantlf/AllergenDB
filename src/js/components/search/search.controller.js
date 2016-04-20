@@ -41,6 +41,9 @@ function SearchCtrl($scope, SearchService) {
     class <- the css class that is applied to its button
     input <- is it checked, ng-model
   */
+  SearchService.getDietaryreqs().then(function(response) {
+    $scope.results = response.data;
+  });
   $scope.dietaryreqs = [
     {id : 1, name : "Vegetarian", class : "notSelected", input : ""},
     {id : 2, name : "Gluten Free", class : "notSelected", input : ""}
