@@ -7,8 +7,8 @@ var HCDietsApp = angular.module("HCDietsApp", [
 HCDietsApp.config(config);
 HCDietsApp.run(run);
 
-  config.$inject = ['$routeProvider', '$locationProvider'];
-  function config($routeProvider, $locationProvider) {
+  config.$inject = ['$routeProvider'];
+  function config($routeProvider) {
       $routeProvider
         .when('/',       {redirectTo:'/home'})
         .when('/home',   {

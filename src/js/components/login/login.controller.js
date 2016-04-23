@@ -1,5 +1,6 @@
 HCDietsApp.controller('LoginCtrl', LoginCtrl);
 
+LoginCtrl.$inject = ['$location', '$scope', 'AuthenticationService', 'UserService'];
 function LoginCtrl($location, $scope, AuthenticationService, UserService) {
   $scope.login = login;
   AuthenticationService.clearCredentials();

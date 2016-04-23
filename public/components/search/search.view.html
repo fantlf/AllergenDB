@@ -1,54 +1,32 @@
-<script type="text/javascript">
-  if(typeof HCDietsApp === 'undefined'){
-    document.location.href="../../";
-  }
-</script>
 <div class="row large-12 large-centered columns text-center">
     <h3>Here is our search engine...</h3>
+
 </div>
 
-<form name="search" ng-submit="search()" novalidate>
-
-  <!-- Primary Search Options -->
-  <div class="large-12 large-centered columns text-center">
-    <div class="large-12 columns panel">
-      <h4>Here are the primary search options</h4>
-    </div>
+<form novalidate ng-submit="search()" formAutofillFix>
+  <div class="large-centered text-center">
+    <button type="submit" class="button">Search</button>
   </div>
 
   <!-- Narrow Search Options -->
-  <div class="large-2 columns">
-    <div class="large-12 columns panel">
-      <p>Here are the 'narrowing search' options</p>
+  <div class="large-3 medium-4 columns">
+    <div class="button-group panel">
+      <button ng-repeat="dreq in dietaryreqs" type="button" class="{{dreq.class}} button" ng-model="dreq.input" ng-click="dreqSelect($index)" btn-checkbox>{{dreq.name}}</button>
     </div>
   </div>
 
   <!-- Search Display -->
-  <div class="large-10 columns">
+  <div class="large-9 medium-8 columns">
     <div class="large-12 columns panel">
-      <p>Here are the search results</p>
-      <div ng-repeat="result in searchResults" class="large-12 columns {{result.classes}}">
-        <h4>Name: {{result.name}}</h4>
-        <h4>Description: {{result.description}}</h4>
-      </div>
-      </div>
+      <p>{{results}}</p>
     </div>
   </div>
 
 </form>
 
-<!-- testing, remove before release -->
-<div class="large-6 large-centered columns text-center">
-  <button ng-click="test()">Test: Query Users</button>
-  <table class="table-center">
-    <tr ng-repeat="x in names">
-      <td>{{ x.fname }}</td>
-      <td>{{ x.sname }}</td>
-      <td>{{ x.email }}</td>
-    </tr>
-</table>
-</div>
-
 <script>
+  if(typeof HCDietsApp === 'undefined'){
+    document.location.href="../../";
+  }
   $(document).foundation();
 </script>

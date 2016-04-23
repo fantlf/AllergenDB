@@ -52,6 +52,15 @@ input[type="text"].invalidInput {
 input[type="text"].validInput {
   border-color: lightgreen;
 }
+
+button.selected {
+  background-color : scale-color($button-bg-color, $lightness: -30%);
+}
+
+button.notSelected {
+  background-color : $button-bg-color;
+}
+
 .errorMessage {
   margin:5px;
   font-size: 12px;
