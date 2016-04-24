@@ -2,6 +2,9 @@ HCDietsApp.controller('ProfileCtrl', ProfileCtrl);
 
 ProfileCtrl.$inject=['$location', 'UserService', '$rootScope', '$scope'];
 function ProfileCtrl($location, UserService, $rootScope, $scope) {
+  if (!$rootScope.globals.currentUser) {
+    $location.path('/');
+  }
   $scope.gotorecipeform = gotorecipeform;
   loadCurrentUser();
   function loadCurrentUser() {
