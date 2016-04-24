@@ -120,7 +120,7 @@ VALUES('4', '18'),
       ('4', '32');
 
 /*Apple Raisin Cakes*/
-*Peanut, Tree Nut, Dairy, Soy, Fish, Shellfish*/
+/*Peanut, Tree Nut, Dairy, Soy, Fish, Shellfish*/
 /*Corn, Gelatin, Meat, Seeds, Vegetarian*/
 INSERT INTO dietaryrecipe(recipeid, dietaryreqid)
 VALUES('5', '18'),
