@@ -8,8 +8,8 @@
              <h3>{{user.uname}}</h3>
           </div>
           <div class="large-4 columns">
-            <h4><span> name: {{user.fname}} {{user.sname}}</span></h4>
-            <h4><span> email: {{user.email}} </span></h4>
+            <h4><span> Name: {{user.fname}} {{user.sname}}</span></h4>
+            <h4><span> Email: {{user.email}} </span></h4>
           </div>
           <!--<div class="large-12 columns">
           <ul class="button-group even-2">
@@ -21,8 +21,10 @@
    </div>
 </div>
 
-<div class="row large-12 large-centered colums text-center">
-  <a href="#/recipeform" class="button alert">New Recipe</a>
+<div class="row bump">
+  <div class="large-12 columns">
+    <button type="button" class="button" ng-click="gotorecipeform()"> New Recipe</button>
+  </div>
 </div>
 
 <!--
@@ -43,7 +45,7 @@
 </div>
 
 <div class="row large-12 large-centered columns text-center">
-  <h3> Comments </h3>
+  <h3> Recent Activity </h3>
   </div>
   <ul class="small-block-grid-2 medium-block-grid-3 large-block-grid-4">
     <li><!-- Your content goes here --></li>
