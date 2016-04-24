@@ -58883,6 +58883,13 @@ function SearchService($http) {
     return $http.get('/3430/161/team7/HighCountryDiets/public/api/api.php/reqingredient?recipeid=' + recipeid).then(handleSuccess, handleError('Error getting reqingredients'));
   }
 
+  function getCommentsByRecipeId(id) {
+    return $http.get('/3430/161/team7/HighCountryDiets/public/search?query=' + query).then(handleSuccess, handleError('Error Searching'));
+  }
+
+  function getCommentsByRestaurantId(id) {
+
+  }
   return service;
 
   // private functions
@@ -59001,6 +59008,10 @@ function LogoutCtrl($location, $http, $rootScope, $cookies) {
 
 ProfileCtrl.$inject=['$location', 'UserService', '$rootScope', '$scope'];
 function ProfileCtrl($location, UserService, $rootScope, $scope) {
+  if (!$rootScope.globals.currentUser) {
+    $location.path('/');
+  }
+  $scope.gotorecipeform = gotorecipeform;
   loadCurrentUser();
   function loadCurrentUser() {
     $scope.user = {};
@@ -59024,6 +59035,7 @@ RecipeCtrl.$inject = ['SearchService', '$rootScope', '$scope'];
 function RecipeCtrl(SearchService, $rootScope, $scope) {
   $scope.recipe = {id : "", name : "", description : "", directions : ""};
   $scope.ingredients = [];
+  $scope.addComment = addComment;
   SearchService.getRecipeById($rootScope.currRecipe).then(function(response) {
     var results = response.data.recipe.records[0];
     $scope.recipe.id = results[0];
@@ -59039,6 +59051,10 @@ function RecipeCtrl(SearchService, $rootScope, $scope) {
     });
   });
 
+  function addComment() {
+
+  }
+
 
 }
 ;HCDietsApp.controller('RecipeformCtrl', RecipeformCtrl);
@@ -59047,6 +59063,7 @@ RecipeformCtrl.$inject = ['SearchService', '$rootScope', '$scope'];
 function RecipeformCtrl(SearchService, $rootScope, $scope) {
   $scope.dreqSelect = dreqSelect;
   $scope.addRecipe = addRecipe;
+  $scope.addIngredient = addIngredient;
   $scope.dietaryreqs = [];
   $scope.ingredients = [];
   $scope.newIngredientDesc = "";
@@ -59072,11 +59089,12 @@ function RecipeformCtrl(SearchService, $rootScope, $scope) {
   }
 
   function addIngredient() {
-    $scope.ingredients.push({
+    $scope.ingredients.push(
+      {
       name : $scope.newIngredientName,
       description : $scope.newIngredientDesc
-    });
-    $scope.$apply();
+      }
+    );
   }
 
   function dreqSelect(index) {

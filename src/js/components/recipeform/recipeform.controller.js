@@ -4,6 +4,7 @@ RecipeformCtrl.$inject = ['SearchService', '$rootScope', '$scope'];
 function RecipeformCtrl(SearchService, $rootScope, $scope) {
   $scope.dreqSelect = dreqSelect;
   $scope.addRecipe = addRecipe;
+  $scope.addIngredient = addIngredient;
   $scope.dietaryreqs = [];
   $scope.ingredients = [];
   $scope.newIngredientDesc = "";
@@ -29,11 +30,12 @@ function RecipeformCtrl(SearchService, $rootScope, $scope) {
   }
 
   function addIngredient() {
-    $scope.ingredients.push({
+    $scope.ingredients.push(
+      {
       name : $scope.newIngredientName,
       description : $scope.newIngredientDesc
-    });
-    $scope.$apply();
+      }
+    );
   }
 
   function dreqSelect(index) {

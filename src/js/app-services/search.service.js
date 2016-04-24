@@ -36,6 +36,13 @@ function SearchService($http) {
     return $http.get('/3430/161/team7/HighCountryDiets/public/api/api.php/reqingredient?recipeid=' + recipeid).then(handleSuccess, handleError('Error getting reqingredients'));
   }
 
+  function getCommentsByRecipeId(id) {
+    return $http.get('/3430/161/team7/HighCountryDiets/public/search?query=' + query).then(handleSuccess, handleError('Error Searching'));
+  }
+
+  function getCommentsByRestaurantId(id) {
+
+  }
   return service;
 
   // private functions
