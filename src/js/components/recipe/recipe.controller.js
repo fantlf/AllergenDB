@@ -20,5 +20,9 @@ function RecipeCtrl(SearchService, $rootScope, $scope) {
     });
   });
 
+  function addComment() {
+
+  }
+
 
 }
