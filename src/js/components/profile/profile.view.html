@@ -1,56 +1,45 @@
 <div class="row bump">
-   <div class="small-12 large-6 columns">
-      <div class="row">
-         <div class="profile-card">
-            <div class="small-12 large-4 columns">
-               <a href="http://lorempixel.com/image_output/food-q-c-200-200-8.jpg">
-                  <img src="http://lorempixel.com/image_output/food-q-c-200-200-8.jpg" alt="profile image"> </a>
-            </div>
-            <div class="small-12 large-8 columns">
-               <h4>{{user.uname}} <span>{{user.fname}} {{user.lname}}</span></h4>
-            </div>
-            <div class="row collapse">
-               <ul class="button-group even-2">
-                  <li><a href="#" class="button"> Recipes <span>##Query </span></a></li>
-                  <li><a href="#" class="button"> Comments <span>##Query </span></a></li>
-              </ul>
-            </div>
-         </div>
+   <div class="large-12 columns">
+       <div class="profile-card">
+          <div class="large-4 columns">
+                <img src="http://lorempixel.com/image_output/food-q-c-200-200-8.jpg" alt="profile image">
+          </div>
+          <div class="large-8 columns">
+             <h4>{{user.uname}} <span>{{user.fname}} {{user.sname}}</span></h4>
+          </div>
+          <!--<div class="large-12 columns">
+          <ul class="button-group even-2">
+            <li><a href="#" class="button"> Recipes <span>##Query </span></a></li>
+            <li><a href="#" class="button"> Comments <span>##Query </span></a></li>
+          </ul>
+        </div>-->
+        <a href="#/recipeform" class="button alert">New Recipe</a>
       </div>
    </div>
 </div>
 
-
+<!--
 <div id="introModal" class="reveal-modal" data-reveal aria-labelledby="modalTitle" aria-hidden="true" role="dialog">
   <h4 id="modalTitle">Welcome to your profile page</h4>
   <p class="lead">Here, you may see all of your comments and recipes.</p>
   <p>Sadly, there is no current way to edit your info, so make sure that you like your username and name and the rest of stuff.</p>
   <a class="close-reveal-modal" aria-label="Close">&#215;</a>
 </div>
-
+-->
 
 <div class="row large-12 large-centered columns text-center">
-<h3> Recipes </h3>
-<ul class="small-block-grid-2 medium-block-grid-3 large-block-grid-4">
-  <li><!-- Your content goes here --></li>
-  <li><!-- Your content goes here --></li>
-  <li><!-- Your content goes here --></li>
-  <li><!-- Your content goes here --></li>
-  <li><!-- Your content goes here --></li>
-  <li><!-- Your content goes here --></li>
+  <h3> Recipes </h3>
+  <ul class="small-block-grid-2 medium-block-grid-3 large-block-grid-4">
+    <li><!-- Your content goes here --></li>
   </ul>
-  <a href="#/recipeform" class="button alert">New Recipe</a>
+
 </div>
+
 <div class="row large-12 large-centered columns text-center">
-<h3> Comments </h3>
-</div>
-<ul class="small-block-grid-2 medium-block-grid-3 large-block-grid-4">
-  <li><!-- Your content goes here --></li>
-  <li><!-- Your content goes here --></li>
-  <li><!-- Your content goes here --></li>
-  <li><!-- Your content goes here --></li>
-  <li><!-- Your content goes here --></li>
-  <li><!-- Your content goes here --></li>
+  <h3> Comments </h3>
+  </div>
+  <ul class="small-block-grid-2 medium-block-grid-3 large-block-grid-4">
+    <li><!-- Your content goes here --></li>
 </ul>
 <script type="text/javascript">
   if(typeof HCDietsApp === 'undefined'){
