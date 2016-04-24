@@ -21,7 +21,7 @@ function RecipeformCtrl(SearchService, $rootScope, $scope) {
   });
 
   function addRecipe() {
-
+    var query = buildQuery();
   }
 
   function buildQuery() {
@@ -33,6 +33,7 @@ function RecipeformCtrl(SearchService, $rootScope, $scope) {
       name : $scope.newIngredientName,
       description : $scope.newIngredientDesc
     });
+    $scope.$apply();
   }
 
   function dreqSelect(index) {
