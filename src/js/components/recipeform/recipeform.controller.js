@@ -6,7 +6,8 @@ function RecipeformCtrl(SearchService, $rootScope, $scope) {
   $scope.addRecipe = addRecipe;
   $scope.dietaryreqs = [];
   $scope.ingredients = [];
-  $scope.
+  $scope.newIngredientDesc = "";
+  $scope.newIngredientname = "";
   SearchService.getDietaryreqs().then(function(response) {
     var results = response.data.dietaryreq.records;
     for (var i = 0; i < results.length; i++) {
@@ -28,9 +29,9 @@ function RecipeformCtrl(SearchService, $rootScope, $scope) {
   }
 
   function addIngredient() {
-    ingredients.push({
-      name : $scope.newIngredientName;
-      description : $scope.newIngredientDesc;
+    $scope.ingredients.push({
+      name : $scope.newIngredientName,
+      description : $scope.newIngredientDesc
     });
   }
 

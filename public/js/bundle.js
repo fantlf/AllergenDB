@@ -59043,6 +59043,9 @@ function RecipeformCtrl(SearchService, $rootScope, $scope) {
   $scope.dreqSelect = dreqSelect;
   $scope.addRecipe = addRecipe;
   $scope.dietaryreqs = [];
+  $scope.ingredients = [];
+  $scope.newIngredientDesc = "";
+  $scope.newIngredientname = "";
   SearchService.getDietaryreqs().then(function(response) {
     var results = response.data.dietaryreq.records;
     for (var i = 0; i < results.length; i++) {
@@ -59058,9 +59061,16 @@ function RecipeformCtrl(SearchService, $rootScope, $scope) {
   function addRecipe() {
 
   }
-  
+
   function buildQuery() {
 
+  }
+
+  function addIngredient() {
+    $scope.ingredients.push({
+      name : $scope.newIngredientName,
+      description : $scope.newIngredientDesc
+    });
   }
 
   function dreqSelect(index) {
