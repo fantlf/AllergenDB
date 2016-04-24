@@ -8786,3 +8786,25 @@ button.notSelected {
   margin: 5px;
   font-size: 12px;
 }
+
+.student {
+  margin-left: auto;
+  margin-bottom: auto;
+}
+
+.student p {
+  position: relative;
+  top: 5px;
+}
+
+.student p:nth-child(1) {
+  font-size: 16px;
+  font-weight: 500;
+  margin-bottom: 0;
+}
+
+.student p:nth-child(2) {
+  font-size: 14px;
+  font-weight: 400;
+  color: #777;
+}

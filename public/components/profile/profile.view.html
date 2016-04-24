@@ -1,7 +1,12 @@
-
-<a class="th" href="https://placeholdit.imgix.net/~text?txtsize=33&txt=350%C3%97150&w=350&h=150">
+<div class = "row">
+  <a class="th" href="https://placeholdit.imgix.net/~text?txtsize=33&txt=350%C3%97150&w=350&h=150">
   <img src="https://placeholdit.imgix.net/~text?txtsize=33&txt=350%C3%97150&w=350&h=150">
 </a>
+  <div class="student">
+    <p>{{user.uname}}</p>
+    <p>{{user.fname}}</p>
+  </div>
+</div>
 
 
 <div id="introModal" class="reveal-modal" data-reveal aria-labelledby="modalTitle" aria-hidden="true" role="dialog">
@@ -11,8 +16,18 @@
   <a class="close-reveal-modal" aria-label="Close">&#215;</a>
 </div>
 
-
 <a href="#/recipeform" class="button">New Recipe</a>
+
+<h3> Recipes </h3>
+<ul class="small-block-grid-2 medium-block-grid-3 large-block-grid-4">
+  <li><!-- Your content goes here --></li>
+  <li><!-- Your content goes here --></li>
+  <li><!-- Your content goes here --></li>
+  <li><!-- Your content goes here --></li>
+  <li><!-- Your content goes here --></li>
+  <li><!-- Your content goes here --></li>
+</ul>
+
 
 <script type="text/javascript">
   if(typeof HCDietsApp === 'undefined'){
