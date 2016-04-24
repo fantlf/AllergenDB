@@ -8687,6 +8687,10 @@ th.hide-for-touch {
   }
 }
 
+.recipeTextArea {
+  height: 200px;
+}
+
 button.slimbutton:hover {
   background-color: #5e6073;
 }

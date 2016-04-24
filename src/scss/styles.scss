@@ -1,6 +1,10 @@
 @import "settings";
 @import "foundation";
 
+.recipeTextArea {
+  height:200px;
+}
+
 button.slimbutton:hover {
   background-color : scale-color($button-bg-color, $lightness: -30%);
 }
