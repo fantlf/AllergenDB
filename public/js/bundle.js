@@ -58883,6 +58883,13 @@ function SearchService($http) {
     return $http.get('/3430/161/team7/HighCountryDiets/public/api/api.php/reqingredient?recipeid=' + recipeid).then(handleSuccess, handleError('Error getting reqingredients'));
   }
 
+  function getCommentsByRecipeId(id) {
+
+  }
+
+  function getCommentsByRestaurantId(id) {
+
+  }
   return service;
 
   // private functions
@@ -59019,6 +59026,7 @@ RecipeCtrl.$inject = ['SearchService', '$rootScope', '$scope'];
 function RecipeCtrl(SearchService, $rootScope, $scope) {
   $scope.recipe = {id : "", name : "", description : "", directions : ""};
   $scope.ingredients = [];
+  $scope.addComment = addComment;
   SearchService.getRecipeById($rootScope.currRecipe).then(function(response) {
     var results = response.data.recipe.records[0];
     $scope.recipe.id = results[0];
@@ -59042,6 +59050,7 @@ RecipeformCtrl.$inject = ['SearchService', '$rootScope', '$scope'];
 function RecipeformCtrl(SearchService, $rootScope, $scope) {
   $scope.dreqSelect = dreqSelect;
   $scope.addRecipe = addRecipe;
+  $scope.addIngredient = addIngredient;
   $scope.dietaryreqs = [];
   $scope.ingredients = [];
   $scope.newIngredientDesc = "";
@@ -59067,11 +59076,12 @@ function RecipeformCtrl(SearchService, $rootScope, $scope) {
   }
 
   function addIngredient() {
-    $scope.ingredients.push({
+    $scope.ingredients.push(
+      {
       name : $scope.newIngredientName,
       description : $scope.newIngredientDesc
-    });
-    $scope.$apply();
+      }
+    );
   }
 
   function dreqSelect(index) {

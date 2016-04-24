@@ -4,6 +4,7 @@ RecipeCtrl.$inject = ['SearchService', '$rootScope', '$scope'];
 function RecipeCtrl(SearchService, $rootScope, $scope) {
   $scope.recipe = {id : "", name : "", description : "", directions : ""};
   $scope.ingredients = [];
+  $scope.addComment = addComment;
   SearchService.getRecipeById($rootScope.currRecipe).then(function(response) {
     var results = response.data.recipe.records[0];
     $scope.recipe.id = results[0];

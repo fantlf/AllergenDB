@@ -4,13 +4,7 @@
 </div>
 
 <form novalidate>
-  <div class="large-centered text-center">
-    <button type="submit" class="button" ng-click="search('recipe')">Search Recipes</button>
-    <button type="submit" class="button" ng-click="search('restaurant')">Search Restaurants</button>
-  </div>
-
-  <!-- Narrow Search Options -->
-  <div class="large-2 medium-4 large-offset-1 columns">
+  <div class="large-4 columns text-right">
     <button class="dropdown" dropdown-toggle='#dreqdropdown'>Dietary Requirements</button>
     <ul class="f-dropdown" id="dreqdropdown">
       <li ng-repeat="dreq in dietaryreqs">
@@ -24,17 +18,21 @@
         </button>
       </li>
     </ul>
+  </div>
+
+  <div class="large-4 columns">
     <label for="nameMatch">Name: </label>
     <input type="text" name="nameMatch" id="nameMatch" ng-model="nameMatch">
   </div>
 
-  <!-- Search Display -->
-  <div class="large-9 medium-8 columns">
-    <div class="large-12 columns panel">
-      <p>{{results1}}</p>
-      <p>{{results2}}</p>
-    </div>
+  <div class="large-4 columns">
+    <button type="submit" class="button" ng-click="search('recipe')">Search Recipes</button>
+    <button type="submit" class="button" ng-click="search('restaurant')">Search Restaurants</button>
+  </div>
 
+
+  <!-- Search Display -->
+  <div class="large-12 large-centered columns">
     <div class="large-12 columns panel" ng-repeat="result in results">
       <div class="large-4 columns">
         <h4>{{result.name}}</h4>
