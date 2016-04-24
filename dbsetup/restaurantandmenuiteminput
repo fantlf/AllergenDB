@@ -1,6 +1,6 @@
 INSERT INTO menuitem(name, description)
 VALUES ("Mango Lime (Mild)", "Salsa"),
-       ("Pico de Gallo (Medium)", "Salsa”),
+       ("Pico de Gallo (Medium)", "Salsa"),
        ("Cranberry Chipotle (Medium)", "Salsa"),
        ("Pineapple Habanero (Hot)", "Salsa"),
        ("Chips N' Dip", "Tortilla chips with choice salsa, jalapeño cream cheese, or chipotle cream cheese"),
