@@ -18,4 +18,6 @@ function RecipeCtrl(SearchService, $rootScope, $scope) {
       }
     });
   });
+
+
 }

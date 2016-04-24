@@ -59185,6 +59185,8 @@ function RecipeCtrl(SearchService, $rootScope, $scope) {
       }
     });
   });
+
+
 }
 ;HCDietsApp.controller('RegisterCtrl', RegisterCtrl);
 
