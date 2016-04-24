@@ -1,12 +1,9 @@
 USE DBS16T7;
 /*Easiest Cinnamon Rolls */
-/*Peanut, TreeNuts, Dairy, Egg, Fish, Shellfish*/
+/*Peanut,  Dairy, Egg, Fish, Shellfish*/
 /*Corn, Gelatin, Meat, Vegan, Vegetarian*/
 INSERT INTO dietaryrecipe(recipeid, dietaryreqid)
 VALUES('1', '18');
-
-INSERT INTO dietaryrecipe(recipeid, dietaryreqid)
-VALUES('1', '19');
 
 INSERT INTO dietaryrecipe(recipeid, dietaryreqid)
 VALUES('1', '20');
@@ -36,33 +33,161 @@ INSERT INTO dietaryrecipe(recipeid, dietaryreqid)
 VALUES('1', '32');
 
 /*Vegan Hot Cocoa*/
+/*Peanut, Dairy, Egg, Wheat, Soy, Fish, Shellfish*/
+/*Corn, Gelatin, Meat, Seeds, Gluten, Vegan*/
+/*Vegetarian, Paleo*/
 INSERT INTO dietaryrecipe(recipeid, dietaryreqid)
-VALUES('2', );
+VALUES('2', '18');
+
+INSERT INTO dietaryrecipe(recipeid, dietaryreqid)
+VALUES('2', '20');
+
+INSERT INTO dietaryrecipe(recipeid, dietaryreqid)
+VALUES('2', '21');
+
+INSERT INTO dietaryrecipe(recipeid, dietaryreqid)
+VALUES('2', '22');
+
+INSERT INTO dietaryrecipe(recipeid, dietaryreqid)
+VALUES('2', '23');
+
+INSERT INTO dietaryrecipe(recipeid, dietaryreqid)
+VALUES('2', '24');
+
+INSERT INTO dietaryrecipe(recipeid, dietaryreqid)
+VALUES('2', '25');
+
+INSERT INTO dietaryrecipe(recipeid, dietaryreqid)
+VALUES('2', '26');
+
+INSERT INTO dietaryrecipe(recipeid, dietaryreqid)
+VALUES('2', '27');
+
+INSERT INTO dietaryrecipe(recipeid, dietaryreqid)
+VALUES('2', '28');
+
+INSERT INTO dietaryrecipe(recipeid, dietaryreqid)
+VALUES('2', '29');
+
+INSERT INTO dietaryrecipe(recipeid, dietaryreqid)
+VALUES('2', '30');
+
+INSERT INTO dietaryrecipe(recipeid, dietaryreqid)
+VALUES('2', '31');
+
+INSERT INTO dietaryrecipe(recipeid, dietaryreqid)
+VALUES('2', '32');
+
+INSERT INTO dietaryrecipe(recipeid, dietaryreqid)
+VALUES('2', '33');
 
 /*Cheesy Egg Muffins*/
+/*Peanut, Tree Nuts, Wheat, Soy, Fish, Shellfish*/
+/*Corn, Gelatin, Meat, Seeds, Gluten, Vegetarian, Keto*/
 INSERT INTO dietaryrecipe(recipeid, dietaryreqid)
-VALUES('3', );
+VALUES('3', '18'),
+      ('3', '19'),
+      ('3', '22'),
+      ('3', '23'),
+      ('3', '24'),
+      ('3', '25'),
+      ('3', '26'),
+      ('3', '27'),
+      ('3', '28'),
+      ('3', '29'),
+      ('3', '30'),
+      ('3', '33'),
+      ('3', '34');
 
 /*Basic Oatmeal*/
+/*Peanut, TreeNut, Dairy, Egg, Wheat, Soy, Fish*/
+/*Shellfish, Corn, Gelatin, Meat, Gluten, Vegan*/
+/*Vegetarian*/
 INSERT INTO dietaryrecipe(recipeid, dietaryreqid)
-VALUES('4', );
+VALUES('4', '18'),
+      ('4', '19'),
+      ('4', '20'),
+      ('4', '21'),
+      ('4', '22'),
+      ('4', '23'),
+      ('4', '24'),
+      ('4', '25'),
+      ('4', '26'),
+      ('4', '27'),
+      ('4', '28'),
+      ('4', '30'),
+      ('4', '31'),
+      ('4', '32');
 
 /*Apple Raisin Cakes*/
+*Peanut, Tree Nut, Dairy, Soy, Fish, Shellfish*/
+/*Corn, Gelatin, Meat, Seeds, Vegetarian*/
 INSERT INTO dietaryrecipe(recipeid, dietaryreqid)
-VALUES('5', );
+VALUES('5', '18'),
+      ('5', '19'),
+      ('5', '20'),
+      ('5', '23'),
+      ('5', '24'),
+      ('5', '25'),
+      ('5', '26'),
+      ('5', '27'),
+      ('5', '28'),
+      ('5', '29'),
+      ('5', '32');
 
 /*Ellen Salmon and Shrimp Spread*/
+/*Peanut, Tree Nuts, Wheat, Gelatin, Corn, Seeds*/
+/*Gluten, Paleo, Keto*/
 INSERT INTO dietaryrecipe(recipeid, dietaryreqid)
-VALUES('6', );
+VALUES('6', '18'),
+      ('6', '19'),
+      ('6', '22'),
+      ('6', '26'),
+      ('6', '27'),
+      ('6', '29'),
+      ('6', '30'),
+      ('6', '33'),
+      ('6', '34');
 
 /*Ellen Low Carb Meatloaf*/
+/*Peanut, Tree Nuts, Wheat, Fish, Shellfish, Corn*/
+/*Seeds, Gluten, Keto*/
 INSERT INTO dietaryrecipe(recipeid, dietaryreqid)
-VALUES('7', );
+VALUES('7', '18'),
+      ('7', '19'),
+      ('7', '22'),
+      ('7', '24'),
+      ('7', '25'),
+      ('7', '26'),
+      ('7', '29'),
+      ('7', '30'),
+      ('7', '34');
 
 /*Best Damn Biscuits*/
+/*Peanut, Dairy, Egg, Fish, Shellfish, Corn, Gelatin*/
+/*Meat, Seeds, Vegan, Vegetarian*/
 INSERT INTO dietaryrecipe(recipeid, dietaryreqid)
-VALUES('8', );
+VALUES('8', '18'),
+      ('8', '20'),
+      ('8', '21'),
+      ('8', '24'),
+      ('8', '25'),
+      ('8', '26'),
+      ('8', '27'),
+      ('8', '28'),
+      ('8', '29'),
+      ('8', '31'),
+      ('8', '32');
 
 /*Hearty Ham and Potato Soup*/
+/*Peanut, Tree Nuts, Egg, Wheat, Fish, Shellfish*/
+/*Gelatin, Gluten*/
 INSERT INTO dietaryrecipe(recipeid, dietaryreqid)
-VALUES('9', );
+VALUES('9', '18'),
+      ('9', '19'),
+      ('9', '21'),
+      ('9', '22'),
+      ('9', '24'),
+      ('9', '25'),
+      ('9', '27'),
+      ('9', '30');
