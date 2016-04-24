@@ -58632,6 +58632,11 @@ HCDietsApp.run(run);
           controller:  'ProfileCtrl',
           controllerAs:'ctrl'
         })
+        .when('/recipeform',   {
+          templateUrl: 'components/recipeform/recipeform.view.html',
+          controller:  'RecipeformCtrl',
+          controllerAs:'ctrl'
+        })
         .when('/restaurant', {
             controller: 'RestaurantCtrl',
             templateUrl: 'components/restaurant/restaurant.view.html',
@@ -59029,6 +59034,12 @@ function RecipeCtrl(SearchService, $rootScope, $scope) {
     });
   });
 
+
+}
+;HCDietsApp.controller('RecipeformCtrl', RecipeformCtrl);
+
+RecipeformCtrl.$inject = ['$rootScope', '$scope'];
+function RecipeformCtrl($rootScope, $scope) {
 
 }
 ;HCDietsApp.controller('RegisterCtrl', RegisterCtrl);
