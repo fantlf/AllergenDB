@@ -1,0 +1,28 @@
+INSERT INTO menuitem(name, description)
+VALUES ("Mango Lime (Mild)", "Salsa"),
+       ("Pico de Gallo (Medium)", "Salsa”),
+       ("Cranberry Chipotle (Medium)", "Salsa"),
+       ("Pineapple Habanero (Hot)", "Salsa"),
+       ("Chips N' Dip", "Tortilla chips with choice salsa, jalapeño cream cheese, or chipotle cream cheese"),
+       ("Chips N' Salsa Sampler", "Tortilla chips served with each of our four homemade salsas"),
+       ("Homemade French Fries", "Choice of sweet potato fries, russet potato fries, or a mixture of both. Served with our house chipotle ranch"),
+       ("Plantain Appetizer", "Fried plantains served with choice salsa"),
+       ("Homemade Soup", "served with toasted rosemary bread cup"),
+       ("Soup N' Sammy", "A bowl of homemade soup served with roma tomato cheese melt"),
+       ("Nachos Deluxe", "Tortilla chips, choice of beans, jack cheese, choice rosemary chicken, kobe beef, tempeh, chorizo sausage, shrimp, tilapia, or tofu, roasted corn, roasted red peppers, caramelized onions, and scallions. Served with choice salsa"),
+       ("Basic Burger", "A kobe beef patty, sliced lettuce, diced roma tomatoes, and stone ground mustard 8.99 add cheese"),
+       ("Backyard Style", "A kobe beef patty, jack cheese, lettuce, romas, caramelized onion, roasted red pepper, and sweet red mayo"),
+       ("Blackened Jalapeño Burger", "A blackened kobe beef patty, jalapeño cream cheese, sliced lettuce, caramelized onion, grilled jalapeños, roma tomatoes and jack cheese"),
+       ("Caribbean Burger", "A kobe beef patty, jack cheese, chipotle cream cheese, lettuce, roasted red peppers, grilled pineapple, and mushrooms"),
+       ("Tilapia Sandwich", "A char-grilled or golden battered tilapia filet served with sliced lettuce, roma tomatoes, and sweet red mayo"),
+       ("Chipotle Chicken Sandwich", "Rosemary sautéed chicken, chipotle cream cheese, sliced lettuce, roma tomatoes, caramelized onion, and jack cheese"),
+       ("Blackened Chicken Sandwich", "A blackened chicken breast, chipotle cream cheese, sliced romaine lettuce, grilled pineapple, roasted red peppers and jack cheese"),
+       ("Vegetable Samosa","Savory fried pockets loaded with Indian spiced Potatoes and Green Peas"),
+       ("Samosa", "Appetizer"),
+       ("Vegetable Pakora", "Appetizer"),
+       ("Paneer Tikka", "Appetizer"),
+       ("Assorted Vegetarian Platter", "Appetizer");
+INSERT INTO restaurant(name, type, description, address, website, phone)
+VALUES ("Coyote Kitchen", "Soul", "No clue what goes here", "200 Southgate Drive Boone, NC 28607", "http://www.coyotekitchen.com/", "8282654041"),
+       ("Hokkaido Japanese Restaurant", "Japanese, Sushi, Asian", "11:00 am - 9:00 pm Sunday - Thursday, 11:00 am - 9:30 pm Friday/Saturday", "276 Watauga Village Dr Ste K, Boone, NC 28607", "None", "8282630350"),
+       ("Mint Cuisine of India", "Indian", "None", "203 Boone Heights Dr, Boone, NC", "http://www.mintnc.com/", "8283861441");
