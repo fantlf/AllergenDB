@@ -1,6 +1,7 @@
 HCDietsApp.controller('ProfileCtrl', ProfileCtrl);
 
-function ProfileCtrl(UserService, $rootScope, $scope) {
+ProfileCtrl.$inject=['$location', 'UserService', '$rootScope', '$scope'];
+function ProfileCtrl($location, UserService, $rootScope, $scope) {
   loadCurrentUser();
   function loadCurrentUser() {
     $scope.user = {};
@@ -12,5 +13,9 @@ function ProfileCtrl(UserService, $rootScope, $scope) {
               $scope.user.sname = response.data.user.records[0][3];
               $scope.user.uname = response.data.user.records[0][4];
           });
+  }
+
+  function gotorecipeform(){
+    $location.path('/recipeform');
   }
 }
