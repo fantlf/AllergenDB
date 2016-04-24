@@ -1,66 +1,40 @@
-<form>
-  <div class="row">
-    <div class="large-12 columns">
-      <label>Input Label
-        <input type="text" placeholder="large-12.columns" />
-      </label>
+<form novalidate ng-submit="addRecipe()" data-equalizer>
+
+  <div class="large-3 columns text-center" data-equalizer-watch>
+    <h3>Add Ingredients</h3>
+    <label>Name<input type="text" ng-model="newIngredientName" required></label>
+    <label>Description (optional)<input type="text" ng-model="newIngredientDesc"></label>
+    <button type="button" class="button" ng-click="addIngredient()">Add Ingredient</button>
+    <div class="large-12 columns panel">
+
     </div>
   </div>
-  <div class="row">
-    <div class="large-4 columns">
-      <label>Input Label
-        <input type="text" placeholder="large-4.columns" />
-      </label>
-    </div>
-    <div class="large-4 columns">
-      <label>Input Label
-        <input type="text" placeholder="large-4.columns" />
-      </label>
-    </div>
-    <div class="large-4 columns">
-      <div class="row collapse">
-        <label>Input Label</label>
-        <div class="small-9 columns">
-          <input type="text" placeholder="small-9.columns" />
-        </div>
-        <div class="small-3 columns">
-          <span class="postfix">.com</span>
-        </div>
-      </div>
-    </div>
+
+  <div class="large-6 columns text-center" data-equalizer-watch>
+    <h3>Recipe Creation</h3>
+    <label>Description<textarea ng-model="description" class="recipeTextArea"></textarea></label>
+    <label>Directions<textarea ng-model="directions" class="recipeTextArea"></textarea></label>
+    <button type="submit" class="button">Add Recipe</button>
   </div>
-  <div class="row">
-    <div class="large-12 columns">
-      <label>Select Box
-        <select>
-          <option value="husker">Husker</option>
-          <option value="starbuck">Starbuck</option>
-          <option value="hotdog">Hot Dog</option>
-          <option value="apollo">Apollo</option>
-        </select>
-      </label>
-    </div>
+
+  <div class="large-3 columns text-center" data-equalizer-watch>
+    <h3>What dietary requirements does this recipe pass?</h3>
+    <button class="dropdown" dropdown-toggle='#dreqdropdown'>Dietary Requirements</button>
+    <ul class="f-dropdown" id="dreqdropdown">
+      <li ng-repeat="dreq in dietaryreqs">
+        <button
+          type="button"
+          class="{{dreq.class}} slimbutton"
+          ng-model="dreq.input"
+          ng-click="dreqSelect($index)"
+        >{{dreq.name}}
+        </button>
+      </li>
+    </ul>
   </div>
-  <div class="row">
-    <div class="large-6 columns">
-      <label>Choose Your Favorite</label>
-      <input type="radio" name="pokemon" value="Red" id="pokemonRed"><label for="pokemonRed">Red</label>
-      <input type="radio" name="pokemon" value="Blue" id="pokemonBlue"><label for="pokemonBlue">Blue</label>
-    </div>
-    <div class="large-6 columns">
-      <label>Check these out</label>
-      <input id="checkbox1" type="checkbox"><label for="checkbox1">Checkbox 1</label>
-      <input id="checkbox2" type="checkbox"><label for="checkbox2">Checkbox 2</label>
-    </div>
-  </div>
-  <div class="row">
-    <div class="large-12 columns">
-      <label>Textarea Label
-        <textarea placeholder="small-12.columns"></textarea>
-      </label>
-    </div>
-  </div>
+
 </form>
+
 <script type="text/javascript">
   if(typeof HCDietsApp === 'undefined'){
     document.location.href="../../";
