@@ -8797,13 +8797,13 @@ button.notSelected {
   top: 5px;
 }
 
-.student p:nth-child(2) {
+.student p:nth-child(1) {
   font-size: 16px;
   font-weight: 500;
   margin-bottom: 0;
 }
 
-.student p:nth-child(3) {
+.student p:nth-child(2) {
   font-size: 14px;
   font-weight: 400;
   color: #777;
