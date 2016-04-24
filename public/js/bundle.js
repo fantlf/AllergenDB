@@ -58755,8 +58755,8 @@ angular
 HCDietsApp.config(config);
 HCDietsApp.run(run);
 
-  config.$inject = ['$routeProvider', '$locationProvider'];
-  function config($routeProvider, $locationProvider) {
+  config.$inject = ['$routeProvider'];
+  function config($routeProvider) {
       $routeProvider
         .when('/',       {redirectTo:'/home'})
         .when('/home',   {
@@ -58774,14 +58774,24 @@ HCDietsApp.run(run);
           controller:  'SearchCtrl',
           controllerAs:'ctrl'
         })
+        .when('/login', {
+            controller: 'LoginCtrl',
+            templateUrl: 'components/login/login.view.html',
+            controllerAs: 'ctrl'
+        })
+        .when('/recipe', {
+            controller: 'RecipeCtrl',
+            templateUrl: 'components/recipe/recipe.view.html',
+            controllerAs: 'ctrl'
+        })
         .when('/profile',   {
           templateUrl: 'components/profile/profile.view.html',
           controller:  'ProfileCtrl',
           controllerAs:'ctrl'
         })
-        .when('/login', {
-            controller: 'LoginCtrl',
-            templateUrl: 'components/login/login.view.html',
+        .when('/restaurant', {
+            controller: 'RestaurantCtrl',
+            templateUrl: 'components/restaurant/restaurant.view.html',
             controllerAs: 'ctrl'
         })
         .when('/register', {
@@ -58798,6 +58808,8 @@ HCDietsApp.run(run);
   }
   run.$inject = ['$rootScope', '$location', '$cookies', '$http'];
   function run($rootScope, $location, $cookies, $http) {
+    $rootScope.currRecipe = $cookies.getObject('currRecipe') || {};
+    $rootScope.currRestaurant = $cookies.getObject('currRestaurant') || {};
       // keep user logged in after page refresh
       $rootScope.globals = $cookies.getObject('globals') || {};
       if ($rootScope.globals.currentUser) {
@@ -58831,9 +58843,7 @@ function AuthenticationService(UserService, $rootScope, $cookies, $http) {
     service.complexTestUname = complexTestUname;
 
     return service;
-
-
-
+    
     function setCredentials(email, password) {
         var authdata = Base64.encode(email + ':' + password);
         $rootScope.globals = {
@@ -58987,6 +58997,58 @@ var Base64 = {
       return output;
   }
 };
+;HCDietsApp.factory('SearchService', SearchService);
+
+SearchService.$inject = ['$http'];
+function SearchService($http) {
+
+  var service = {};
+
+  service.getRecipeById = recipeById;
+  service.getRestaurantById = restaurantById;
+  service.getIngredientById = getIngredientById;
+  service.getDietaryreqs = getDietaryreqs;
+  service.runSearchQuery = runSearchQuery;
+  service.getReqIngredients = getReqIngredients;
+
+  function recipeById(id) {
+    return $http.get('/3430/161/team7/HighCountryDiets/public/api/api.php/recipe?filter[]=id,eq,' + id).then(handleSuccess, handleError('Error getting user by id'));
+  }
+
+  function getDietaryreqs() {
+    return $http.get('/3430/161/team7/HighCountryDiets/public/api/api.php/dietaryreq?order=name,asc').then(handleSuccess, handleError('Error retrieving dietary reqs'));
+  }
+
+  function restaurantById(id) {
+    return $http.get('/3430/161/team7/HighCountryDiets/public/api/api.php/restaurant?filter[]=id,eq,' + id).then(handleSuccess, handleError('Error getting restaurant by id'));
+  }
+
+  function getIngredientById(id) {
+    return $http.get('/3430/161/team7/HighCountryDiets/public/api/api.php/ingreident?filter[]=id,eq,' + id).then(handleSuccess, handleError('Error getting ingredient by id'));
+  }
+
+  function runSearchQuery(query) {
+    return $http.get('/3430/161/team7/HighCountryDiets/public/search?query=' + query).then(handleSuccess, handleError('Error Searching'));
+  }
+
+  function getReqIngredients(recipeid) {
+    return $http.get('/3430/161/team7/HighCountryDiets/public/api/api.php/reqingredient?recipeid=' + recipeid).then(handleSuccess, handleError('Error getting reqingredients'));
+  }
+
+  return service;
+
+  // private functions
+
+  function handleSuccess(res) {
+    return { success: true, data: res.data };
+  }
+
+  function handleError(error) {
+    return function () {
+        return { success: false, message: error };
+    };
+  }
+}
 ;HCDietsApp.factory('UserService', UserService);
 
 UserService.$inject = ['$http'];
@@ -59003,37 +59065,37 @@ function UserService($http) {
     return service;
 
     function GetById(id) {
-      return $http.get('/3430/161/team7/HighCountryDiets/public/api.php/user?filter[]=id,eq,' + id).then(handleSuccess, handleError('Error getting user by id'));
+      return $http.get('/3430/161/team7/HighCountryDiets/public/api/api.php/user?filter[]=id,eq,' + id).then(handleSuccess, handleError('Error getting user by id'));
     }
 
     function GetPass(id) {
-      return $http.get('/3430/161/team7/HighCountryDiets/public/api.php/pass?filter[]=userid,eq,' + id).then(handleSuccess, handleError('Error getting password'));
+      return $http.get('/3430/161/team7/HighCountryDiets/public/api/api.php/pass?filter[]=userid,eq,' + id).then(handleSuccess, handleError('Error getting password'));
     }
 
     function GetByEmail(emailvalue) {
-      return $http.get('/3430/161/team7/HighCountryDiets/public/api.php/user?filter[]=email,eq,' + emailvalue).then(handleSuccess, handleError('Error getting user by email'));
+      return $http.get('/3430/161/team7/HighCountryDiets/public/api/api.php/user?filter[]=email,eq,' + emailvalue).then(handleSuccess, handleError('Error getting user by email'));
     }
 
     function GetByUname(unamevalue) {
-      return $http.get('/3430/161/team7/HighCountryDiets/public/api.php/user?filter[]=uname,eq,' + unamevalue).then(handleSuccess, handleError('Error getting user by email'));
+      return $http.get('/3430/161/team7/HighCountryDiets/public/api/api.php/user?filter[]=uname,eq,' + unamevalue).then(handleSuccess, handleError('Error getting user by email'));
     }
 
     function Create(user) {
-      return $http.post('/3430/161/team7/HighCountryDiets/public/api.php/user', { email : user.email, fname : user.fname, sname : user.sname, uname : user.uname} ).then(function() {
-        $http.get('/3430/161/team7/HighCountryDiets/public/api.php/user?filter[]=email,eq,' + user.email).then(function(response) {
+      return $http.post('/3430/161/team7/HighCountryDiets/public/api/api.php/user', { email : user.email, fname : user.fname, sname : user.sname, uname : user.uname} ).then(function() {
+        $http.get('/3430/161/team7/HighCountryDiets/public/api/api.php/user?filter[]=email,eq,' + user.email).then(function(response) {
           var id = response.data.user.records[0][0];
           var code = CryptoJS.SHA256(user.pass1).toString();
-          $http.post('/3430/161/team7/HighCountryDiets/public/api.php/pass', { userid : id, pass: code } ).then(handleSuccess, handleError("Failed to create user"));
+          $http.post('/3430/161/team7/HighCountryDiets/public/api/api.php/pass', { userid : id, pass: code } ).then(handleSuccess, handleError("Failed to create user"));
         }, handleError("Failed to create user"));
       }, handleError("Failed to create user"));
     }
 
     function Update(user) {
-      return $http.put('/3430/161/team7/HighCountryDiets/public/api.php/user/' + user.id, user).then(handleSuccess, handleError('Error updating user'));
+      return $http.put('/3430/161/team7/HighCountryDiets/public/api/api.php/user/' + user.id, user).then(handleSuccess, handleError('Error updating user'));
     }
 
     function Delete(id) {
-      return $http.delete('/3430/161/team7/HighCountryDiets/public/api.php/user/' + id).then(handleSuccess, handleError('Error deleting user'));
+      return $http.delete('/3430/161/team7/HighCountryDiets/public/api/api.php/user/' + id).then(handleSuccess, handleError('Error deleting user'));
     }
 
     // private functions
@@ -59059,6 +59121,7 @@ function HomeCtrl($rootScope, $scope) {
 }
 ;HCDietsApp.controller('LoginCtrl', LoginCtrl);
 
+LoginCtrl.$inject = ['$location', '$scope', 'AuthenticationService', 'UserService'];
 function LoginCtrl($location, $scope, AuthenticationService, UserService) {
   $scope.login = login;
   AuthenticationService.clearCredentials();
@@ -59101,6 +59164,27 @@ function ProfileCtrl(UserService, $rootScope, $scope) {
               $scope.user.uname = response.data.user.records[0][4];
           });
   }
+}
+;HCDietsApp.controller('RecipeCtrl', RecipeCtrl);
+
+RecipeCtrl.$inject = ['SearchService', '$rootScope', '$scope'];
+function RecipeCtrl(SearchService, $rootScope, $scope) {
+  $scope.recipe = {id : "", name : "", description : "", directions : ""};
+  $scope.ingredients = [];
+  SearchService.getRecipeById($rootScope.currRecipe).then(function(response) {
+    var results = response.data.recipe.records[0];
+    $scope.recipe.id = results[0];
+    $scope.recipe.name = results[1];
+    $scope.recipe.description = results[2];
+    $scope.recipe.directions = results[3];
+    var query = "SELECT id, name, quantity FROM ingredient, reqingredient WHERE id=ingredientid AND recipeid=" + $scope.recipe.id;
+    SearchService.runSearchQuery(query).then(function(response) {
+      var ingredients = response.data.records;
+      for (var i = 0; i < ingredients.length; i++) {
+        $scope.ingredients[i] = {id : ingredients[i].id, name : ingredients[i].name, quantity : ingredients[i].quantity};
+      }
+    });
+  });
 }
 ;HCDietsApp.controller('RegisterCtrl', RegisterCtrl);
 
@@ -59266,10 +59350,188 @@ function RegisterCtrl(UserService, AuthenticationService, $location, $rootScope,
     }
   }
 }
-;HCDietsApp.controller('SearchCtrl', function SearchCtrl($scope, $http) {
-  $scope.test = function() {
-    $http.get("/3430/161/team7/AllergenDB/public/php/search.php")
-    .then(function (response) {$scope.names = response.data.records;});
+;HCDietsApp.controller('RestaurantCtrl', RestaurantCtrl);
+
+RestaurantCtrl.$inject = ['SearchService', '$rootScope', '$scope'];
+function RestaurantCtrl(SearchService, $rootScope, $scope) {
+  $scope.restaurant = {
+    id : "",
+    name : "",
+    type : "",
+    description : "",
+    address : "",
+    website : "",
+    phone : ""
   };
-  $scope.error = "";
-});
+  $scope.menuitems = [];
+  SearchService.getRestaurantById($rootScope.currRestaurant).then(function(response) {
+    var results = response.data.restaurant.records[0];
+    $scope.restaurant.id = results[0];
+    $scope.restaurant.name = results[1];
+    $scope.restaurant.type = results[2];
+    $scope.restaurant.description = results[3];
+    $scope.restaurant.address = results[4];
+    $scope.restaurant.website = results[5];
+    $scope.restaurant.phone = results[6];
+    var query = "SELECT id, name, description FROM menuitem, retaurantmenuitem WHERE id=menuitemid AND restaurantid=" + $scope.restaurant.id;
+    SearchService.runSearchQuery(query).then(function(response) {
+      var menuitems = response.data.records;
+      for (var i = 0; i < menuitems.length; i++) {
+        $scope.menuitems[i] = {id : menuitems[i].id, name : menuitems[i].name, quantity : menuitems[i].quantity};
+      }
+    });
+  });
+}
+;HCDietsApp.controller('SearchCtrl', SearchCtrl);
+
+SearchCtrl.$inject = ['$cookies', '$location', '$rootScope', '$scope', 'SearchService'];
+function SearchCtrl($cookies, $location, $rootScope, $scope, SearchService) {
+  /* ============== How Searching Works ==============
+
+    buildQuery looks at all the data in the form
+    and builds a query to search based on the current
+    rewuires and stores the query in $scope.query
+
+    runQuery runs the current query stored in $scope.query
+    it then stores the result in $scope.results
+
+    displayResults displays the current results in $scope.results
+    and updates the classes of each input.
+
+    update is an onclick function placed on every input
+    it runs buildQuery, runQuery, displayResults in that oder.
+    This function only does anything is $scope.searching is set to true
+
+    search starts the searching process. It is called by clicking the
+    search button. It does the same thing as update, but then sets
+    $searching to true.
+
+    The point of this extra search function is so that when a user
+    first starts building their query, they dont get results until
+    they are finished and click search. Then, after that, any changes
+    they make autmoatically update their results.
+
+  */
+
+  $scope.search = search;
+  $scope.update = update;
+  $scope.dreqSelect = dreqSelect;
+  $scope.goToRecipe = goToRecipe;
+  $scope.goToRestaurant = goToRestaurant;
+  $scope.query = "";
+  $scope.nameMatch = "";
+  $scope.dietaryreqs = [];
+  // get the dietaryreqs
+  /* Dietary Requirement Attributes
+    id    <- id in the database
+    name  <- displayed on label
+    class <- the css class that is applied to its button
+    input <- is it checked, ng-model
+  */
+  SearchService.getDietaryreqs().then(function(response) {
+    var results = response.data.dietaryreq.records;
+    for (var i = 0; i < results.length; i++) {
+      $scope.dietaryreqs[i] = {
+        id : results[i][0],
+        name : results[i][1],
+        class : "notSelected",
+        input : false
+      };
+    }
+  });
+
+  $scope.type = "recipe";
+  function update() {
+    if ($scope.searching) {
+      var query = buildQuery();
+      runQuery(query);
+      //displayResults(results);
+    }
+  }
+
+  function search(type) {
+    $scope.type = type;
+    $scope.searching = true;
+    update();
+  }
+  function buildQuery() {
+    /*
+        SELECT id, name, description
+        FROM recipe,
+        WHERE id IN (SELECT recipeid
+                     FROM dietaryrecipe
+                     WHERE dietaryreqid='cheked req id')
+    */
+    var tempQuery = "SELECT id, name FROM " + $scope.type;
+    var hasReq = false;
+    // Take care of dietary reqs selected
+    for (var i = 0; i < $scope.dietaryreqs.length; i++) {
+      if ($scope.dietaryreqs[i].input) {
+        if (!hasReq) {
+          tempQuery += " WHERE";
+          hasReq = true;
+        }
+        else {
+          tempQuery += " AND";
+        }
+        tempQuery += " id IN (SELECT ";
+        tempQuery += $scope.type;
+        tempQuery += "id FROM dietary";
+        tempQuery += $scope.type;
+        tempQuery += " WHERE dietaryreqid='";
+        tempQuery += $scope.dietaryreqs[i].id;
+        tempQuery += "')";
+      }
+    }
+    // take care of a name input
+    if ($scope.nameMatch !== "") {
+      if (!hasReq) {
+        tempQuery += " WHERE";
+      } else {
+        tempQuery += " AND";
+      }
+      tempQuery += " name LIKE '%" + $scope.nameMatch + "%'";
+    }
+    return tempQuery;
+  }
+
+  function runQuery(query) {
+    $scope.results1 = query;
+    SearchService.runSearchQuery(query).then(function(response) {
+      if (response.success) {
+        $scope.results2 = response;
+        displayResults(response.data.records);
+      } else {
+        // handle error
+      }
+    });
+  }
+
+  function displayResults(results) {
+    $scope.results = results;
+  }
+
+  function dreqSelect(index) {
+    if ($scope.dietaryreqs[index].input) {
+      $scope.dietaryreqs[index].input = false;
+      $scope.dietaryreqs[index].class = "notSelected";
+    }
+    else {
+      $scope.dietaryreqs[index].input = true;
+      $scope.dietaryreqs[index].class = "selected";
+    }
+    update();
+  }
+
+  function goToRecipe(id) {
+    $rootScope.currRecipe = id;
+    $cookies.putObject('currRecipe', id);
+    $location.path('/recipe');
+  }
+
+  function goToRestaurant(id) {
+    $rootScope.currRestaurant = id;
+    $cookies.putObject('currRestaurant', id);
+    $location.path('/restaurant');
+  }
+}

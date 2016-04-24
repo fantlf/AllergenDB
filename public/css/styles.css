@@ -8687,6 +8687,16 @@ th.hide-for-touch {
   }
 }
 
+button.slimbutton:hover {
+  background-color: #5e6073;
+}
+
+button.slimbutton {
+  width: 100%;
+  padding: 5px;
+  margin: 0px;
+}
+
 .table-center {
   margin: 0 auto;
 }
@@ -8707,6 +8717,37 @@ th.hide-for-touch {
 
 .table-deliminated tr:last-child {
   border-bottom: none;
+}
+
+button .choosereqbutton {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  border-radius: 0;
+  border-style: solid;
+  border-width: 0;
+  cursor: pointer;
+  font-family: Helvetica, Roboto, Arial, sans-serif;
+  font-weight: normal;
+  line-height: normal;
+  margin: 0 0 1.25rem;
+  position: relative;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  padding: 1rem 2rem 1.0625rem 2rem;
+  font-size: 1rem;
+  background-color: #8b8da0;
+  border-color: #6c6e84;
+  color: #ffffff;
+  transition: background-color 300ms ease-out;
+}
+
+button .choosereqbutton:hover, button .choosereqbutton:focus {
+  background-color: #6c6e84;
+}
+
+button .choosereqbutton:hover, button .choosereqbutton:focus {
+  color: #ffffff;
 }
 
 input[type="email"].invalidInput {
@@ -8731,6 +8772,14 @@ input[type="text"].invalidInput {
 
 input[type="text"].validInput {
   border-color: lightgreen;
+}
+
+button.selected {
+  background-color: #5e6073;
+}
+
+button.notSelected {
+  background-color: #8b8da0;
 }
 
 .errorMessage {

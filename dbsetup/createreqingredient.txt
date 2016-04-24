@@ -1,0 +1,250 @@
+USE DBS16T7;
+
+/*The World's Easiest Cinnamon Rolls*/
+INSERT INTO reqingredient (recipeid, ingredientid, quantity)
+  VALUES ('1', '1', "1 cup");
+
+INSERT INTO reqingredient (recipeid, ingredientid, quantity)
+  VALUES ('1', '2', "1 packet");
+
+INSERT INTO reqingredient (recipeid, ingredientid, quantity)
+  VALUES ('1', '3', "1/2 cup");
+
+INSERT INTO reqingredient (recipeid, ingredientid, quantity)
+  VALUES ('1', '4', "1/4 teaspoon");
+
+INSERT INTO reqingredient (recipeid, ingredientid, quantity)
+  VALUES ('1', '5', "3 cups");
+
+INSERT INTO reqingredient (recipeid, ingredientid, quantity)
+  VALUES ('1', '6', "1 1/2 teaspoon");
+
+INSERT INTO reqingredient (recipeid, ingredientid, quantity)
+  VALUES ('1', '7', "1/4 cup + 1 tablespoon");
+
+/*5 Minute Vegan Hot Cocoa*/
+INSERT INTO reqingredient (recipeid, ingredientid, quantity)
+  VALUES ('2', '1', "1 cup");
+
+INSERT INTO reqingredient (recipeid, ingredientid, quantity)
+  VALUES ('2', '8', "1 tablespoon");
+
+INSERT INTO reqingredient (recipeid, ingredientid, quantity)
+  VALUES ('2', '9', "1 1/2 tablespoon");
+
+INSERT INTO reqingredient (recipeid, ingredientid, quantity)
+  VALUES ('2', '10', "1 tablespoon");
+
+/*Cheesy Egg Muffins*/
+INSERT INTO reqingredient (recipeid, ingredientid, quantity)
+VALUES ('3', '11', "4");
+
+INSERT INTO reqingredient (recipeid, ingredientid, quantity)
+VALUES ('3', '12', "2 tablespoons");
+
+INSERT INTO reqingredient (recipeid, ingredientid, quantity)
+VALUES ('3', '13', "3 tablespoons");
+
+INSERT INTO reqingredient (recipeid, ingredientid, quantity)
+VALUES ('3', '14', "1/4 teaspoon");
+
+INSERT INTO reqingredient (recipeid, ingredientid, quantity)
+VALUES ('3', '15', "1/2 cup");
+
+INSERT INTO reqingredient (recipeid, ingredientid, quantity)
+VALUES ('3', '4', "a pinch");
+
+INSERT INTO reqingredient (recipeid, ingredientid, quantity)
+VALUES ('3', '16', "a pinch");
+
+/*Basic Oatmeal Packet*/
+INSERT INTO reqingredient (recipeid, ingredientid, quantity)
+VALUES ('4', '17', "1/3 cup");
+
+INSERT INTO reqingredient (recipeid, ingredientid, quantity)
+VALUES ('4', '18', "1 teaspoon");
+
+INSERT INTO reqingredient (recipeid, ingredientid, quantity)
+VALUES ('4', '19', "2 teaspoons");
+
+INSERT INTO reqingredient (recipeid, ingredientid, quantity)
+VALUES ('4', '4', "a pinch");
+
+INSERT INTO reqingredient (recipeid, ingredientid, quantity)
+VALUES ('4', '6', "1/8 teaspoon");
+
+/*Apple Raisin Cakes*/
+INSERT INTO reqingredient (recipeid, ingredientid, quantity)
+VALUES ('5', '11', "2");
+
+INSERT INTO reqingredient (recipeid, ingredientid, quantity)
+VALUES ('5', '20', "1 cup");
+
+INSERT INTO reqingredient (recipeid, ingredientid, quantity)
+VALUES ('5', '6', "1 teaspoon");
+
+INSERT INTO reqingredient (recipeid, ingredientid, quantity)
+VALUES ('5', '21', "2 teaspoons");
+
+INSERT INTO reqingredient (recipeid, ingredientid, quantity)
+VALUES ('5', '22', "1 cup");
+
+INSERT INTO reqingredient (recipeid, ingredientid, quantity)
+VALUES ('5', '23', "1/2 cup");
+
+INSERT INTO reqingredient (recipeid, ingredientid, quantity)
+VALUES ('5', '14', "2 teaspoons");
+
+INSERT INTO reqingredient (recipeid, ingredientid, quantity)
+VALUES ('5', '24', "2 teaspoons");
+
+INSERT INTO reqingredient (recipeid, ingredientid, quantity)
+VALUES ('5', '25', "1/2 cup");
+
+/*Ellen's Salmon and Shrimp Spread*/
+INSERT INTO reqingredient (recipeid, ingredientid, quantity)
+VALUES ('6', '26', "4.5 ounces");
+
+INSERT INTO reqingredient (recipeid, ingredientid, quantity)
+VALUES ('6', '27', "2 ounces");
+
+INSERT INTO reqingredient (recipeid, ingredientid, quantity)
+VALUES ('6', '4', "1 teaspoon");
+
+INSERT INTO reqingredient (recipeid, ingredientid, quantity)
+VALUES ('6', '16', "1/2 teaspoon");
+
+INSERT INTO reqingredient (recipeid, ingredientid, quantity)
+VALUES ('6', '28', "1 teaspoon");
+
+INSERT INTO reqingredient (recipeid, ingredientid, quantity)
+VALUES ('6', '29', "1/2 teaspoon");
+
+INSERT INTO reqingredient (recipeid, ingredientid, quantity)
+VALUES ('6', '30', "4.25 ounces");
+
+INSERT INTO reqingredient (recipeid, ingredientid, quantity)
+VALUES ('6', '31', "3 ounces");
+
+/*Ellen's Low Carb Meatloaf*/
+INSERT INTO reqingredient (recipeid, ingredientid, quantity)
+VALUES ('7', '32', "1/2 cup");
+
+INSERT INTO reqingredient (recipeid, ingredientid, quantity)
+VALUES ('7', '33', "1/2 cup");
+
+INSERT INTO reqingredient (recipeid, ingredientid, quantity)
+VALUES ('7', '34', "2 tablespoons");
+
+INSERT INTO reqingredient (recipeid, ingredientid, quantity)
+VALUES ('7', '35', "8 ounces");
+
+INSERT INTO reqingredient (recipeid, ingredientid, quantity)
+VALUES ('7', '36', "5");
+
+INSERT INTO reqingredient (recipeid, ingredientid, quantity)
+VALUES ('7', '37', "1 cup");
+
+INSERT INTO reqingredient (recipeid, ingredientid, quantity)
+VALUES ('7', '11', "2");
+
+INSERT INTO reqingredient (recipeid, ingredientid, quantity)
+VALUES ('7', '38', "1 tablespoon");
+
+INSERT INTO reqingredient (recipeid, ingredientid, quantity)
+VALUES ('7', '39', "1 tablespoon");
+
+INSERT INTO reqingredient (recipeid, ingredientid, quantity)
+VALUES ('7', '40', "1/4 cup");
+
+INSERT INTO reqingredient (recipeid, ingredientid, quantity)
+VALUES ('7', '4', "1 teaspoon");
+
+INSERT INTO reqingredient (recipeid, ingredientid, quantity)
+VALUES ('7', '16', "1/2 teaspoon");
+
+INSERT INTO reqingredient (recipeid, ingredientid, quantity)
+VALUES ('7', '41', "2 teaspoons");
+
+INSERT INTO reqingredient (recipeid, ingredientid, quantity)
+VALUES ('7', '42', "2 tablespoons");
+
+INSERT INTO reqingredient (recipeid, ingredientid, quantity)
+VALUES ('7', '43', "1/4 cup");
+
+INSERT INTO reqingredient (recipeid, ingredientid, quantity)
+VALUES ('7', '44', "1/2 teaspoon");
+
+INSERT INTO reqingredient (recipeid, ingredientid, quantity)
+VALUES ('7', '45', "2 pounds");
+
+INSERT INTO reqingredient (recipeid, ingredientid, quantity)
+VALUES ('7', '46', "1 pound");
+
+/*Best Damn Vegan Biscuits*/
+INSERT INTO reqingredient (recipeid, ingredientid, quantity)
+VALUES ('8', '1', "1 cup");
+
+INSERT INTO reqingredient (recipeid, ingredientid, quantity)
+VALUES ('8', '28', "1 tablespoon");
+
+INSERT INTO reqingredient (recipeid, ingredientid, quantity)
+VALUES ('8', '5', "2 cups");
+
+INSERT INTO reqingredient (recipeid, ingredientid, quantity)
+VALUES ('8', '14', "1 tablespoon");
+
+INSERT INTO reqingredient (recipeid, ingredientid, quantity)
+VALUES ('8', '4', "3/4 teaspoon");
+
+INSERT INTO reqingredient (recipeid, ingredientid, quantity)
+VALUES ('8', '3', "4 tablespoons");
+
+INSERT INTO reqingredient (recipeid, ingredientid, quantity)
+VALUES ('8', '60', "1/2 teaspoon");
+
+/*Heart Ham and Potato Soup*/
+INSERT INTO reqingredient (recipeid, ingredientid, quantity)
+VALUES ('9', '47', "2 cups");
+
+INSERT INTO reqingredient (recipeid, ingredientid, quantity)
+VALUES ('9', '48', "2 tablespoons");
+
+INSERT INTO reqingredient (recipeid, ingredientid, quantity)
+VALUES ('9', '49', "4 ounces");
+
+INSERT INTO reqingredient (recipeid, ingredientid, quantity)
+VALUES ('9', '50', "2 teaspoons");
+
+INSERT INTO reqingredient (recipeid, ingredientid, quantity)
+VALUES ('9', '51', "1 cup");
+
+INSERT INTO reqingredient (recipeid, ingredientid, quantity)
+VALUES ('9', '36', "2");
+
+INSERT INTO reqingredient (recipeid, ingredientid, quantity)
+VALUES ('9', '52', "8 ounces");
+
+INSERT INTO reqingredient (recipeid, ingredientid, quantity)
+VALUES ('9', '53', "1 3/4 cup");
+
+INSERT INTO reqingredient (recipeid, ingredientid, quantity)
+VALUES ('9', '54', "1/8 - 1/4 teaspoon");
+
+INSERT INTO reqingredient (recipeid, ingredientid, quantity)
+VALUES ('9', '55', "1");
+
+INSERT INTO reqingredient (recipeid, ingredientid, quantity)
+VALUES ('9', '56', "1 tablespoon");
+
+INSERT INTO reqingredient (recipeid, ingredientid, quantity)
+VALUES ('9', '57', "1/2 cup");
+
+INSERT INTO reqingredient (recipeid, ingredientid, quantity)
+VALUES ('9', '58', "2 tablespoons");
+
+INSERT INTO reqingredient (recipeid, ingredientid, quantity)
+VALUES ('9', '59', "1 tablespoon");
+
+INSERT INTO reqingredient (recipeid, ingredientid, quantity)
+VALUES ('9', '15', "2 ounces");

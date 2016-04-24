@@ -1,54 +1,58 @@
-<script type="text/javascript">
-  if(typeof HCDietsApp === 'undefined'){
-    document.location.href="../../";
-  }
-</script>
 <div class="row large-12 large-centered columns text-center">
     <h3>Here is our search engine...</h3>
+
 </div>
 
-<form name="search" ng-submit="search()" novalidate>
-
-  <!-- Primary Search Options -->
-  <div class="large-12 large-centered columns text-center">
-    <div class="large-12 columns panel">
-      <h4>Here are the primary search options</h4>
-    </div>
+<form novalidate>
+  <div class="large-centered text-center">
+    <button type="submit" class="button" ng-click="search('recipe')">Search Recipes</button>
+    <button type="submit" class="button" ng-click="search('restaurant')">Search Restaurants</button>
   </div>
 
   <!-- Narrow Search Options -->
-  <div class="large-2 columns">
-    <div class="large-12 columns panel">
-      <p>Here are the 'narrowing search' options</p>
-    </div>
+  <div class="large-2 medium-4 large-offset-1 columns">
+    <button class="dropdown" dropdown-toggle='#dreqdropdown'>Dietary Requirements</button>
+    <ul class="f-dropdown" id="dreqdropdown">
+      <li ng-repeat="dreq in dietaryreqs">
+        <button
+          type="button"
+          class="{{dreq.class}} slimbutton"
+          ng-model="dreq.input"
+          ng-click="dreqSelect($index)"
+        >
+            {{dreq.name}}
+        </button>
+      </li>
+    </ul>
+    <label for="nameMatch">Name: </label>
+    <input type="text" name="nameMatch" id="nameMatch" ng-model="nameMatch">
   </div>
 
   <!-- Search Display -->
-  <div class="large-10 columns">
+  <div class="large-9 medium-8 columns">
     <div class="large-12 columns panel">
-      <p>Here are the search results</p>
-      <div ng-repeat="result in searchResults" class="large-12 columns {{result.classes}}">
-        <h4>Name: {{result.name}}</h4>
-        <h4>Description: {{result.description}}</h4>
+      <p>{{results1}}</p>
+      <p>{{results2}}</p>
+    </div>
+
+    <div class="large-12 columns panel" ng-repeat="result in results">
+      <div class="large-4 columns">
+        <h4>{{result.name}}</h4>
       </div>
+      <div class="large-6 columns">
+        <p>Description...</p>
+      </div>
+      <div class="large-2 columns">
+        <button type="button" class="slimbutton" ng-click="goToRecipe(result.id)">Go to page</button>
       </div>
     </div>
   </div>
 
 </form>
 
-<!-- testing, remove before release -->
-<div class="large-6 large-centered columns text-center">
-  <button ng-click="test()">Test: Query Users</button>
-  <table class="table-center">
-    <tr ng-repeat="x in names">
-      <td>{{ x.fname }}</td>
-      <td>{{ x.sname }}</td>
-      <td>{{ x.email }}</td>
-    </tr>
-</table>
-</div>
-
-<script>
+<script type="text/javascript">
+  if(typeof HCDietsApp === 'undefined'){
+    document.location.href="../../";
+  }
   $(document).foundation();
 </script>

@@ -7,8 +7,8 @@ var HCDietsApp = angular.module("HCDietsApp", [
 HCDietsApp.config(config);
 HCDietsApp.run(run);
 
-  config.$inject = ['$routeProvider', '$locationProvider'];
-  function config($routeProvider, $locationProvider) {
+  config.$inject = ['$routeProvider'];
+  function config($routeProvider) {
       $routeProvider
         .when('/',       {redirectTo:'/home'})
         .when('/home',   {
@@ -26,14 +26,24 @@ HCDietsApp.run(run);
           controller:  'SearchCtrl',
           controllerAs:'ctrl'
         })
+        .when('/login', {
+            controller: 'LoginCtrl',
+            templateUrl: 'components/login/login.view.html',
+            controllerAs: 'ctrl'
+        })
+        .when('/recipe', {
+            controller: 'RecipeCtrl',
+            templateUrl: 'components/recipe/recipe.view.html',
+            controllerAs: 'ctrl'
+        })
         .when('/profile',   {
           templateUrl: 'components/profile/profile.view.html',
           controller:  'ProfileCtrl',
           controllerAs:'ctrl'
         })
-        .when('/login', {
-            controller: 'LoginCtrl',
-            templateUrl: 'components/login/login.view.html',
+        .when('/restaurant', {
+            controller: 'RestaurantCtrl',
+            templateUrl: 'components/restaurant/restaurant.view.html',
             controllerAs: 'ctrl'
         })
         .when('/register', {
@@ -50,6 +60,8 @@ HCDietsApp.run(run);
   }
   run.$inject = ['$rootScope', '$location', '$cookies', '$http'];
   function run($rootScope, $location, $cookies, $http) {
+    $rootScope.currRecipe = $cookies.getObject('currRecipe') || {};
+    $rootScope.currRestaurant = $cookies.getObject('currRestaurant') || {};
       // keep user logged in after page refresh
       $rootScope.globals = $cookies.getObject('globals') || {};
       if ($rootScope.globals.currentUser) {

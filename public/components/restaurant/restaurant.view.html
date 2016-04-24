@@ -1,0 +1,23 @@
+
+<div class="row large-12 large-centered columns">
+  <h2 class="text-center">{{restaurant.name}}</h2>
+  <div class="large-4 panel columns">
+    <h4>Details</h4>
+    <ul>
+      <li>Address: {{restaurant.address}}</li>
+      <li>Website: {{restaurant.website}}</li>
+      <li>Phone: {{restaurant.phone}}</li>
+    </ul>
+  </div>
+  <div class="large-8 columns">
+    <h4>About</h4>
+    <p>{{restaurant.description}}</p>
+  </div>
+</div>
+
+<script type="text/javascript">
+  if(typeof HCDietsApp === 'undefined'){
+    document.location.href="../../";
+  }
+  $(document).foundation();
+</script>

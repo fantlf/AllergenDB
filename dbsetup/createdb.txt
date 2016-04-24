@@ -1,30 +1,20 @@
-/* CREATE THE DATABASE */
-
-CREATE DATABASE IF NOT EXISTS DBS16T7;
-
-/* CREATE THE PRIMARY USER */
-
-/*CREATE USER IF NOT EXISTS 'vashawkw'@'localhost' IDENTIFIED BY '900578511';*/
-/*GRANT ALL PRIVILEGES ON DBS16T7.* TO 'vashawkw'@'localhost';*/
-
 
 /* SWITCH TO THE CREATED DATABASE */
 USE DBS16T7;
-
 
 /* CREATE THE BASE TABLES */
 
 CREATE TABLE IF NOT EXISTS ingredient (
   id          INT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
   name        VARCHAR(255) NOT NULL,
-  description BLOB         NOT NULL
+  description TEXT         NOT NULL
 );
 
 CREATE TABLE IF NOT EXISTS recipe (
   id          INT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
   name        VARCHAR(255) NOT NULL,
-  description BLOB         NOT NULL,
-  directions  BLOB         NOT NULL,
+  description TEXT         NOT NULL,
+  directions  TEXT         NOT NULL,
   creator     INT UNSIGNED NOT NULL
 );
 
@@ -44,7 +34,7 @@ CREATE TABLE IF NOT EXISTS pass (
 CREATE TABLE IF NOT EXISTS dietaryreq (
   id          INT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
   name        VARCHAR(255) NOT NULL,
-  description VARCHAR(255) NOT NULL
+  description TEXT         NOT NULL
 );
 
 CREATE TABLE IF NOT EXISTS menuitem(
@@ -68,7 +58,8 @@ CREATE TABLE IF NOT EXISTS restaurant(
 
 CREATE TABLE IF NOT EXISTS reqingredient (
   recipeid     INT UNSIGNED NOT NULL,
-  ingredientid INT UNSIGNED NOT NULL
+  ingredientid INT UNSIGNED NOT NULL,
+  quantity     VARCHAR(255) NOT NULL
 );
 
 CREATE TABLE IF NOT EXISTS dietaryrecipe (
@@ -83,7 +74,8 @@ CREATE TABLE IF NOT EXISTS dietarymenuitem (
 
 CREATE TABLE IF NOT EXISTS dietaryrestaurant (
  restaurantid INT UNSIGNED NOT NULL,
- dietaryreqid INT UNSIGNED NOT NULL
+ dietaryreqid INT UNSIGNED NOT NULL,
+ rating       INT UNSIGNED NOT NULL
 );
 
 CREATE TABLE IF NOT EXISTS restaurantmenuitem (
@@ -94,13 +86,13 @@ CREATE TABLE IF NOT EXISTS restaurantmenuitem (
 CREATE TABLE IF NOT EXISTS commentrestaurant (
  userid       INT UNSIGNED NOT NULL,
  restaurantid INT UNSIGNED NOT NULL,
- commenttext  BLOB         NOT NULL
+ commenttext  TEXT         NOT NULL
 );
 
 CREATE TABLE IF NOT EXISTS commentrecipe (
  userid      INT UNSIGNED NOT NULL,
  recipeid    INT UNSIGNED NOT NULL,
- commenttext BLOB         NOT NULL
+ commenttext TEXT         NOT NULL
 );
 
 /* CREATE THE CONSTRAINTS FOR BASE TABLES */
