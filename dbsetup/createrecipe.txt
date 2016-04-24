@@ -3,8 +3,8 @@ USE DBS16T7;
 /* Should insert the Recipes and Ingredients into the Created Database */
 
 INSERT INTO recipe (name, description, directions, creator)
-  VALUES ("The World’s Easiest Cinnamon Rolls by Minimalist Baker",
-  "Description From Minimalist Baker's Website: I once drove 2 hours before work at 5:30 in the morning in the pitch black just to get a cinnamon roll at an Amish bakery. That’s how much I love cinnamon rolls, and apparently how unwilling I am to make them myself. Go figure.
+  VALUES ("The World's Easiest Cinnamon Rolls by Minimalist Baker",
+  "Description From Minimalist Baker's Website: I once drove 2 hours before work at 5:30 in the morning in the pitch black just to get a cinnamon roll at an Amish bakery. That's how much I love cinnamon rolls, and apparently how unwilling I am to make them myself. Go figure.
   Why doesn't anyone make cinnamon rolls? They're complicated, difficult and time consuming. That's why.
   But these cinnamon rolls are different:
   7 ingredients
@@ -17,7 +17,7 @@ INSERT INTO recipe (name, description, directions, creator)
 
   I was able to keep the ingredients to a minimum by narrowing down what you really need in a cinnamon roll and forgetting the rest. And then I went a step further and tested the true need for 'scalding the milk' and letting them rise a second (sometimes third) time.
 
-Turns out? Not necessary. And they turned out JUST AS DELICIOUS as bakery fresh cinnamon rolls. This, my friends, is my new go-to cinnamon roll recipe and it just so happens to require 7 ingredients and one lazy morning’s preparation. Behold, the World’s Easiest Cinnamon Rolls.",
+Turns out? Not necessary. And they turned out JUST AS DELICIOUS as bakery fresh cinnamon rolls. This, my friends, is my new go-to cinnamon roll recipe and it just so happens to require 7 ingredients and one lazy morning's preparation. Behold, the World's Easiest Cinnamon Rolls.",
 "Instructions
 1. In a large sauce pan (or in a bowl in the microwave at 30 sec increments), heat the almond milk and 3 Tbsp Earth Balance until warm and melted, never reaching boiling. Remove from heat and let cool to 110 degrees F (43 C), or the temperature of bath water. It should be warm but not too hot or it will kill the yeast.
 2. Transfer mixture to a large mixing bowl and sprinkle on yeast. Let activate for 10 minutes, then add 1 Tbsp sugar and the salt and stir.
@@ -51,11 +51,11 @@ INSERT INTO ingredient (name, description)
 INSERT INTO recipe (name, description, directions, creator)
   VALUES('5 minute Vegan Hot Cocoa',
   "Decription From Minimalist Baker's Website:
-  You guys, it’s cold. I mean, seriously cold.
+  You guys, it's cold. I mean, seriously cold.
 
-  We may have narrowly escaped the polar vortex but I’m still feeling its aftermath. Most days John and I hunker down inside next to space heaters. But when I just can’t kick a chill – or am having a serious chocolate craving – I make my favorite 5 minute (or less) vegan hot cocoa.
+  We may have narrowly escaped the polar vortex but I'm still feeling its aftermath. Most days John and I hunker down inside next to space heaters. But when I just can't kick a chill - or am having a serious chocolate craving - I make my favorite 5 minute (or less) vegan hot cocoa.
 
-  It’s such a simple recipe it’s almost a non-recipe. But I asked Facebook fans if they’d be interested and the answer was a resounding ‘yes.’ So, here it is – my go-to homemade hot chocolate that’s way better (and healthier) than any packaged or boxed mix you’ll find.
+  It's such a simple recipe it's almost a non-recipe. But I asked Facebook fans if they'd be interested and the answer was a resounding 'yes.' So, here it is - my go-to homemade hot chocolate that's way better (and healthier) than any packaged or boxed mix you'll find.
 
   It starts with simple ingredients:
 
@@ -64,9 +64,9 @@ INSERT INTO recipe (name, description, directions, creator)
   Dairy-free semisweet or dark chocolate
   Raw sugar or stevia
 
-  You can make this in the microwave in a big mug – I use my big yellow cereal mug that I’ve had since high school and have carried with me like an adult blankie. Or, if you’re not into the microwave or would rather go old school, simply add ingredients to a small saucepan, bring to a simmer and whisk away. Creamy perfection is just 5 minutes away.
+  You can make this in the microwave in a big mug - I use my big yellow cereal mug that I've had since high school and have carried with me like an adult blankie. Or, if you're not into the microwave or would rather go old school, simply add ingredients to a small saucepan, bring to a simmer and whisk away. Creamy perfection is just 5 minutes away.
 
-  Next I like to add a little extract. I know everyone usually recommends adding vanilla to 'bring out the flavor of the chocolate' or something like that. But I’ve been on a chocolate peppermint kick for the last few months, so I put in a drop or two of peppermint extract and it sends my tastebuds straight to heaven.
+  Next I like to add a little extract. I know everyone usually recommends adding vanilla to 'bring out the flavor of the chocolate' or something like that. But I've been on a chocolate peppermint kick for the last few months, so I put in a drop or two of peppermint extract and it sends my tastebuds straight to heaven.
 
 The last element? Coconut whipped cream. I mean, hubba hubba. Also, WHY NOT? It really does put the finishing touch on the cocoa and gives it that luscious, creamy effect I just adore.",
   "Instructions
@@ -88,9 +88,9 @@ INSERT INTO ingredient (name, description)
 INSERT INTO recipe (name, description, directions, creator)
   VALUES ('Cheesy Egg Muffins',
   "Description taken from Nom Nom Paleo:
-  In my attempts to raise little cave kids, I’ve been making a ton of savory grain-free muffins lately. This morning, Little-O requested cheesy egg muffins but “no meat or vegetables because I don’t like them.” Le sigh.
+  In my attempts to raise little cave kids, I've been making a ton of savory grain-free muffins lately. This morning, Little-O requested cheesy egg muffins but “no meat or vegetables because I don't like them.” Le sigh.
 
-  Since I knew egg muffins with no fillings would probably collapse upon themselves, I searched the interwebs for cheesy egg muffin recipes with some heft. I found a really tasty looking recipe on Cheeseslave for bacon, egg, & cheese muffins with coconut flour. Since my little bugger requested no meat, I modified the recipe a little by omitting the bacon(!), subbing in Greek yogurt for the bacon grease (I know it’s not EVEN the same), adding an extra egg, and decreasing the oven temperature a little. My version turned out pretty good and they LOOKED like muffins, too. So much so that Little-O actually ate one!",
+  Since I knew egg muffins with no fillings would probably collapse upon themselves, I searched the interwebs for cheesy egg muffin recipes with some heft. I found a really tasty looking recipe on Cheeseslave for bacon, egg, & cheese muffins with coconut flour. Since my little bugger requested no meat, I modified the recipe a little by omitting the bacon(!), subbing in Greek yogurt for the bacon grease (I know it's not EVEN the same), adding an extra egg, and decreasing the oven temperature a little. My version turned out pretty good and they LOOKED like muffins, too. So much so that Little-O actually ate one!",
   "Instructions
   1. Preheat oven to 375 F
   2. Combine eggs, yogurt, and a dash of salt in a medium bowl and whisk until blended.
@@ -206,7 +206,7 @@ INSERT INTO recipe (name, description, directions, creator)
       2. In a small deep bowl, whisk almond flour and Parmesan cheese together. Set aside.
       3. Heat butter in a medium skillet over medium heat. Add onion, garlic and pepper; sauté until softened, about 8 minutes. Set aside to cool while preparing remaining ingredients. Once the mixture is cooled enough, run through a food processor for several seconds to mince the vegetables to fine consistency.
       4. In another small deep bowl, whisk eggs with spices, salt, pepper, mustard, BBQ sauce and cream.  Sprinkle gelatin over mixture and let stand 5 minutes. Add minced onion mixture and mix well. Set aside.
-      5. Place ground beef and Italian sausage on a large cutting board or work surface. With clean hands, or a pastry mixer, mix the beef and sausage together, making sure no large chunks of sausage are left unmixed.  It helps to chop both meats into small chunks before mixing. Don’t knead the meat for longer than 5 minutes, as it toughens the meat.
+      5. Place ground beef and Italian sausage on a large cutting board or work surface. With clean hands, or a pastry mixer, mix the beef and sausage together, making sure no large chunks of sausage are left unmixed.  It helps to chop both meats into small chunks before mixing. Don't knead the meat for longer than 5 minutes, as it toughens the meat.
       6. Return low carb meatloaf mixture to a large mixing bowl. Add the egg mixture and mix well. (Once the liquid is incorporated, you can turn the mixture out onto the work surface again, to make it easier to mix in dry ingredients.)
       7. Add the almond flour mixture. Mix until evenly blended and meat mixture is no longer sticky. (If mixture is still sticking, add additional shredded Parmesan, a tablespoon at a time until the meat no longer sticks.)
       8. Place in the glass baking dish, forming it into a loaf and leaving about an inch of room on all sides. Flatten the top of the loaf shape a little so that it cooks evenly.
@@ -261,30 +261,30 @@ INSERT INTO ingredient (name, description)
 INSERT INTO recipe (name, description, directions, creator)
   VALUES ('The Best Damn Vegan Biscuits',
   "Description taken from Minimalist Baker's Website:
-  Before you suggest there’s no way vegan biscuits can taste just as good if not BETTER than regular biscuits, everyone I’ve fed these to agree that these are in fact LEGIT, amazing, fluffy, buttery biscuits.
+  Before you suggest there's no way vegan biscuits can taste just as good if not BETTER than regular biscuits, everyone I've fed these to agree that these are in fact LEGIT, amazing, fluffy, buttery biscuits.
 
-  As in, serve them to your 80-year old grandmother who’s been making biscuits for centuries and she wouldn’t know the difference. As in, slap some gravy on it and you’d think you died and gone to heaven. As in, fluffy, buttery, savory, biscuit perfection. It’s true.
-  The commandments of biscuit making, as I’ve discovered, are:
+  As in, serve them to your 80-year old grandmother who's been making biscuits for centuries and she wouldn't know the difference. As in, slap some gravy on it and you'd think you died and gone to heaven. As in, fluffy, buttery, savory, biscuit perfection. It's true.
+  The commandments of biscuit making, as I've discovered, are:
 
 1. Do not over-handle the dough.
 2. Never use a rolling pin, fool.
-3. Make sure yo’ butter is cold.
+3. Make sure yo' butter is cold.
 4. Baking powder and soda are a must for fluff.
 5. Brush the tops with butter to achieve that crusty, buttery top.
 6. Make a divot in the middle with your fingers to prevent them from rising in a 'dome.'
-7. A hot oven (450 degrees) is essential. Don’t ask questions.
+7. A hot oven (450 degrees) is essential. Don't ask questions.
 8. Biscuits must touch while baking to help them rise properly.
 
-I would include a # 9. but it’s simply to eat biscuits immediately.  I shouldn’t have to tell you that. A BISCUIT FRESH OUT OF THE OVEN > A BISCUIT REHEATED 3 DAYS LATER. Duh.",
+I would include a # 9. but it's simply to eat biscuits immediately.  I shouldn't have to tell you that. A BISCUIT FRESH OUT OF THE OVEN > A BISCUIT REHEATED 3 DAYS LATER. Duh.",
 "Instructions
 1. Preheat oven to 450 degrees F (232 C), and add lemon juice to almond milk to make 'vegan buttermilk.' Set aside.
 2. In a large mixing bowl, whisk together dry ingredients.
-3. Add cold butter and use fingers or a pastry cutter to combine the two until only small pieces remain and it looks like sand. Work quickly so the butter doesn’t get too warm.
-4. Make a well in the dry ingredients and, using a wooden spoon, stir gently while pouring in the almond milk mixture 1/4 cup at a time. You may not need all of it. Stir until just slightly combined – it will be sticky.
-5. Turn onto a lightly floured surface, dust the top with a bit of flour and then very gently turn the dough over on itself 5-6 times – hardly kneading.
+3. Add cold butter and use fingers or a pastry cutter to combine the two until only small pieces remain and it looks like sand. Work quickly so the butter doesn't get too warm.
+4. Make a well in the dry ingredients and, using a wooden spoon, stir gently while pouring in the almond milk mixture 1/4 cup at a time. You may not need all of it. Stir until just slightly combined - it will be sticky.
+5. Turn onto a lightly floured surface, dust the top with a bit of flour and then very gently turn the dough over on itself 5-6 times - hardly kneading.
 6. Form into a 1-inch thick disc, handling as little as possible.
-7. Use a 1-inch thick dough cutter or a similar-shape object with sharp edges (such as a cocktail shaker) and push straight down through the dough, then slightly twist. Repeat and place biscuits on a baking sheet in two rows, making sure they just touch – this will help them rise uniformly. Gently reform the dough and cut out one or two more biscuits – you should have 7-8.
-8. Next brush the tops with a bit more of melted non-dairy butter and gently press a small divot in the center using two fingers. This will also help them rise evenly, so the middle won’t form a dome.
+7. Use a 1-inch thick dough cutter or a similar-shape object with sharp edges (such as a cocktail shaker) and push straight down through the dough, then slightly twist. Repeat and place biscuits on a baking sheet in two rows, making sure they just touch - this will help them rise uniformly. Gently reform the dough and cut out one or two more biscuits - you should have 7-8.
+8. Next brush the tops with a bit more of melted non-dairy butter and gently press a small divot in the center using two fingers. This will also help them rise evenly, so the middle won't form a dome.
 9. Bake in a 450 degree oven for 10-15 minutes or until fluffy and slightly golden brown. Serve immediately. Let remaining biscuits cool completely before storing them in an airtight container or bag.
 http://minimalistbaker.com/the-best-damn-vegan-biscuits/", '1');
 
@@ -336,3 +336,6 @@ INSERT INTO ingredient (name, description)
 
 INSERT INTO ingredient (name, description)
   VALUES ('fresh sage', '');
+
+INSERT INTO ingredient (name, description)
+  VALUES ('baking soda', '');

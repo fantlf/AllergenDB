@@ -1,7 +1,7 @@
 HCDietsApp.controller('SearchCtrl', SearchCtrl);
 
-SearchCtrl.$inject = ['$scope', 'SearchService'];
-function SearchCtrl($scope, SearchService) {
+SearchCtrl.$inject = ['$cookies', '$location', '$rootScope', '$scope', 'SearchService'];
+function SearchCtrl($cookies, $location, $rootScope, $scope, SearchService) {
   /* ============== How Searching Works ==============
 
     buildQuery looks at all the data in the form
@@ -32,8 +32,11 @@ function SearchCtrl($scope, SearchService) {
   $scope.search = search;
   $scope.update = update;
   $scope.dreqSelect = dreqSelect;
-  $scope.searching = false;
+  $scope.goToRecipe = goToRecipe;
+  $scope.goToRestaurant = goToRestaurant;
   $scope.query = "";
+  $scope.nameMatch = "";
+  $scope.dietaryreqs = [];
   // get the dietaryreqs
   /* Dietary Requirement Attributes
     id    <- id in the database
@@ -42,36 +45,42 @@ function SearchCtrl($scope, SearchService) {
     input <- is it checked, ng-model
   */
   SearchService.getDietaryreqs().then(function(response) {
-    $scope.results = response.data;
+    var results = response.data.dietaryreq.records;
+    for (var i = 0; i < results.length; i++) {
+      $scope.dietaryreqs[i] = {
+        id : results[i][0],
+        name : results[i][1],
+        class : "notSelected",
+        input : false
+      };
+    }
   });
-  $scope.dietaryreqs = [
-    {id : 1, name : "Vegetarian", class : "notSelected", input : ""},
-    {id : 2, name : "Gluten Free", class : "notSelected", input : ""}
-  ];
+
   $scope.type = "recipe";
   function update() {
     if ($scope.searching) {
-      buildQuery();
-      runQuery();
-      displayResults();
+      var query = buildQuery();
+      runQuery(query);
+      //displayResults(results);
     }
   }
 
-  function search() {
+  function search(type) {
+    $scope.type = type;
     $scope.searching = true;
     update();
   }
-
   function buildQuery() {
     /*
-      SELECT id, name, description
-      FROM recipe,
-      WHERE id IN (SELECT recipeid
-                   FROM dietaryrecipe
-                   WHERE dietaryreqid='cheked req id')
+        SELECT id, name, description
+        FROM recipe,
+        WHERE id IN (SELECT recipeid
+                     FROM dietaryrecipe
+                     WHERE dietaryreqid='cheked req id')
     */
-    var tempQuery = "SELECT name, description FROM " + $scope.type;
+    var tempQuery = "SELECT id, name FROM " + $scope.type;
     var hasReq = false;
+    // Take care of dietary reqs selected
     for (var i = 0; i < $scope.dietaryreqs.length; i++) {
       if ($scope.dietaryreqs[i].input) {
         if (!hasReq) {
@@ -90,23 +99,55 @@ function SearchCtrl($scope, SearchService) {
         tempQuery += "')";
       }
     }
-    tempQuery += ";";
-    $scope.query = tempQuery;
+    // take care of a name input
+    if ($scope.nameMatch !== "") {
+      if (!hasReq) {
+        tempQuery += " WHERE";
+      } else {
+        tempQuery += " AND";
+      }
+      tempQuery += " name LIKE '%" + $scope.nameMatch + "%'";
+    }
+    return tempQuery;
   }
 
-  function runQuery() {
-
+  function runQuery(query) {
+    $scope.results1 = query;
+    SearchService.runSearchQuery(query).then(function(response) {
+      if (response.success) {
+        $scope.results2 = response;
+        displayResults(response.data.records);
+      } else {
+        // handle error
+      }
+    });
   }
 
-  function displayResults() {
-    $scope.results = $scope.query;
+  function displayResults(results) {
+    $scope.results = results;
   }
 
   function dreqSelect(index) {
-    if ($scope.dietaryreqs[index].input)
+    if ($scope.dietaryreqs[index].input) {
+      $scope.dietaryreqs[index].input = false;
       $scope.dietaryreqs[index].class = "notSelected";
-    else
+    }
+    else {
+      $scope.dietaryreqs[index].input = true;
       $scope.dietaryreqs[index].class = "selected";
+    }
     update();
+  }
+
+  function goToRecipe(id) {
+    $rootScope.currRecipe = id;
+    $cookies.putObject('currRecipe', id);
+    $location.path('/recipe');
+  }
+
+  function goToRestaurant(id) {
+    $rootScope.currRestaurant = id;
+    $cookies.putObject('currRestaurant', id);
+    $location.path('/restaurant');
   }
 }

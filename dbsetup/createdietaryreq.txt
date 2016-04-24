@@ -10,7 +10,7 @@ Tree nut allergy is distinct from peanut allergy or almond allergy, as peanuts a
 More info at: http://www.foodallergy.org/allergens/tree-nut-allergy');
 
 insert into dietaryreq (name, description) values
-  ('Diary', 'A dairy allergy is a food allergy, an adverse immune reaction to one or more of the constituents of milk from any animal (most commonly alpha S1-casein, a protein in cow\'s milk). This milk-induced allergic reaction can involve anaphylaxis, a potentially life-threatening condition.
+  ('Dairy', 'A dairy allergy is a food allergy, an adverse immune reaction to one or more of the constituents of milk from any animal (most commonly alpha S1-casein, a protein in cow\'s milk). This milk-induced allergic reaction can involve anaphylaxis, a potentially life-threatening condition.
 More info at: http://www.foodallergy.org/allergens/milk-allergy');
 
 insert into dietaryreq (name, description) values

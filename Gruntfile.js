@@ -65,7 +65,7 @@ module.exports = function(grunt) {
           {
             expand: true,
             cwd: 'src/',
-            src: ['index.html','**/*.php','php/access.txt'],
+            src: ['index.html','**/*.php','search/utilities/access.txt'],
             dest: 'public/'
           },
         ],

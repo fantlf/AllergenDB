@@ -1,6 +1,15 @@
 @import "settings";
 @import "foundation";
 
+button.slimbutton:hover {
+  background-color : scale-color($button-bg-color, $lightness: -30%);
+}
+
+button.slimbutton {
+  width: 100%;
+  padding:5px;
+  margin:0px;
+}
 .table-center {
   margin: 0 auto;
 }
@@ -19,7 +28,9 @@
 .table-deliminated tr:last-child {
   border-bottom: none;
 }
-
+button .choosereqbutton {
+  @include button();
+}
 input[type="email"].noInput {
 
 }

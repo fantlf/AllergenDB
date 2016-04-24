@@ -1,0 +1,23 @@
+
+<div class="row large-12 large-centered columns">
+  <h2 class="text-center">{{recipe.name}}</h2>
+  <div class="large-4 panel columns">
+    <h4>Ingredients</h4>
+    <ul>
+      <li ng-repeat="ingredient in ingredients">
+        {{ingredient.quantity}} {{ingredient.name}}
+      </li>
+    </ul>
+  </div>
+  <div class="large-8 columns">
+    <h4>Directions</h4>
+    <p>{{recipe.directions}}</p>
+  </div>
+</div>
+
+<script type="text/javascript">
+  if(typeof HCDietsApp === 'undefined'){
+    document.location.href="../../";
+  }
+  $(document).foundation();
+</script>
