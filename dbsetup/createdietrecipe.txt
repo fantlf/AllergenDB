@@ -1,0 +1,65 @@
+/*Easiest Cinnamon Rolls */
+INSERT INTO dietaryrecipe(recipeid, dietaryreqid)
+VALUES('1', '1');
+
+INSERT INTO dietaryrecipe(recipeid, dietaryreqid)
+VALUES('1', '2');
+
+INSERT INTO dietaryrecipe(recipeid, dietaryreqid)
+VALUES('1', '3');
+
+INSERT INTO dietaryrecipe(recipeid, dietaryreqid)
+VALUES('1', '4');
+
+INSERT INTO dietaryrecipe(recipeid, dietaryreqid)
+VALUES('1', '7');
+
+INSERT INTO dietaryrecipe(recipeid, dietaryreqid)
+VALUES('1', '8');
+
+INSERT INTO dietaryrecipe(recipeid, dietaryreqid)
+VALUES('1', '9');
+
+INSERT INTO dietaryrecipe(recipeid, dietaryreqid)
+VALUES('1', '10');
+
+INSERT INTO dietaryrecipe(recipeid, dietaryreqid)
+VALUES('1', '11');
+
+INSERT INTO dietaryrecipe(recipeid, dietaryreqid)
+VALUES('1', '14');
+
+INSERT INTO dietaryrecipe(recipeid, dietaryreqid)
+VALUES('1', '15');
+
+/*Vegan Hot Cocoa*/
+INSERT INTO dietaryrecipe(recipeid, dietaryreqid)
+VALUES('2', );
+
+/*Cheesy Egg Muffins*/
+INSERT INTO dietaryrecipe(recipeid, dietaryreqid)
+VALUES('3', );
+
+/*Basic Oatmeal*/
+INSERT INTO dietaryrecipe(recipeid, dietaryreqid)
+VALUES('4', );
+
+/*Apple Raisin Cakes*/
+INSERT INTO dietaryrecipe(recipeid, dietaryreqid)
+VALUES('5', );
+
+/*Ellen Salmon and Shrimp Spread*/
+INSERT INTO dietaryrecipe(recipeid, dietaryreqid)
+VALUES('6', );
+
+/*Ellen Low Carb Meatloaf*/
+INSERT INTO dietaryrecipe(recipeid, dietaryreqid)
+VALUES('7', );
+
+/*Best Damn Biscuits*/
+INSERT INTO dietaryrecipe(recipeid, dietaryreqid)
+VALUES('8', );
+
+/*Hearty Ham and Potato Soup*/
+INSERT INTO dietaryrecipe(recipeid, dietaryreqid)
+VALUES('9', );
