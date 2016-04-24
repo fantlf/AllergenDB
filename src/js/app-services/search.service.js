@@ -10,15 +10,15 @@ function SearchService($http) {
   service.getDietaryreqs = getDietaryreqs;
 
   function recipeById(id) {
-    return $http.get('/3430/161/team7/api.php/recipe?filter[]=id,eq,' + id).then(handleSuccess, handleError('Error getting user by id'));
+    return $http.get('/3430/161/team7/HighCountryDiets/api.php/recipe?filter[]=id,eq,' + id).then(handleSuccess, handleError('Error getting user by id'));
   }
 
   function getDietaryreqs() {
-    return $http.get('/3430/161/team7/api.php/dietaryreq').then(handleSuccess, handleError('Error retrieving dietary reqs'));
+    return $http.get('/3430/161/team7/HighCountryDiets/api.php/dietaryreq').then(handleSuccess, handleError('Error retrieving dietary reqs'));
   }
 
   function restaurantById(id) {
-    return $http.get('/3430/161/team7/api.php/restaurant?filter[]=id,eq,' + id).then(handleSuccess, handleError('Error getting user by id'));
+    return $http.get('/3430/161/team7/HighCountryDiets/api.php/restaurant?filter[]=id,eq,' + id).then(handleSuccess, handleError('Error getting user by id'));
   }
 
   return service;
