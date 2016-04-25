@@ -1,35 +1,25 @@
-<div class="row large-12 large-centered columns text-center">
-    <h3>Here is our search engine...</h3>
 
-</div>
-
-<form novalidate>
-  <div class="large-4 columns text-right">
-    <button class="dropdown" dropdown-toggle='#dreqdropdown'>Dietary Requirements</button>
-    <ul class="f-dropdown" id="dreqdropdown">
-      <li ng-repeat="dreq in dietaryreqs">
-        <button
-          type="button"
-          class="{{dreq.class}} slimbutton"
-          ng-model="dreq.input"
-          ng-click="dreqSelect($index)"
-        >
-            {{dreq.name}}
-        </button>
-      </li>
-    </ul>
-  </div>
-
-  <div class="large-4 columns">
-    <label for="nameMatch">Name: </label>
-    <input type="text" name="nameMatch" id="nameMatch" ng-model="nameMatch">
-  </div>
-
-  <div class="large-4 columns">
-    <button type="submit" class="button" ng-click="search('recipe')">Search Recipes</button>
-    <button type="submit" class="button" ng-click="search('restaurant')">Search Restaurants</button>
-  </div>
-
+<div class="small-12 medium-12 large-8 large-centered columns">
+  <form novalidate>
+    <fieldset class="text-center">
+      <legend>Search Engine</legend>
+      <div style="display:inline-block; width:30%">
+        <button class="dropdown" id="dreqdd" dropdown-toggle='#dreqdropdown'>Filter by Dietary Requirement</button>
+        <ul class="f-dropdown" id="dreqdropdown">
+          <li ng-repeat="dreq in dietaryreqs">
+            <button type="button" class="{{dreq.class}} slimbutton" ng-model="dreq.input" ng-click="dreqSelect($index)">{{dreq.name}}</button>
+          </li>
+        </ul>
+      </div>
+      <div style="display:inline-block; width:30%">
+        <input type="text" id="nameMatch" name="nameMatch" ng-model="nameMatch" ng-change="update()" placeholder="Filter by name...">
+      </div>
+      <div class="large-12 large-centered text-center columns">
+        <button type="submit" class="button" ng-click="search('recipe')">Search Recipes</button>
+        <button type="submit" class="button" ng-click="search('restaurant')">Search Restaurants</button>
+      </div>
+    </fieldset>
+  </form>
 
   <!-- Search Display -->
   <div class="large-12 large-centered columns">
@@ -45,8 +35,6 @@
       </div>
     </div>
   </div>
-
-</form>
 
 <script type="text/javascript">
   if(typeof HCDietsApp === 'undefined'){

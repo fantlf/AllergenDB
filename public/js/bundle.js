@@ -59218,6 +59218,12 @@ function RecipeCtrl(SearchService, $rootScope, $scope) {
 
 RecipeformCtrl.$inject = ['SearchService', '$rootScope', '$scope'];
 function RecipeformCtrl(SearchService, $rootScope, $scope) {
+  $scope.recipe = {
+    name : { input : "", error : false, errorMessage : "", inputClass : "noClass"},
+    description : { input : "", error : false, errorMessage : "", inputClass : "noClass"},
+    directions : { input : "", error : false, errorMessage : "", inputClass : "noClass"},
+    ingredients : []
+  };
   $scope.dreqSelect = dreqSelect;
   $scope.addRecipe = addRecipe;
   $scope.addIngredient = addIngredient;

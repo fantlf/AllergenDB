@@ -1,43 +1,61 @@
-<form novalidate ng-submit="addRecipe()" data-equalizer>
-
-  <div class="large-3 columns text-center" data-equalizer-watch>
-    <h3>Add Ingredients</h3>
-    <label>Name<input type="text" ng-model="newIngredientName" required></label>
-    <label>Description (optional)<input type="text" ng-model="newIngredientDesc"></label>
-    <button type="button" class="button" ng-click="addIngredient()">Add Ingredient</button>
-    <div class="large-12 columns panel">
-      <div ng-repeat="ing in ingredients" class="slimIngredient"><span ng-click="removeIngredient($index)" style="left:0px">&Cross;</span>{{ing.name}}</div>
-    </div>
+<div class="large-12 columns">
+  <div class="small-12 medium-12 large-10 large-centered medium-centered columns" >
+    <form name="recipeForm" ng-submit="addRecipe()" data-equalizer>
+        <fieldset>
+          <legend>Recipe Creation</legend>
+          <div class="large-3 columns text-center panel" data-equalizer-watch>
+            <h6>Add Ingredients</h6>
+            <label>Name<input type="text" ng-model="newIngredientName" required></label>
+            <label>Description (optional)<input type="text" ng-model="newIngredientDesc"></label>
+            <button type="button" class="button" ng-click="addIngredient()">Add Ingredient</button>
+            <div class="large-12 columns panel">
+              <div ng-repeat="ing in ingredients" class="slimIngredient"><span ng-click="removeIngredient($index)" style="left:0px">&Cross;</span>{{ing.name}}</div>
+            </div>
+          </div>
+          <div class="large-6 medium-6 small-6 columns" data-equalizer-watch>
+            <div>
+              <label for="rname">Name</label>
+              <span ng-show="recipe.name.error" class="errorMessage">{{recipe.name.errorMessage}}</span>
+              <input type="text" name='rname' id='rname' ng-model="recipe.name.input" ng-class="recipe.name.inputClass" maxlength="255" required>
+            </div>
+            <div>
+              <label for="rdesc">Recipe Description</label>
+              <span ng-show="recipe.description.error" class="errorMessage">{{recipe.description.errorMessage}}</span>
+              <input type="text" class="" id='rdesc' ng-model="recipe.description.input" ng-class="recipe.description.inputClass" maxlength="5000" required>
+            </div>
+            <div>
+              <label for="rdirec">Directions</label>
+              <span ng-show="recipe.description.error" class="errorMessage">{{recipe.description.errorMessage}}</span>
+              <inputtype="text" name='rdirec' class="" id='rdirec' ng-model="recipe.directions.input" ng-class="recipe.directions.inputClass" maxlength="5000" required>
+            </div>
+            <span ng-show="mainError" class="errorMessage">{{mainError}}</span>
+            <div>
+                <button class="submitButton" type="submit" ng-disabled="recipeForm.$invalid">Create Recipe</button>
+                <a href="#/profile">Cancel</a>
+            </div>
+          </div>
+          <div class="large-3 columns panel" data-equalizer-watch>
+            <h6>What dietary requirements does this recipe pass?</h6>
+            <button class="dropdown" dropdown-toggle='#dreqdropdown'>Dietary Requirements</button>
+            <ul class="f-dropdown" id="dreqdropdown">
+              <li ng-repeat="dreq in dietaryreqs">
+                <button
+                  type="button"
+                  class="{{dreq.class}} slimbutton"
+                  ng-model="dreq.input"
+                  ng-click="dreqSelect($index)"
+                >{{dreq.name}}
+                </button>
+              </li>
+            </ul>
+          </div>
+        </fieldset>
+      </form>
   </div>
-
-  <div class="large-6 columns text-center" data-equalizer-watch>
-    <h3>Recipe Creation</h3>
-    <label>Description<textarea ng-model="description" class="recipeTextArea"></textarea></label>
-    <label>Directions<textarea ng-model="directions" class="recipeTextArea"></textarea></label>
-    <button type="submit" class="button">Add Recipe</button>
-  </div>
-
-  <div class="large-3 columns text-center" data-equalizer-watch>
-    <h3>What dietary requirements does this recipe pass?</h3>
-    <button class="dropdown" dropdown-toggle='#dreqdropdown'>Dietary Requirements</button>
-    <ul class="f-dropdown" id="dreqdropdown">
-      <li ng-repeat="dreq in dietaryreqs">
-        <button
-          type="button"
-          class="{{dreq.class}} slimbutton"
-          ng-model="dreq.input"
-          ng-click="dreqSelect($index)"
-        >{{dreq.name}}
-        </button>
-      </li>
-    </ul>
-  </div>
-
-</form>
-
+</div>
 <script type="text/javascript">
+  $(document).foundation();
   if(typeof HCDietsApp === 'undefined'){
     document.location.href="../../";
   }
-  $(document).foundation();
 </script>
