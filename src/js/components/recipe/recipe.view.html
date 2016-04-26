@@ -26,7 +26,16 @@
     <textarea ng-model="newComment"></textarea>
     <button type="button" ng-click="addComment()">Comment</button>
   </div>
+  <div class="large-12 columns">
+        <li ng-repeat="comment in comments">
+          <hr>
+          {{comment.uname}}
+          {{comment.commenttext}}
+        </li>
+      </ul>
+  </div>
 </div>
+
 
 <script type="text/javascript">
   if(typeof HCDietsApp === 'undefined'){
