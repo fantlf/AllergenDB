@@ -10,10 +10,10 @@
             <label>Description (optional)<input type="text" ng-model="newIngredient.desc"></label>
             <span ng-show="newIngredient.error" class="errorMessage">{{newIngredient.errorMessage}}</span>
             <button type="button" class="button" ng-click="addIngredient()">Add Ingredient</button>
-            <!--<div class="panel">
-              <h6>Added Ingredients (click to remove)</h6>
-              <button ng-repeat="ing in ingredients" class="slimbutton" ng-click="removeIngredient($index)" >{{ing.name}}</div>
-            </div>-->
+            <div class="panel">
+              <h6 ng-if="recipe.ingredients.length">Added Ingredients (click to remove)</h6>
+              <button ng-repeat="ing in recipe.ingredients" class="slimbutton" ng-click="removeIngredient($index)" >{{ing.quantity}}{{ing.name}}</button>
+            </div>
           </div>
           <div class="large-6 medium-6 small-6 columns text-center recipeFormMid" data-equalizer-watch="main-columns">
             <div>
