@@ -58858,7 +58858,7 @@ function RecipeService($http) {
   return service;
 
   function runInsertQuery(query) {
-    return $http.get('/3430/161/team7/HighCountryDiets/public/createrecipe?query=' + query).then(handleSuccess, handleError('Error Searching'));
+    return $http.get('/3430/161/team7/HighCountryDiets/public/query?query=' + query).then(handleSuccess, handleError('Error Searching'));
   }
 
   // private functions
@@ -58904,7 +58904,7 @@ function SearchService($http) {
   }
 
   function runSearchQuery(query) {
-    return $http.get('/3430/161/team7/HighCountryDiets/public/search?query=' + query).then(handleSuccess, handleError('Error Searching'));
+    return $http.get('/3430/161/team7/HighCountryDiets/public/query?query=' + query).then(handleSuccess, handleError('Error Searching'));
   }
 
   function getReqIngredients(recipeid) {
@@ -58912,7 +58912,7 @@ function SearchService($http) {
   }
 
   function getCommentsByRecipeId(id) {
-    return $http.get('/3430/161/team7/HighCountryDiets/public/search?query=' + query).then(handleSuccess, handleError('Error Searching'));
+    return $http.get('/3430/161/team7/HighCountryDiets/public/query?query=' + query).then(handleSuccess, handleError('Error Searching'));
   }
 
   function getCommentsByRestaurantId(id) {
@@ -59168,7 +59168,7 @@ function RecipeformCtrl(RecipeService, SearchService, $location, $rootScope, $sc
     var query = buildQuery();
     $scope.results = query;
     RecipeService.runInsertQuery(query).then(function(response) {
-      if (response.data.records[0].success) {
+      if (response.data.records[0].result != "Error") {
         $location.path('/profile');
       } else {
         alert("Oops! Something went wrong. We're working to fix it, try again later.");

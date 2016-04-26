@@ -29,7 +29,7 @@ function SearchService($http) {
   }
 
   function runSearchQuery(query) {
-    return $http.get('/3430/161/team7/HighCountryDiets/public/search?query=' + query).then(handleSuccess, handleError('Error Searching'));
+    return $http.get('/3430/161/team7/HighCountryDiets/public/query?query=' + query).then(handleSuccess, handleError('Error Searching'));
   }
 
   function getReqIngredients(recipeid) {
@@ -37,7 +37,7 @@ function SearchService($http) {
   }
 
   function getCommentsByRecipeId(id) {
-    return $http.get('/3430/161/team7/HighCountryDiets/public/search?query=' + query).then(handleSuccess, handleError('Error Searching'));
+    return $http.get('/3430/161/team7/HighCountryDiets/public/query?query=' + query).then(handleSuccess, handleError('Error Searching'));
   }
 
   function getCommentsByRestaurantId(id) {
