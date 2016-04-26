@@ -105,6 +105,7 @@ ALTER TABLE pass
 
 ALTER TABLE recipe 
   ADD CONSTRAINT fk_recipe_creator FOREIGN KEY(creator) REFERENCES user(id);
+  
 /* CREATE THE CONSTRAINTS FOR RELATIONAL TABLES */
 
 ALTER TABLE reqingredient
