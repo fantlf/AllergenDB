@@ -3,12 +3,9 @@ HCDietsApp.controller('RecipeCtrl', RecipeCtrl);
 RecipeCtrl.$inject = ['SearchService', '$rootScope', '$scope'];
 
 function RecipeCtrl(SearchService, $rootScope, $scope) {
-<<<<<<< Updated upstream
+
   $scope.recipe = {id : "", name : "", description : "", steps : []};
-=======
-  $scope.recipe  = {id : "", name : "", description : "", directions : ""};
   $scope.commentrecipe = {userid : "", recipeid : "", commenttext : ""};
->>>>>>> Stashed changes
   $scope.ingredients = [];
   $scope.addComment = addComment;
   SearchService.getRecipeById($rootScope.currRecipe).then(function(response) {
@@ -41,15 +38,10 @@ function RecipeCtrl(SearchService, $rootScope, $scope) {
         });
       });
   }
-<<<<<<< Updated upstream
 
   //Private Functions
-
   function breakSteps(steps) {
     newSteps = steps.split("~~~");
     return newSteps;
   }
-
-=======
->>>>>>> Stashed changes
 }

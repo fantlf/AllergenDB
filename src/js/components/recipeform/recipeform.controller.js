@@ -2,6 +2,10 @@ HCDietsApp.controller('RecipeformCtrl', RecipeformCtrl);
 
 RecipeformCtrl.$inject = ['RecipeService', 'SearchService', '$location', '$rootScope', '$scope'];
 function RecipeformCtrl(RecipeService, SearchService, $location, $rootScope, $scope) {
+
+  if (!$rootScope.globals.currentUser) {
+    $location.path('/');
+  }
   $scope.recipe = {
     name : { input : "", error : false, errorMessage : "", inputClass : "noClass"},
     description : { input : "", error : false, errorMessage : "", inputClass : "noClass"},

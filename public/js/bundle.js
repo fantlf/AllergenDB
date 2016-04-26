@@ -59060,8 +59060,11 @@ function ProfileCtrl($location, UserService, $rootScope, $scope) {
 ;HCDietsApp.controller('RecipeCtrl', RecipeCtrl);
 
 RecipeCtrl.$inject = ['SearchService', '$rootScope', '$scope'];
+
 function RecipeCtrl(SearchService, $rootScope, $scope) {
+
   $scope.recipe = {id : "", name : "", description : "", steps : []};
+  $scope.commentrecipe = {userid : "", recipeid : "", commenttext : ""};
   $scope.ingredients = [];
   $scope.addComment = addComment;
   SearchService.getRecipeById($rootScope.currRecipe).then(function(response) {
@@ -59080,21 +59083,35 @@ function RecipeCtrl(SearchService, $rootScope, $scope) {
   });
 
   function addComment() {
-
+      SearchService.getCommentsByRecipeId($rootScope.currRecipe).then(function(response) {
+        var results = response.data.commentrecipe.records[0];
+        $scope.commentrecipe.uname = results[0];
+        $scope.commentrecipe.recipeid = results[1];
+        $scope.commentrecipe.commenttext = results[2];
+        var query = "SELECT uname, commenttext FROM commentrecipe, user WHERE id=userid AND recipeid =" + $scope.commentrecipe.recipeid;
+        SearchService.runSearchQuery(query).then(function(response) {
+          var comments = response.data.records;
+          for (var i = 0; i < comment.length; i++) {
+            $scope.comment[i] = {uname : comment[i].uname, commenttext : comment[i].commenttext};
+          }
+        });
+      });
   }
 
   //Private Functions
-
   function breakSteps(steps) {
     newSteps = steps.split("~~~");
     return newSteps;
   }
-
 }
 ;HCDietsApp.controller('RecipeformCtrl', RecipeformCtrl);
 
 RecipeformCtrl.$inject = ['RecipeService', 'SearchService', '$location', '$rootScope', '$scope'];
 function RecipeformCtrl(RecipeService, SearchService, $location, $rootScope, $scope) {
+
+  if (!$rootScope.globals.currentUser) {
+    $location.path('/');
+  }
   $scope.recipe = {
     name : { input : "", error : false, errorMessage : "", inputClass : "noClass"},
     description : { input : "", error : false, errorMessage : "", inputClass : "noClass"},
