@@ -20,7 +20,7 @@ while($rs = $result->fetch_array(MYSQLI_ASSOC)) {
     if ($outp != "") {$outp .= ",";}
     $outp .= '{';
     for ($i = 0; $i < count($rs); $i++) {
-      $outp .= '"' . $attrs[$i] . '":"' . $rs[$attrs[$i]] . '"';
+      $outp .= '"' . $attrs[$i] . '":"' . fix($rs[$attrs[$i]]) . '"';
       if($i != count($rs) - 1) $outp .= ',';
     }
     $outp .= '}';
@@ -37,5 +37,22 @@ function extractAttributes($query) {
   $temp = substr($temp, 6, (count($temp) - 5));
   $temp = explode(",",$temp);
   return $temp;
+}
+function fix($string) {
+  $string = escapeDoubleQuotes($string);
+  $string = removeSpecials($string);
+  return $string;
+}
+function escapeDoubleQuotes($string) {
+  $string = str_replace("\"", "\\\"", $string);
+  return $string;
+}
+function removeSpecials($string) {
+  $string = str_replace("\t", " ", $string);
+  $string = str_replace("\n", " ", $string);
+  $string = str_replace("\r", " ", $string);
+  $string = str_replace("\0", " ", $string);
+  $string = str_replace("\x0B", " ", $string);
+  return $string;
 }
 ?>

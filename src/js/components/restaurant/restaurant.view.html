@@ -5,13 +5,26 @@
     <h4>Details</h4>
     <ul>
       <li>Address: {{restaurant.address}}</li>
-      <li>Website: {{restaurant.website}}</li>
+      <li>Website: <a href="{{restaurant.website}}">{{restaurant.website}}</a></li>
       <li>Phone: {{restaurant.phone}}</li>
     </ul>
   </div>
   <div class="large-8 columns">
     <h4>About</h4>
     <p>{{restaurant.description}}</p>
+  </div>
+  <div class="large-12 columns text-center">
+    <h4>Small Selection From Menu</h4>
+    <div class="large-12 columns" ng-repeat="menuitem in menuitems" data-equalizer="{{$menuitem.name}}">
+      <div class="large-4 small-4 columns panel text-left" data-equalizer-watch="{{$menuitem.name}}">
+        <div class="large-4 columns"<h6>Item Name:</h6></div>
+        <div class="large-8 columns">{{menuitem.name}}</div>
+      </div>
+      <div class="large-8 small-8 columns panel text-left" data-equalizer-watch="{{$menuitem.name}}">
+        <div class="large-2 columns"<h6>Description:</h6></div>
+        <div class="large-10 columns">{{menuitem.description}}</div>
+      </div>
+    </div>
   </div>
 </div>
 
