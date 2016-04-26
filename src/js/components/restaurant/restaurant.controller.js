@@ -2,6 +2,11 @@ HCDietsApp.controller('RestaurantCtrl', RestaurantCtrl);
 
 RestaurantCtrl.$inject = ['SearchService', '$rootScope', '$scope'];
 function RestaurantCtrl(SearchService, $rootScope, $scope) {
+
+  if (!$rootScope.currRestaurant) {
+    $location.path('/');
+  }
+
   $scope.restaurant = {
     id : "",
     name : "",
