@@ -4,6 +4,10 @@ RecipeCtrl.$inject = ['SearchService', '$rootScope', '$scope'];
 
 function RecipeCtrl(SearchService, $rootScope, $scope) {
 
+  if (!$rootScope.currRecipe) {
+    $location.path('/');
+  }
+
   $scope.recipe = {id : "", name : "", description : "", steps : []};
   $scope.commentrecipe = {userid : "", recipeid : "", commenttext : ""};
   $scope.ingredients = [];
