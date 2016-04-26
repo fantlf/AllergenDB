@@ -59068,8 +59068,8 @@ function RecipeCtrl(SearchService, $rootScope, $scope) {
     var results = response.data.recipe.records[0];
     $scope.recipe.id = results[0];
     $scope.recipe.name = results[1];
+    $scope.recipe.description = results[2];
     $scope.recipe.steps = breakSteps(results[2]);
-    $scope.recipe.directions = results[3];
     var query = "SELECT id, name, quantity FROM ingredient, reqingredient WHERE id=ingredientid AND recipeid=" + $scope.recipe.id;
     SearchService.runSearchQuery(query).then(function(response) {
       var ingredients = response.data.records;
