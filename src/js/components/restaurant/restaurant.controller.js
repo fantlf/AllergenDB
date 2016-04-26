@@ -12,6 +12,7 @@ function RestaurantCtrl(SearchService, $rootScope, $scope) {
     phone : ""
   };
   $scope.menuitems = [];
+  $scope.ratings = [];
   SearchService.getRestaurantById($rootScope.currRestaurant).then(function(response) {
     var results = response.data.restaurant.records[0];
     $scope.restaurant.id = results[0];
@@ -28,6 +29,15 @@ function RestaurantCtrl(SearchService, $rootScope, $scope) {
       var menuitems = response.data.records;
       for (var i = 0; i < menuitems.length; i++) {
         $scope.menuitems[i] = {id : menuitems[i].id, name : menuitems[i].name, description : menuitems[i].description};
+      }
+    });
+    var query2 = "SELECT name, rating FROM dietaryrestaurant, dietaryreq WHERE dietaryreqid=id AND restaurantid=" + $scope.restaurant.id;
+    SearchService.runSearchQuery(query2).then(function(response) {
+      for(var i = 0; i < response.data.records.length; i++) {
+        $scope.ratings.push({
+          dietaryreqname : response.data.records[i].name,
+          value : response.data.records[i].rating
+        });
       }
     });
   });
