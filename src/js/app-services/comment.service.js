@@ -10,7 +10,7 @@ function RecipeService($http) {
   return service;
 
   function runInsertQuery(query) {
-    return $http.get('/3430/161/team7/HighCountryDiets/public/commentrecipe?query=' + query).then(handleSuccess, handleError('Error Searching'));
+    return $http.get('/3430/161/team7/HighCountryDiets/public/createcomment?query=' + query).then(handleSuccess, handleError('Error Searching'));
   }
 
   // private functions

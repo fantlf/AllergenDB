@@ -48,10 +48,18 @@ function RecipeCtrl(SearchService, $rootScope, $scope) {
   function addComment() {
     compileInsertData();
 
-    var insertQuery = "INSERT INTO commentrecipe(userid, recipeid, commenttext) VALUES ('"
-    $rootScope.global.currentUser + "','" +
-    $scope.recipe.id + "','" +
-    $scope.
+    var insertQuery = "INSERT INTO commentrecipe(userid, recipeid, commenttext) VALUES ('" +
+    $scope.comment.userid + "','" +
+    $scope.comment.recipeid + "','" +
+    $scope.commentrecipe.commenttext + ";";
+    $scope.results = insertQuery;
+    CommentService.runInsertQuery(insertQuery).then(function(response) {
+      if(response.data.records[0].success) {
+        $location.path('/');
+      } else {
+        alert("Oops! Something went wrong. We're working to fix it, try again later.");
+      }
+    });
 
   }
   //Private Functions
@@ -59,4 +67,26 @@ function RecipeCtrl(SearchService, $rootScope, $scope) {
     newSteps = steps.split("~~~");
     return newSteps;
   }
-}
+
+  function compileInsertData() {
+    $scope.commentrecipe.commenttext = scanString($scope.recipe.commentbox);
+    $scope.commentrecipe.userid = $rootScope.global.currentUser;
+    $scope.commentrecipe.recipeid = $scope.recipe.id;
+  }
+
+  function scanString(string) {
+    string = addslashes(string);
+    return string;
+  }
+
+  function addslashes(string) {
+    return string.replace(/\\/g, '\\\\').
+      replace(/\u0008/g, '\\b').
+      replace(/\t/g, '\\t').
+      replace(/\n/g, '\\n').
+      replace(/\f/g, '\\f').
+      replace(/\r/g, '\\r').
+      replace(/'/g, '\\\'').
+      replace(/"/g, '\\"');
+    }
+  }

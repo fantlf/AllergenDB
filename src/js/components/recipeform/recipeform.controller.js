@@ -135,7 +135,7 @@ function RecipeformCtrl(RecipeService, SearchService, $location, $rootScope, $sc
       directions += $scope.finalRecipe.steps[k];
     }
     var tempQuery = "BEGIN; " +
-      "INSERT INTO recipe(name, description, directions, creator) VALUES( '" + 
+      "INSERT INTO recipe(name, description, directions, creator) VALUES( '" +
       $scope.finalRecipe.name + "','" +
       $scope.finalRecipe.description + "','" +
       directions + "'," +
@@ -143,8 +143,8 @@ function RecipeformCtrl(RecipeService, SearchService, $location, $rootScope, $sc
       "SELECT LAST_INSERT_ID() INTO @mysql_recipeid; ";
     for (var i = 0; i < $scope.finalRecipe.ingredients.length; i++) {
       tempQuery += "INSERT INTO ingredient(name, description) VALUES( '" +
-        $scope.finalRecipe.ingredients[i].name + "','" + 
-        $scope.finalRecipe.ingredients[i].description + "'); " + 
+        $scope.finalRecipe.ingredients[i].name + "','" +
+        $scope.finalRecipe.ingredients[i].description + "'); " +
         "SELECT LAST_INSERT_ID() INTO @mysql_ingredientid;" +
         "INSERT INTO reqingredient(recipeid, ingredientid, quantity) VALUES(@mysql_recipeid, @mysql_ingredientid, '" + $scope.finalRecipe.ingredients[i].quantity + "');";
     }
