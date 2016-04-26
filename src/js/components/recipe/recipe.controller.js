@@ -12,6 +12,7 @@ function RecipeCtrl(SearchService, $rootScope, $scope) {
   $scope.commentrecipe = {userid : "", recipeid : "", commenttext : ""};
   $scope.ingredients = [];
   $scope.addComment = addComment;
+  $scope.loadComment = loadComment;
   SearchService.getRecipeById($rootScope.currRecipe).then(function(response) {
     var results = response.data.recipe.records[0];
     $scope.recipe.id = results[0];
@@ -26,8 +27,8 @@ function RecipeCtrl(SearchService, $rootScope, $scope) {
       }
     });
   });
-
-  function addComment() {
+  // Loads Comments
+  function loadComment() {
       SearchService.getCommentsByRecipeId($rootScope.currRecipe).then(function(response) {
         var results = response.data.commentrecipe.records[0];
         $scope.commentrecipe.uname = results[0];
@@ -43,6 +44,16 @@ function RecipeCtrl(SearchService, $rootScope, $scope) {
       });
   }
 
+  // INSERTS comment to tables
+  function addComment() {
+    compileInsertData();
+
+    var insertQuery = "INSERT INTO commentrecipe(userid, recipeid, commenttext) VALUES ('"
+    $rootScope.global.currentUser + "','" +
+    $scope.recipe.id + "','" +
+    $scope.
+
+  }
   //Private Functions
   function breakSteps(steps) {
     newSteps = steps.split("~~~");
