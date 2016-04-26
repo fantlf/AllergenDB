@@ -103,7 +103,8 @@ ALTER TABLE pass
   ADD CONSTRAINT pk_pass     PRIMARY KEY (userid),
   ADD CONSTRAINT fk_pass_uid FOREIGN KEY (userid) REFERENCES user(id);
 
-
+ALTER TABLE recipe 
+  ADD CONSTRAINT fk_recipe_creator FOREIGN KEY(creator) REFERENCES user(id);
 /* CREATE THE CONSTRAINTS FOR RELATIONAL TABLES */
 
 ALTER TABLE reqingredient

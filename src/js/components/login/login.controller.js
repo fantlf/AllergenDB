@@ -12,7 +12,7 @@ function LoginCtrl($location, $scope, AuthenticationService, UserService) {
         UserService.GetPass(id).then(function(response) {
           var code = CryptoJS.SHA256($scope.user.pass).toString();
           if (code == response.data.pass.records[0][1]) {
-            AuthenticationService.setCredentials($scope.user.email, code);
+            AuthenticationService.setCredentials($scope.user.email, code, id);
             $location.path('/');
           } else $scope.error = "Username or password is incorrect";
         });

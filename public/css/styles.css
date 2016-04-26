@@ -8687,6 +8687,15 @@ th.hide-for-touch {
   }
 }
 
+.stepErrorMessage {
+  color: red;
+  text-align: right;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  position: relative;
+}
+
 .recipeTextArea {
   height: 200px;
 }

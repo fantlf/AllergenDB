@@ -1,5 +1,5 @@
 <?php
-require_once "utilities/functions.php";
+require_once "../utilities/functions.php";
 header("Access-Control-Allow-Origin: *");
 header("Content-Type: application/json; charset=UTF-8");
 
@@ -8,6 +8,10 @@ header("Content-Type: application/json; charset=UTF-8");
   It runs the query, and returns the result as a JSON object
 */
 $query = $_GET['query'];
+$selectTest = substr($query, 0, 6);
+if ($selectTest != "SELECT") {
+  die("Error: Not a select query");
+}
 $attrs = extractAttributes($query);
 $result = queryMysql($query);
 $outp = "";
