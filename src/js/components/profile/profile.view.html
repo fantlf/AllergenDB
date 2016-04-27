@@ -1,25 +1,20 @@
 <div class="row bump">
-   <div class="large-12 columns">
-       <div class="profile-card">
-          <div class="large-4 columns">
-                <img src="http://lorempixel.com/image_output/food-q-c-200-200-8.jpg" alt="profile image">
+   <div class="small-12 large-6 large-offset-3 columns">
+      <div class="row">
+        <div class="profile-card">
+          <div class="small-12 large-4 columns">
+            <img src="http://lorempixel.com/image_output/food-q-c-200-200-8.jpg" alt="profile image">
           </div>
-          <div class="large-4 columns">
-             <h3>{{user.uname}}</h3>
+          <div class="small-12 large-8 columns">
+             <h4>{{user.uname}} <span>{{user.fname}} {{user.sname}}</span></h4>
+             <p><i class="fi-mail"></i><span>{{user.email}}</span></p>
           </div>
-          <div class="large-4 columns">
-            <h4><span> Name: {{user.fname}} {{user.sname}}</span></h4>
-            <h4><span> Email: {{user.email}} </span></h4>
-          </div>
-          <!--<div class="large-12 columns">
-          <ul class="button-group even-2">
-            <li><a href="#" class="button"> Recipes <span>##Query </span></a></li>
-            <li><a href="#" class="button"> Comments <span>##Query </span></a></li>
-          </ul>
-        </div>-->
-      </div>
-   </div>
+       </div>
+    </div>
+  </div>
 </div>
+
+<hr>
 
 <div class="row text-center">
   <div class="large-12 columns">
@@ -47,10 +42,11 @@
 
 <div class="row large-12 large-centered columns text-center">
   <h3> Recent Activity </h3>
-  </div>
-  <ul class="small-block-grid-2 medium-block-grid-3 large-block-grid-4">
-    <li><!-- Your content goes here --></li>
+</div>
+<ul class="small-block-grid-2 medium-block-grid-3 large-block-grid-4">
+  <li><!-- Your content goes here --></li>
 </ul>
+
 <script type="text/javascript">
   if(typeof HCDietsApp === 'undefined'){
     document.location.href="../../";

@@ -28,10 +28,11 @@
     <button type="button" ng-click="addComment()">Comment</button>
   </div>
   <div class="large-12 columns">
-        <li ng-repeat="comment in comments">
-          {{comment.commenttext}}
-        </li>
-      </ul>
+    <ul>
+      <li ng-repeat="comment in comments">
+        <div class="large-12 columns panel"><p>{{comment.commenttext}}</p></div>
+      </li>
+    </ul>
   </div>
 </div>
 

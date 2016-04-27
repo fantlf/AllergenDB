@@ -58941,12 +58941,12 @@ function SearchService($http) {
   }
 
   function getCommentsByRecipeId(id) {
-    var query = "SELECT uname, commenttext FROM commentrecipe, user WHERE recipeid=" + id + " AND userid=id";
+    var query = "SELECT uname, commenttext FROM commentrecipe, user WHERE recipeid=" + id + " AND userid=user.id";
     return $http.get('/3430/161/team7/HighCountryDiets/public/query?query=' + query).then(handleSuccess, handleError('Error Searching'));
   }
 
   function getCommentsByRestaurantId(id) {
-    var query = "SELECT uname, commenttext FROM commentrestaurant, user WHERE restaurantid=" + id + " AND userid=id";
+    var query = "SELECT uname, commenttext FROM commentrestaurant, user WHERE restaurantid=" + id + " AND userid=user.id";
     return $http.get('/3430/161/team7/HighCountryDiets/public/query?query=' + query).then(handleSuccess, handleError('Error Searching'));
   }
   return service;
@@ -59070,6 +59070,7 @@ function ProfileCtrl($location, UserService, $rootScope, $scope) {
   if (!$rootScope.globals.currentUser) {
     $location.path('/');
   }
+  $scope.recipenum = 0;
   $scope.gotorecipeform = gotorecipeform;
   loadCurrentUser();
   function loadCurrentUser() {

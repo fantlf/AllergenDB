@@ -5,6 +5,7 @@ function ProfileCtrl($location, UserService, $rootScope, $scope) {
   if (!$rootScope.globals.currentUser) {
     $location.path('/');
   }
+  $scope.recipenum = 0;
   $scope.gotorecipeform = gotorecipeform;
   loadCurrentUser();
   function loadCurrentUser() {
