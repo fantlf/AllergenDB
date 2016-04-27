@@ -68,8 +68,9 @@ function RecipeformCtrl(RecipeService, SearchService, $location, $rootScope, $sc
 
 
   function addStep() {
+    var num = $scope.recipe.steps.length + 1;
     $scope.recipe.steps.push(
-      { name : "Step " + ($scope.recipe.steps.length + 1), id : "step" + $scope.recipe.steps.length, input : "", error : false, errorMessage : ""}
+      { name : "Step " + num, id : "step" + $scope.recipe.steps.length, input : "", error : false, errorMessage : ""}
     );
     updateHeight();
   }
