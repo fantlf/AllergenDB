@@ -3,8 +3,8 @@ USE DBS16T7;
 /* Should insert the Recipes and Ingredients into the Created Database */
 
 INSERT INTO recipe (name, description, directions, creator)
-  VALUES ("The World's Easiest Cinnamon Rolls by Minimalist Baker",
-  "Description From Minimalist Baker's Website: I once drove 2 hours before work at 5:30 in the morning in the pitch black just to get a cinnamon roll at an Amish bakery. That's how much I love cinnamon rolls, and apparently how unwilling I am to make them myself. Go figure.
+  VALUES ("The World's Easiest Cinnamon Rolls",
+  "I once drove 2 hours before work at 5:30 in the morning in the pitch black just to get a cinnamon roll at an Amish bakery. That's how much I love cinnamon rolls, and apparently how unwilling I am to make them myself. Go figure.
   Why doesn't anyone make cinnamon rolls? They're complicated, difficult and time consuming. That's why.
   But these cinnamon rolls are different:
   7 ingredients
@@ -43,8 +43,7 @@ INSERT INTO ingredient (name, description)
 
 INSERT INTO recipe (name, description, directions, creator)
   VALUES('5 minute Vegan Hot Cocoa',
-  "Decription From Minimalist Baker's Website:
-  You guys, it's cold. I mean, seriously cold.
+  "You guys, it's cold. I mean, seriously cold.
 
   We may have narrowly escaped the polar vortex but I'm still feeling its aftermath. Most days John and I hunker down inside next to space heaters. But when I just can't kick a chill - or am having a serious chocolate craving - I make my favorite 5 minute (or less) vegan hot cocoa.
 
@@ -75,8 +74,7 @@ INSERT INTO ingredient (name, description)
 
 INSERT INTO recipe (name, description, directions, creator)
   VALUES ('Cheesy Egg Muffins',
-  "Description taken from Nom Nom Paleo:
-  In my attempts to raise little cave kids, I've been making a ton of savory grain-free muffins lately. This morning, Little-O requested cheesy egg muffins but “no meat or vegetables because I don't like them.” Le sigh.
+  "In my attempts to raise little cave kids, I've been making a ton of savory grain-free muffins lately. This morning, Little-O requested cheesy egg muffins but “no meat or vegetables because I don't like them.” Le sigh.
 
   Since I knew egg muffins with no fillings would probably collapse upon themselves, I searched the interwebs for cheesy egg muffin recipes with some heft. I found a really tasty looking recipe on Cheeseslave for bacon, egg, & cheese muffins with coconut flour. Since my little bugger requested no meat, I modified the recipe a little by omitting the bacon(!), subbing in Greek yogurt for the bacon grease (I know it's not EVEN the same), adding an extra egg, and decreasing the oven temperature a little. My version turned out pretty good and they LOOKED like muffins, too. So much so that Little-O actually ate one!",
   "1. Preheat oven to 375 F.~~~2. Combine eggs, yogurt, and a dash of salt in a medium bowl and whisk until blended.~~~3. Add coconut flour and baking powder to the egg mixture and mix until it is smooth.~~~4. Add cheese and ground pepper and stir it all together~~~5. In either silicone baking cups or in cupcake liners coated in coconut oil divide up the batter. It should be around 6 cupcakes.~~~6. Bake for approximately 20 minutes, rotating the tray halfway through the cooking time. You will be able to tell that they are done when the tops of the muffins should spring back when you poke them.~~~7. Move to a cooling rack and cool for about 10 minutes.~~~http://nomnompaleo.com/post/3739232374/cheesy-egg-muffins",'1');
@@ -101,8 +99,7 @@ INSERT INTO ingredient (name, description)
 
 INSERT INTO recipe (name, description, directions, creator)
   VALUES ('Basic Oatmeal Packet',
-  "Description taken from The Yummy Life:
-  These DIY instant oatmeal packets are so easy to assemble. Make a bunch in advance to keep on hand for those busy mornings when you don't have time to make breakfast. You can mix these oatmeal packets with hot water and enjoy a healthy hot breakfast in a jiffy. They're also great to take along to work or on trips. It's easy to make these gluten-free, dairy-free, and vegan.
+  "These DIY instant oatmeal packets are so easy to assemble. Make a bunch in advance to keep on hand for those busy mornings when you don't have time to make breakfast. You can mix these oatmeal packets with hot water and enjoy a healthy hot breakfast in a jiffy. They're also great to take along to work or on trips. It's easy to make these gluten-free, dairy-free, and vegan.
 
   Why make your own packets? Because they are so much healthier and tastier! I decided to experiment with making my own instant oat packets when I was helping King-Man prepare for a backpacking trip. He's always taken the store-bought instant oat packets for an easy breakfast on the trail. When I read the ingredient list on the packaging with all it's mystery ingredients, high sodium, and artificial flavors, sweeteners, and preservatives, I decided to figure out how to make a healthier version at home.",
   "1. Mix all ingredients together and store in small snack size baggie.~~~2. When you are ready to eat it, Pour dry mix in microwave safe bowl and pour 3/4 cups of cold water and microwave for 1 minute.~~~http://www.theyummylife.com/Instant_Oatmeal_Packets", '1');
@@ -118,8 +115,7 @@ INSERT INTO ingredient (name, description)
 
 INSERT INTO recipe (name, description, directions, creator)
   VALUES ('Apple Raisin Cakes',
-  "Description from Allrecipes:
-  Small cakes make great snacks. Serve with additional applesauce. Preparation Time: 10 Minutes. This recipe is from The WEBB Cooks, articles and recipes by Robyn Webb, courtesy of the American Diabetes Association.",
+  "Small cakes make great snacks. Serve with additional applesauce. Preparation Time: 10 Minutes. This recipe is from The WEBB Cooks, articles and recipes by Robyn Webb, courtesy of the American Diabetes Association.",
   "1. In a large mixing bowl, combine all the ingredients together. Form small cakes out of the batter.~~~2. Heat a nonstick griddle over medium heat, fry the cakes until both sides are browned, about 5 to 7 minutes.~~~http://allrecipes.com/recipe/19575/apple-raisin-cakes/?internalSource=staff%20pick&referringId=1692&referringContentType=recipe%20hub", '1');
 
 INSERT INTO ingredient (name, description)
@@ -142,8 +138,7 @@ INSERT INTO ingredient (name, description)
 
 INSERT INTO recipe (name, description, directions, creator)
   VALUES ("Ellen's Salmon and Shrimp Spread",
-  "Description taken from Ketogenic Diet Resource:
-  This tasty salmon spread is so easy to make and has a rich, creamy texture.  It's a great way to combine the flavors of salmon and shrimp, and increase your intake of healthy Omega 3 fats.
+  "This tasty salmon spread is so easy to make and has a rich, creamy texture.  It's a great way to combine the flavors of salmon and shrimp, and increase your intake of healthy Omega 3 fats.
 
   You can use any canned pink salmon.  I think the Member's Mark brand from Sam's club is pretty tasty, and cheaper than buying salmon in the grocery store.  Of course, leftover  fresh salmon that has been baked or grilled would be good as well.  I threw in some steamed shrimp I had in the fridge and it really round out the flavor well, so I've included that last minute edition in this recipe.
 
@@ -170,8 +165,7 @@ INSERT INTO ingredient (name, description)
 
 INSERT INTO recipe (name, description, directions, creator)
       VALUES ("Ellen's Low Carb Meatloaf",
-      "Description from Ketogenic Diet Resource:
-      Most of the basic low carb meatloaf recipes I've tried are either bland or include binders or tomato sauces which add too many carbs. So I came up with my own recipe, and it is totally delicious. I've made lots of meatloaf in my quest for one that was moist, flavorful and low carb to boot, and I've finally gotten the combination of ingredients to my liking. I hope you like it too.",
+      "Most of the basic low carb meatloaf recipes I've tried are either bland or include binders or tomato sauces which add too many carbs. So I came up with my own recipe, and it is totally delicious. I've made lots of meatloaf in my quest for one that was moist, flavorful and low carb to boot, and I've finally gotten the combination of ingredients to my liking. I hope you like it too.",
       "1. Preheat oven to 350 degrees. Grease a 10 x 15 glass baking dish with butter. Set aside.~~~2. In a small deep bowl, whisk almond flour and Parmesan cheese together. Set aside.~~~3. Heat butter in a medium skillet over medium heat. Add onion, garlic and pepper; sauté until softened, about 8 minutes. Set aside to cool while preparing remaining ingredients. Once the mixture is cooled enough, run through a food processor for several seconds to mince the vegetables to fine consistency.~~~4. In another small deep bowl, whisk eggs with spices, salt, pepper, mustard, BBQ sauce and cream.  Sprinkle gelatin over mixture and let stand 5 minutes. Add minced onion mixture and mix well. Set aside.~~~5. Place ground beef and Italian sausage on a large cutting board or work surface. With clean hands, or a pastry mixer, mix the beef and sausage together, making sure no large chunks of sausage are left unmixed.  It helps to chop both meats into small chunks before mixing. Don't knead the meat for longer than 5 minutes, as it toughens the meat.~~~6. Return low carb meatloaf mixture to a large mixing bowl. Add the egg mixture and mix well. (Once the liquid is incorporated, you can turn the mixture out onto the work surface again, to make it easier to mix in dry ingredients.)~~~7. Add the almond flour mixture. Mix until evenly blended and meat mixture is no longer sticky. (If mixture is still sticking, add additional shredded Parmesan, a tablespoon at a time until the meat no longer sticks.)~~~8. Place in the glass baking dish, forming it into a loaf and leaving about an inch of room on all sides. Flatten the top of the loaf shape a little so that it cooks evenly.~~~9. Bake loaf until browned and an inserted cooking thermometer registers 160 degrees. Estimated cooking time is about 1 hour. Cool at least 20 minutes. Slice meat loaf and serve.~~~http://www.ketogenic-diet-resource.com/low-carb-meatloaf.html", '1');
 
 INSERT INTO ingredient (name, description)
@@ -221,8 +215,7 @@ INSERT INTO ingredient (name, description)
 
 INSERT INTO recipe (name, description, directions, creator)
   VALUES ('The Best Damn Vegan Biscuits',
-  "Description taken from Minimalist Baker's Website:
-  Before you suggest there's no way vegan biscuits can taste just as good if not BETTER than regular biscuits, everyone I've fed these to agree that these are in fact LEGIT, amazing, fluffy, buttery biscuits.
+  "Before you suggest there's no way vegan biscuits can taste just as good if not BETTER than regular biscuits, everyone I've fed these to agree that these are in fact LEGIT, amazing, fluffy, buttery biscuits.
 
   As in, serve them to your 80-year old grandmother who's been making biscuits for centuries and she wouldn't know the difference. As in, slap some gravy on it and you'd think you died and gone to heaven. As in, fluffy, buttery, savory, biscuit perfection. It's true.
   The commandments of biscuit making, as I've discovered, are:
