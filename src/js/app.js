@@ -2,6 +2,7 @@ var HCDietsApp = angular.module("HCDietsApp", [
   'mm.foundation',
   'ngRoute',
   'ngCookies',
+  'LocalStorageModule'
 ]);
 
 HCDietsApp.config(config);

@@ -58593,6 +58593,7 @@ angular
   'mm.foundation',
   'ngRoute',
   'ngCookies',
+  'LocalStorageModule'
 ]);
 
 HCDietsApp.config(config);
@@ -59035,8 +59036,8 @@ function HomeCtrl($rootScope, $scope) {
 }
 ;HCDietsApp.controller('LoginCtrl', LoginCtrl);
 
-LoginCtrl.$inject = ['$location', '$scope', 'AuthenticationService', 'UserService'];
-function LoginCtrl($location, $scope, AuthenticationService, UserService) {
+LoginCtrl.$inject = ['localStorageService','$location', '$scope', 'AuthenticationService', 'UserService'];
+function LoginCtrl(localStorageService, $location, $scope, AuthenticationService, UserService) {
   $scope.login = login;
   AuthenticationService.clearCredentials();
 
@@ -59048,7 +59049,13 @@ function LoginCtrl($location, $scope, AuthenticationService, UserService) {
           var code = CryptoJS.SHA256($scope.user.pass).toString();
           if (code == response.data.pass.records[0][1]) {
             AuthenticationService.setCredentials($scope.user.email, code, id);
-            $location.path('/');
+            if(localStorageService.get("returnLoc") == "recipe") {
+              $location.path('/recipe');
+            } else if (localStorageService.get("returnLoc") == "restaurant")  {
+              $location.path('/restaurant');
+            } else {
+              $location.path('/');
+            }
           } else $scope.error = "Username or password is incorrect";
         });
       } else $scope.error = "Username or password is incorrect";
@@ -59091,12 +59098,17 @@ function ProfileCtrl($location, UserService, $rootScope, $scope) {
 }
 ;HCDietsApp.controller('RecipeCtrl', RecipeCtrl);
 
-RecipeCtrl.$inject = ['SearchService', '$rootScope', '$scope'];
+RecipeCtrl.$inject = ['localStorageService','$location','SearchService', '$rootScope', '$scope'];
 
-function RecipeCtrl(SearchService, $rootScope, $scope) {
+function RecipeCtrl(localStorageService, $location, SearchService, $rootScope, $scope) {
 
   if (!$rootScope.currRecipe) {
     $location.path('/');
+  }
+
+  $scope.loggedIn = false;
+  if ($rootScope.globals.currentUser) {
+    $scope.loggedIn = true;
   }
 
   $scope.recipe = {id : "", name : "", description : "", steps : []};
@@ -59105,6 +59117,9 @@ function RecipeCtrl(SearchService, $rootScope, $scope) {
   $scope.finalComment = {userid : "", recipeid : "", commenttext : ""};
   $scope.ingredients = [];
   $scope.addComment = addComment;
+  $scope.login = login;
+  $scope.register = register;
+
   loadComments();
   SearchService.getRecipeById($rootScope.currRecipe).then(function(response) {
     var results = response.data.recipe.records[0];
@@ -59152,6 +59167,14 @@ function RecipeCtrl(SearchService, $rootScope, $scope) {
     });
 
   }
+  function login() {
+    localStorageService.set("returnLoc", "recipe");
+    $location.path('/login');
+  }
+  function register() {
+    localStorageService.set("returnLoc", "recipe");
+    $location.path('/register');
+  }
   //Private Functions
   function breakSteps(steps) {
     newSteps = steps.split("~~~");
@@ -59178,8 +59201,8 @@ function RecipeCtrl(SearchService, $rootScope, $scope) {
       replace(/\r/g, '\\r').
       replace(/'/g, '\\\'').
       replace(/"/g, '\\"');
-    }
   }
+}
 ;HCDietsApp.controller('RecipeformCtrl', RecipeformCtrl);
 
 RecipeformCtrl.$inject = ['RecipeService', 'SearchService', '$location', '$rootScope', '$scope'];
@@ -59547,7 +59570,8 @@ function RestaurantCtrl(SearchService, $rootScope, $scope) {
   if (!$rootScope.currRestaurant) {
     $location.path('/');
   }
-
+  $scope.addComment = addComment;
+  $scope.loadComments = loadComments;
   $scope.restaurant = {
     id : "",
     name : "",
@@ -59558,7 +59582,12 @@ function RestaurantCtrl(SearchService, $rootScope, $scope) {
     phone : ""
   };
   $scope.menuitems = [];
+  $scope.comments = [];
+  $scope.newComment = "";
+  $scope.finalComment = {userid : "", recipeid : "", commenttext : ""};
   $scope.ratings = [];
+
+  loadComments();
   SearchService.getRestaurantById($rootScope.currRestaurant).then(function(response) {
     var results = response.data.restaurant.records[0];
     $scope.restaurant.id = results[0];
@@ -59587,9 +59616,69 @@ function RestaurantCtrl(SearchService, $rootScope, $scope) {
       }
     });
   });
+// Loads Comments
+  function loadComments() {
+    $scope.comments = [];
+    SearchService.getCommentsByRestaurantId($rootScope.currRestaurant).then(function(response) {
+      var results = response.data.records;
+      for (var i = 0; i < results.length; i++) {
+        $scope.comments.push({
+          uname : results[i].uname,
+          commenttext : results[i].commenttext
+        });
+      }
+    });
+  }
 
-  //private functions
+  // INSERTS comment to tables
+  function addComment() {
+    compileInsertData();
 
+    var insertQuery = "INSERT INTO commentrestaurant(userid, restaurantid, commenttext) VALUES (" +
+    $scope.finalComment.userid + "," +
+    $scope.finalComment.restaurantid + ",'" +
+    $scope.finalComment.commenttext + "')";
+    $scope.results = insertQuery;
+    SearchService.runSearchQuery(insertQuery).then(function(response) {
+      if(response.data.records[0].results != "error") {
+        loadComments();
+      } else {
+        alert("Oops! Something went wrong. We're working to fix it, try again later.");
+      }
+    });
+
+  }
+  function login() {
+    localStorageService.set("returnLoc", "restaurant");
+    $location.path('/login');
+  }
+  function register() {
+    localStorageService.set("returnLoc", "restaurant");
+    $location.path('/register');
+  }
+  //Private Functions
+
+  function compileInsertData() {
+    $scope.finalComment.commenttext = scanString($scope.newComment);
+    $scope.finalComment.userid = $rootScope.globals.currentUser.id;
+    $scope.finalComment.restaurantid = $scope.restaurant.id;
+  }
+
+  function scanString(string) {
+    string = addslashes(string);
+    return string;
+  }
+
+  function addslashes(string) {
+    return string.replace(/\\/g, '\\\\').
+      replace(/\u0008/g, '\\b').
+      replace(/\t/g, '\\t').
+      replace(/\n/g, '\\n').
+      replace(/\f/g, '\\f').
+      replace(/\r/g, '\\r').
+      replace(/'/g, '\\\'').
+      replace(/"/g, '\\"');
+  }
   function formatPhone(phone) {
     var newPhone = phone.slice(0,3);
     newPhone += "-";

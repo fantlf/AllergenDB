@@ -1,11 +1,16 @@
 HCDietsApp.controller('RecipeCtrl', RecipeCtrl);
 
-RecipeCtrl.$inject = ['SearchService', '$rootScope', '$scope'];
+RecipeCtrl.$inject = ['localStorageService','$location','SearchService', '$rootScope', '$scope'];
 
-function RecipeCtrl(SearchService, $rootScope, $scope) {
+function RecipeCtrl(localStorageService, $location, SearchService, $rootScope, $scope) {
 
   if (!$rootScope.currRecipe) {
     $location.path('/');
+  }
+
+  $scope.loggedIn = false;
+  if ($rootScope.globals.currentUser) {
+    $scope.loggedIn = true;
   }
 
   $scope.recipe = {id : "", name : "", description : "", steps : []};
@@ -14,6 +19,9 @@ function RecipeCtrl(SearchService, $rootScope, $scope) {
   $scope.finalComment = {userid : "", recipeid : "", commenttext : ""};
   $scope.ingredients = [];
   $scope.addComment = addComment;
+  $scope.login = login;
+  $scope.register = register;
+
   loadComments();
   SearchService.getRecipeById($rootScope.currRecipe).then(function(response) {
     var results = response.data.recipe.records[0];
@@ -61,6 +69,14 @@ function RecipeCtrl(SearchService, $rootScope, $scope) {
     });
 
   }
+  function login() {
+    localStorageService.set("returnLoc", "recipe");
+    $location.path('/login');
+  }
+  function register() {
+    localStorageService.set("returnLoc", "recipe");
+    $location.path('/register');
+  }
   //Private Functions
   function breakSteps(steps) {
     newSteps = steps.split("~~~");
@@ -87,5 +103,5 @@ function RecipeCtrl(SearchService, $rootScope, $scope) {
       replace(/\r/g, '\\r').
       replace(/'/g, '\\\'').
       replace(/"/g, '\\"');
-    }
   }
+}

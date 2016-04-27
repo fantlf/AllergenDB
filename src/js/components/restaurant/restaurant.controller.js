@@ -6,7 +6,8 @@ function RestaurantCtrl(SearchService, $rootScope, $scope) {
   if (!$rootScope.currRestaurant) {
     $location.path('/');
   }
-
+  $scope.addComment = addComment;
+  $scope.loadComments = loadComments;
   $scope.restaurant = {
     id : "",
     name : "",
@@ -17,7 +18,12 @@ function RestaurantCtrl(SearchService, $rootScope, $scope) {
     phone : ""
   };
   $scope.menuitems = [];
+  $scope.comments = [];
+  $scope.newComment = "";
+  $scope.finalComment = {userid : "", recipeid : "", commenttext : ""};
   $scope.ratings = [];
+
+  loadComments();
   SearchService.getRestaurantById($rootScope.currRestaurant).then(function(response) {
     var results = response.data.restaurant.records[0];
     $scope.restaurant.id = results[0];
@@ -46,9 +52,69 @@ function RestaurantCtrl(SearchService, $rootScope, $scope) {
       }
     });
   });
+// Loads Comments
+  function loadComments() {
+    $scope.comments = [];
+    SearchService.getCommentsByRestaurantId($rootScope.currRestaurant).then(function(response) {
+      var results = response.data.records;
+      for (var i = 0; i < results.length; i++) {
+        $scope.comments.push({
+          uname : results[i].uname,
+          commenttext : results[i].commenttext
+        });
+      }
+    });
+  }
 
-  //private functions
+  // INSERTS comment to tables
+  function addComment() {
+    compileInsertData();
 
+    var insertQuery = "INSERT INTO commentrestaurant(userid, restaurantid, commenttext) VALUES (" +
+    $scope.finalComment.userid + "," +
+    $scope.finalComment.restaurantid + ",'" +
+    $scope.finalComment.commenttext + "')";
+    $scope.results = insertQuery;
+    SearchService.runSearchQuery(insertQuery).then(function(response) {
+      if(response.data.records[0].results != "error") {
+        loadComments();
+      } else {
+        alert("Oops! Something went wrong. We're working to fix it, try again later.");
+      }
+    });
+
+  }
+  function login() {
+    localStorageService.set("returnLoc", "restaurant");
+    $location.path('/login');
+  }
+  function register() {
+    localStorageService.set("returnLoc", "restaurant");
+    $location.path('/register');
+  }
+  //Private Functions
+
+  function compileInsertData() {
+    $scope.finalComment.commenttext = scanString($scope.newComment);
+    $scope.finalComment.userid = $rootScope.globals.currentUser.id;
+    $scope.finalComment.restaurantid = $scope.restaurant.id;
+  }
+
+  function scanString(string) {
+    string = addslashes(string);
+    return string;
+  }
+
+  function addslashes(string) {
+    return string.replace(/\\/g, '\\\\').
+      replace(/\u0008/g, '\\b').
+      replace(/\t/g, '\\t').
+      replace(/\n/g, '\\n').
+      replace(/\f/g, '\\f').
+      replace(/\r/g, '\\r').
+      replace(/'/g, '\\\'').
+      replace(/"/g, '\\"');
+  }
   function formatPhone(phone) {
     var newPhone = phone.slice(0,3);
     newPhone += "-";
