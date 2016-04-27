@@ -58692,13 +58692,13 @@ function AuthenticationService(UserService, $rootScope, $cookies, $http) {
     service.complexTestUname = complexTestUname;
 
     return service;
-    
-    function setCredentials(email, password, id) {
+
+    function setCredentials(email, password, userid) {
         var authdata = Base64.encode(email + ':' + password);
         $rootScope.globals = {
             currentUser: {
                 email: email,
-                id: id,
+                id: userid,
                 authdata: authdata
             }
         };
@@ -59044,7 +59044,7 @@ function LoginCtrl(localStorageService, $location, $scope, AuthenticationService
   function login() {
     UserService.GetByEmail($scope.user.email).then(function (response) {
       if(response.data.user && response.data.user.records.length == 1) {
-        var id = response.data.user.records[0][0];
+        $scope.id = response.data.user.records[0][0];
         UserService.GetPass(id).then(function(response) {
           var code = CryptoJS.SHA256($scope.user.pass).toString();
           if (code == response.data.pass.records[0][1]) {
@@ -59208,7 +59208,7 @@ function RecipeCtrl(localStorageService, $location, SearchService, $rootScope, $
 RecipeformCtrl.$inject = ['RecipeService', 'SearchService', '$location', '$rootScope', '$scope'];
 function RecipeformCtrl(RecipeService, SearchService, $location, $rootScope, $scope) {
 
-  if (!$rootScope.globals.currentUser) {
+  if (!$rootScope.globals.currentUser.id) {
     $location.path('/');
   }
   $scope.recipe = {
@@ -59264,7 +59264,8 @@ function RecipeformCtrl(RecipeService, SearchService, $location, $rootScope, $sc
     $scope.results = query;
     RecipeService.runInsertQuery(query).then(function(response) {
       if (response.data.records[0].result != "Error") {
-        $location.path('/profile');
+        //$location.path('/profile');
+        $scope.result = query;
       } else {
         alert("Oops! Something went wrong. We're working to fix it, try again later.");
       }
@@ -59273,8 +59274,9 @@ function RecipeformCtrl(RecipeService, SearchService, $location, $rootScope, $sc
 
 
   function addStep() {
+    var num = $scope.recipe.steps.length + 1;
     $scope.recipe.steps.push(
-      { name : "Step " + $scope.recipe.steps.length, id : "step" + $scope.recipe.steps.length, input : "", error : false, errorMessage : ""}
+      { name : "Step " + num, id : "step" + $scope.recipe.steps.length, input : "", error : false, errorMessage : ""}
     );
     updateHeight();
   }

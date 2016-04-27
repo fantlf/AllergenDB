@@ -4,7 +4,9 @@ header("Access-Control-Allow-Origin: *");
 header("Content-Type: application/json; charset=UTF-8");
 
 $query = $_GET['query'];
+//echo $query;
 $insertTest = substr($query, 0, 5);
+//echo $insertTest;
 $outp = "";
 
 if ($insertTest == "BEGIN") {
