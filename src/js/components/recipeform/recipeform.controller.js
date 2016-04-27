@@ -59,8 +59,8 @@ function RecipeformCtrl(RecipeService, SearchService, $location, $rootScope, $sc
     $scope.results = query;
     RecipeService.runInsertQuery(query).then(function(response) {
       if (response.data.records[0].result != "Error") {
-        //$location.path('/profile');
-        $scope.result = query;
+        $location.path('/profile');
+        //$scope.result = query;
       } else {
         alert("Oops! Something went wrong. We're working to fix it, try again later.");
       }
