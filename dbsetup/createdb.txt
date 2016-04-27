@@ -84,12 +84,14 @@ CREATE TABLE IF NOT EXISTS restaurantmenuitem (
 );
 
 CREATE TABLE IF NOT EXISTS commentrestaurant (
+ id           INT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
  userid       INT UNSIGNED NOT NULL,
  restaurantid INT UNSIGNED NOT NULL,
  commenttext  TEXT         NOT NULL
 );
 
 CREATE TABLE IF NOT EXISTS commentrecipe (
+ id          INT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
  userid      INT UNSIGNED NOT NULL,
  recipeid    INT UNSIGNED NOT NULL,
  commenttext TEXT         NOT NULL
@@ -103,9 +105,9 @@ ALTER TABLE pass
   ADD CONSTRAINT pk_pass     PRIMARY KEY (userid),
   ADD CONSTRAINT fk_pass_uid FOREIGN KEY (userid) REFERENCES user(id);
 
-ALTER TABLE recipe 
+ALTER TABLE recipe
   ADD CONSTRAINT fk_recipe_creator FOREIGN KEY(creator) REFERENCES user(id);
-  
+
 /* CREATE THE CONSTRAINTS FOR RELATIONAL TABLES */
 
 ALTER TABLE reqingredient
@@ -134,12 +136,10 @@ ALTER TABLE restaurantmenuitem
   ADD CONSTRAINT fk_restaurantmenuitem_mid FOREIGN KEY (menuitemid)   REFERENCES menuitem(id);
 
 ALTER TABLE commentrestaurant
-  ADD CONSTRAINT pk_commentrestaurant     PRIMARY KEY (userid, restaurantid),
   ADD CONSTRAINT fk_commentrestaurant_uid FOREIGN KEY (userid)       REFERENCES user(id),
   ADD CONSTRAINT fk_commentrestaurant_rid FOREIGN KEY (restaurantid) REFERENCES restaurant(id);
 
 ALTER TABLE commentrecipe
-  ADD CONSTRAINT pk_commentrecipe     PRIMARY KEY (userid, recipeid),
   ADD CONSTRAINT fk_commentrecipe_uid FOREIGN KEY (userid)   REFERENCES user(id),
   ADD CONSTRAINT fk_commentrecipe_rid FOREIGN KEY (recipeid) REFERENCES recipe(id);
 
