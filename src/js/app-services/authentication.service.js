@@ -1,6 +1,6 @@
 HCDietsApp.factory('AuthenticationService', AuthenticationService);
 
-UserService.$inject = ['UserService', '$rootScope', '$cookies', '$http'];
+AuthenticationService.$inject = ['UserService', '$rootScope', '$cookies', '$http'];
 function AuthenticationService(UserService, $rootScope, $cookies, $http) {
 
     var service = {};
@@ -17,11 +17,12 @@ function AuthenticationService(UserService, $rootScope, $cookies, $http) {
 
     return service;
     
-    function setCredentials(email, password) {
+    function setCredentials(email, password, id) {
         var authdata = Base64.encode(email + ':' + password);
         $rootScope.globals = {
             currentUser: {
                 email: email,
+                id: id,
                 authdata: authdata
             }
         };

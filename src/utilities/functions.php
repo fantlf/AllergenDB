@@ -9,6 +9,15 @@ function queryMysql($query) {
 	return $result;
 }
 
+function multiQueryMysql($query) {
+	global $connection;
+	$result = $connection->multi_query ( $query );
+	if (! $result)
+		return $connection->error;
+	return $result;
+}
+
+
 function sanitizeString($var) {
 	global $connection;
 	$var = strip_tags ( $var );

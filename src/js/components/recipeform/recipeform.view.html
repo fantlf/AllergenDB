@@ -1,41 +1,45 @@
 <div class="large-12 columns">
-  <div class="small-12 medium-12 large-10 large-centered medium-centered columns" >
-    <form name="recipeForm" ng-submit="addRecipe()" data-equalizer>
-        <fieldset>
+  <div class="small-12 medium-12 large-10 large-centered medium-centered columns">
+    <form name="recipeForm" ng-submit="addRecipe()" data-equalizer="main-columns">
+        <fieldset class="text-center" data-equalizer-watch="main-columns">
           <legend>Recipe Creation</legend>
-          <div class="large-3 columns text-center panel" data-equalizer-watch>
+          <div class="large-3 medium-3 small-3 columns text-center panel" data-equalizer-watch="main-columns">
             <h6>Add Ingredients</h6>
-            <label>Name<input type="text" ng-model="newIngredientName" required></label>
-            <label>Description (optional)<input type="text" ng-model="newIngredientDesc"></label>
+            <label>Name<input type="text" ng-model="newIngredient.name"></label>
+            <label>Quantity<input type="text" ng-model="newIngredient.quantity"></label>
+            <label>Description (optional)<input type="text" ng-model="newIngredient.desc"></label>
+            <span ng-show="newIngredient.error" class="errorMessage">{{newIngredient.errorMessage}}</span>
             <button type="button" class="button" ng-click="addIngredient()">Add Ingredient</button>
-            <div class="large-12 columns panel">
-              <div ng-repeat="ing in ingredients" class="slimIngredient"><span ng-click="removeIngredient($index)" style="left:0px">&Cross;</span>{{ing.name}}</div>
+            <div class="panel">
+              <h6 ng-if="recipe.ingredients.length">Added Ingredients (click to remove)</h6>
+              <button ng-repeat="ing in recipe.ingredients" class="slimbutton" ng-click="removeIngredient($index)" >{{ing.quantity}} {{ing.name}}</button>
             </div>
           </div>
-          <div class="large-6 medium-6 small-6 columns" data-equalizer-watch>
+          <div class="large-6 medium-6 small-6 columns text-center recipeFormMid" data-equalizer-watch="main-columns">
             <div>
               <label for="rname">Name</label>
-              <span ng-show="recipe.name.error" class="errorMessage">{{recipe.name.errorMessage}}</span>
               <input type="text" name='rname' id='rname' ng-model="recipe.name.input" ng-class="recipe.name.inputClass" maxlength="255" required>
             </div>
             <div>
-              <label for="rdesc">Recipe Description</label>
-              <span ng-show="recipe.description.error" class="errorMessage">{{recipe.description.errorMessage}}</span>
-              <input type="text" class="" id='rdesc' ng-model="recipe.description.input" ng-class="recipe.description.inputClass" maxlength="5000" required>
+              <label for="rdesc">Brief Description</label>
+              <input type="text" id='rdesc' ng-model="recipe.description.input" ng-class="recipe.description.inputClass" maxlength="5000" required>
             </div>
-            <div>
-              <label for="rdirec">Directions</label>
-              <span ng-show="recipe.description.error" class="errorMessage">{{recipe.description.errorMessage}}</span>
-              <inputtype="text" name='rdirec' class="" id='rdirec' ng-model="recipe.directions.input" ng-class="recipe.directions.inputClass" maxlength="5000" required>
+            <div id="step-div" style="overflow : auto; max-height : 400px;">
+            <div ng-repeat="step in recipe.steps">
+              <label for="{{step.id}}">{{step.name}}<br><a ng-show="(recipe.steps.length == $index+1) && ($index != 0)" ng-click="removeStep($index)" class="stepErrorMessage">(remove)</a></label>
+              <input type="text" name="{{step.id}}" id="{{step.id}}" ng-model="step.input" maxlength="5000" required>
             </div>
+            </div>
+            <button type="button" class="slimbutton" ng-click="addStep()">Add a Step</button>
             <span ng-show="mainError" class="errorMessage">{{mainError}}</span>
             <div>
-                <button class="submitButton" type="submit" ng-disabled="recipeForm.$invalid">Create Recipe</button>
-                <a href="#/profile">Cancel</a>
+              <br>
+              <button class="button" type="submit">Create Recipe</button>
+              <a href="#/profile">Cancel</a>
             </div>
           </div>
-          <div class="large-3 columns panel" data-equalizer-watch>
-            <h6>What dietary requirements does this recipe pass?</h6>
+          <div class="large-3 medium-3 small-3 columns panel" data-equalizer-watch="main-columns">
+            <h6>Choose Satisfied Dietary Requirements</h6>
             <button class="dropdown" dropdown-toggle='#dreqdropdown'>Dietary Requirements</button>
             <ul class="f-dropdown" id="dreqdropdown">
               <li ng-repeat="dreq in dietaryreqs">
@@ -43,14 +47,22 @@
                   type="button"
                   class="{{dreq.class}} slimbutton"
                   ng-model="dreq.input"
-                  ng-click="dreqSelect($index)"
+                  ng-click="selectDietaryReq($index)"
                 >{{dreq.name}}
                 </button>
               </li>
             </ul>
+            <div>
+              <h6>Added Satisfied Dietary Requirements</h6>
+              <button ng-repeat="req in usedDietaryReqs" class="slimbutton" ng-disabled="true">{{req.name}}</div>
+            </div>
           </div>
         </fieldset>
       </form>
+
+      <div class="large-6 columns large-centered">
+        <p>{{result}}</p>
+      </div>
   </div>
 </div>
 <script type="text/javascript">

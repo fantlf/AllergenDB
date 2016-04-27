@@ -32,8 +32,7 @@ function SearchCtrl($cookies, $location, $rootScope, $scope, SearchService) {
   $scope.search = search;
   $scope.update = update;
   $scope.dreqSelect = dreqSelect;
-  $scope.goToRecipe = goToRecipe;
-  $scope.goToRestaurant = goToRestaurant;
+  $scope.goToPage = goToPage;
   $scope.query = "";
   $scope.nameMatch = "";
   $scope.dietaryreqs = [];
@@ -78,7 +77,7 @@ function SearchCtrl($cookies, $location, $rootScope, $scope, SearchService) {
                      FROM dietaryrecipe
                      WHERE dietaryreqid='cheked req id')
     */
-    var tempQuery = "SELECT id, name FROM " + $scope.type;
+    var tempQuery = "SELECT id, name, description FROM " + $scope.type;
     var hasReq = false;
     // Take care of dietary reqs selected
     for (var i = 0; i < $scope.dietaryreqs.length; i++) {
@@ -124,6 +123,11 @@ function SearchCtrl($cookies, $location, $rootScope, $scope, SearchService) {
   }
 
   function displayResults(results) {
+    for (var i = 0; i < results.length; i++) {
+      if (results[i].description.length > 100) {
+        results[i].description = results[i].description.substring(0, 100) + "...";
+      }
+    }
     $scope.results = results;
   }
 
@@ -139,15 +143,15 @@ function SearchCtrl($cookies, $location, $rootScope, $scope, SearchService) {
     update();
   }
 
-  function goToRecipe(id) {
-    $rootScope.currRecipe = id;
-    $cookies.putObject('currRecipe', id);
-    $location.path('/recipe');
-  }
-
-  function goToRestaurant(id) {
-    $rootScope.currRestaurant = id;
-    $cookies.putObject('currRestaurant', id);
-    $location.path('/restaurant');
-  }
+  function goToPage(id) {
+    if ($scope.type == "recipe") {
+      $rootScope.currRecipe = id;
+      $cookies.putObject('currRecipe', id);
+      $location.path('/recipe');
+    } else if ($scope.type == "restaurant") {
+      $rootScope.currRestaurant = id;
+      $cookies.putObject('currRestaurant', id);
+      $location.path('/restaurant');
+    }
+}
 }

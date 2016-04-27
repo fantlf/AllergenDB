@@ -6,7 +6,7 @@ function SearchService($http) {
   var service = {};
 
   service.getRecipeById = recipeById;
-  service.getRestaurantById = restaurantById;
+  service.getRestaurantById = getRestaurantById;
   service.getIngredientById = getIngredientById;
   service.getDietaryreqs = getDietaryreqs;
   service.runSearchQuery = runSearchQuery;
@@ -20,7 +20,7 @@ function SearchService($http) {
     return $http.get('/3430/161/team7/HighCountryDiets/public/api/api.php/dietaryreq?order=name,asc').then(handleSuccess, handleError('Error retrieving dietary reqs'));
   }
 
-  function restaurantById(id) {
+  function getRestaurantById(id) {
     return $http.get('/3430/161/team7/HighCountryDiets/public/api/api.php/restaurant?filter[]=id,eq,' + id).then(handleSuccess, handleError('Error getting restaurant by id'));
   }
 
@@ -29,7 +29,7 @@ function SearchService($http) {
   }
 
   function runSearchQuery(query) {
-    return $http.get('/3430/161/team7/HighCountryDiets/public/search?query=' + query).then(handleSuccess, handleError('Error Searching'));
+    return $http.get('/3430/161/team7/HighCountryDiets/public/query?query=' + query).then(handleSuccess, handleError('Error Searching'));
   }
 
   function getReqIngredients(recipeid) {
@@ -37,7 +37,7 @@ function SearchService($http) {
   }
 
   function getCommentsByRecipeId(id) {
-    return $http.get('/3430/161/team7/HighCountryDiets/public/search?query=' + query).then(handleSuccess, handleError('Error Searching'));
+    return $http.get('/3430/161/team7/HighCountryDiets/public/query?query=' + query).then(handleSuccess, handleError('Error Searching'));
   }
 
   function getCommentsByRestaurantId(id) {
