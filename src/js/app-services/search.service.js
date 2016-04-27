@@ -11,6 +11,8 @@ function SearchService($http) {
   service.getDietaryreqs = getDietaryreqs;
   service.runSearchQuery = runSearchQuery;
   service.getReqIngredients = getReqIngredients;
+  service.getCommentsByRecipeId = getCommentsByRecipeId;
+  service.getCommentsByRestaurantId = getCommentsByRestaurantId;
 
   function recipeById(id) {
     return $http.get('/3430/161/team7/HighCountryDiets/public/api/api.php/recipe?filter[]=id,eq,' + id).then(handleSuccess, handleError('Error getting user by id'));
@@ -37,11 +39,13 @@ function SearchService($http) {
   }
 
   function getCommentsByRecipeId(id) {
+    var query = "SELECT uname, commenttext FROM commentrecipe, user WHERE recipeid=" + id + " AND userid=id";
     return $http.get('/3430/161/team7/HighCountryDiets/public/query?query=' + query).then(handleSuccess, handleError('Error Searching'));
   }
 
   function getCommentsByRestaurantId(id) {
-
+    var query = "SELECT uname, commenttext FROM commentrestaurant, user WHERE restaurantid=" + id + " AND userid=id";
+    return $http.get('/3430/161/team7/HighCountryDiets/public/query?query=' + query).then(handleSuccess, handleError('Error Searching'));
   }
   return service;
 

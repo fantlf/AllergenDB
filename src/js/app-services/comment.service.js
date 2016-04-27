@@ -1,7 +1,7 @@
-HCDietsApp.factory('RecipeService', RecipeService);
+HCDietsApp.factory('CommentService', CommentService);
 
-RecipeService.$inject = ['$http'];
-function RecipeService($http) {
+CommentService.$inject = ['$http'];
+function CommentService($http) {
 
   var service = {};
 
@@ -10,7 +10,7 @@ function RecipeService($http) {
   return service;
 
   function runInsertQuery(query) {
-    return $http.get('/3430/161/team7/HighCountryDiets/public/createcomment?query=' + query).then(handleSuccess, handleError('Error Searching'));
+    return $http.get('/3430/161/team7/HighCountryDiets/public/query?query=' + query).then(handleSuccess, handleError('Error Searching'));
   }
 
   // private functions

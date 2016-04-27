@@ -9,10 +9,12 @@ function RecipeCtrl(SearchService, $rootScope, $scope) {
   }
 
   $scope.recipe = {id : "", name : "", description : "", steps : []};
-  $scope.commentrecipe = {userid : "", recipeid : "", commenttext : ""};
+  $scope.comments = [];
+  $scope.newComment = "";
+  $scope.finalComment = {userid : "", recipeid : "", commenttext : ""};
   $scope.ingredients = [];
   $scope.addComment = addComment;
-  $scope.loadComment = loadComment;
+  loadComments();
   SearchService.getRecipeById($rootScope.currRecipe).then(function(response) {
     var results = response.data.recipe.records[0];
     $scope.recipe.id = results[0];
@@ -28,34 +30,31 @@ function RecipeCtrl(SearchService, $rootScope, $scope) {
     });
   });
   // Loads Comments
-  function loadComment() {
-      SearchService.getCommentsByRecipeId($rootScope.currRecipe).then(function(response) {
-        var results = response.data.commentrecipe.records[0];
-        $scope.commentrecipe.uname = results[0];
-        $scope.commentrecipe.recipeid = results[1];
-        $scope.commentrecipe.commenttext = results[2];
-        var query = "SELECT uname, commenttext FROM commentrecipe, user WHERE id=userid AND recipeid =" + $scope.commentrecipe.recipeid;
-        SearchService.runSearchQuery(query).then(function(response) {
-          var comments = response.data.records;
-          for (var i = 0; i < comment.length; i++) {
-            $scope.comment[i] = {uname : comment[i].uname, commenttext : comment[i].commenttext};
-          }
+  function loadComments() {
+    $scope.comments = [];
+    SearchService.getCommentsByRecipeId($rootScope.currRecipe).then(function(response) {
+      var results = response.data.records;
+      for (var i = 0; i < results.length; i++) {
+        $scope.comments.push({
+          uname : results[i].uname,
+          commenttext : results[i].commenttext
         });
-      });
+      }
+    });
   }
 
   // INSERTS comment to tables
   function addComment() {
     compileInsertData();
 
-    var insertQuery = "INSERT INTO commentrecipe(userid, recipeid, commenttext) VALUES ('" +
-    $scope.comment.userid + "','" +
-    $scope.comment.recipeid + "','" +
-    $scope.commentrecipe.commenttext + ";";
+    var insertQuery = "INSERT INTO commentrecipe(userid, recipeid, commenttext) VALUES (" +
+    $scope.finalComment.userid + "," +
+    $scope.finalComment.recipeid + ",'" +
+    $scope.finalComment.commenttext + "')";
     $scope.results = insertQuery;
-    CommentService.runInsertQuery(insertQuery).then(function(response) {
-      if(response.data.records[0].success) {
-        $location.path('/');
+    SearchService.runSearchQuery(insertQuery).then(function(response) {
+      if(response.data.records[0].results != "error") {
+        loadComments();
       } else {
         alert("Oops! Something went wrong. We're working to fix it, try again later.");
       }
@@ -69,9 +68,9 @@ function RecipeCtrl(SearchService, $rootScope, $scope) {
   }
 
   function compileInsertData() {
-    $scope.commentrecipe.commenttext = scanString($scope.recipe.commentbox);
-    $scope.commentrecipe.userid = $rootScope.global.currentUser;
-    $scope.commentrecipe.recipeid = $scope.recipe.id;
+    $scope.finalComment.commenttext = scanString($scope.newComment);
+    $scope.finalComment.userid = $rootScope.globals.currentUser.id;
+    $scope.finalComment.recipeid = $scope.recipe.id;
   }
 
   function scanString(string) {
