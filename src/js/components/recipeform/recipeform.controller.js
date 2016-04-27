@@ -3,7 +3,7 @@ HCDietsApp.controller('RecipeformCtrl', RecipeformCtrl);
 RecipeformCtrl.$inject = ['RecipeService', 'SearchService', '$location', '$rootScope', '$scope'];
 function RecipeformCtrl(RecipeService, SearchService, $location, $rootScope, $scope) {
 
-  if (!$rootScope.globals.currentUser) {
+  if (!$rootScope.globals.currentUser.id) {
     $location.path('/');
   }
   $scope.recipe = {
@@ -59,7 +59,8 @@ function RecipeformCtrl(RecipeService, SearchService, $location, $rootScope, $sc
     $scope.results = query;
     RecipeService.runInsertQuery(query).then(function(response) {
       if (response.data.records[0].result != "Error") {
-        $location.path('/profile');
+        //$location.path('/profile');
+        $scope.result = query;
       } else {
         alert("Oops! Something went wrong. We're working to fix it, try again later.");
       }

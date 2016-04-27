@@ -58848,13 +58848,13 @@ function AuthenticationService(UserService, $rootScope, $cookies, $http) {
     service.complexTestUname = complexTestUname;
 
     return service;
-    
-    function setCredentials(email, password, id) {
+
+    function setCredentials(email, password, userid) {
         var authdata = Base64.encode(email + ':' + password);
         $rootScope.globals = {
             currentUser: {
                 email: email,
-                id: id,
+                id: userid,
                 authdata: authdata
             }
         };
@@ -59200,11 +59200,11 @@ function LoginCtrl($location, $scope, AuthenticationService, UserService) {
   function login() {
     UserService.GetByEmail($scope.user.email).then(function (response) {
       if(response.data.user && response.data.user.records.length == 1) {
-        var id = response.data.user.records[0][0];
+        $scope.id = response.data.user.records[0][0];
         UserService.GetPass(id).then(function(response) {
           var code = CryptoJS.SHA256($scope.user.pass).toString();
           if (code == response.data.pass.records[0][1]) {
-            AuthenticationService.setCredentials($scope.user.email, code, id);
+            AuthenticationService.setCredentials($scope.user.email, code, $scope.id);
             $location.path('/');
           } else $scope.error = "Username or password is incorrect";
         });
@@ -59342,7 +59342,7 @@ function RecipeCtrl(SearchService, $rootScope, $scope) {
 RecipeformCtrl.$inject = ['RecipeService', 'SearchService', '$location', '$rootScope', '$scope'];
 function RecipeformCtrl(RecipeService, SearchService, $location, $rootScope, $scope) {
 
-  if (!$rootScope.globals.currentUser) {
+  if (!$rootScope.globals.currentUser.id) {
     $location.path('/');
   }
   $scope.recipe = {
@@ -59398,7 +59398,8 @@ function RecipeformCtrl(RecipeService, SearchService, $location, $rootScope, $sc
     $scope.results = query;
     RecipeService.runInsertQuery(query).then(function(response) {
       if (response.data.records[0].result != "Error") {
-        $location.path('/profile');
+        //$location.path('/profile');
+        $scope.result = query;
       } else {
         alert("Oops! Something went wrong. We're working to fix it, try again later.");
       }

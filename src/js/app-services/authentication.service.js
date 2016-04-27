@@ -16,13 +16,13 @@ function AuthenticationService(UserService, $rootScope, $cookies, $http) {
     service.complexTestUname = complexTestUname;
 
     return service;
-    
-    function setCredentials(email, password, id) {
+
+    function setCredentials(email, password, userid) {
         var authdata = Base64.encode(email + ':' + password);
         $rootScope.globals = {
             currentUser: {
                 email: email,
-                id: id,
+                id: userid,
                 authdata: authdata
             }
         };
