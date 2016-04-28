@@ -59030,9 +59030,9 @@ function UserService($http) {
   });
 ;HCDietsApp.controller('HomeCtrl', HomeCtrl);
 
-HomeCtrl.$inject = ['$rootScope', '$scope'];
-function HomeCtrl($rootScope, $scope) {
-
+HomeCtrl.$inject = ['localStorageService','$rootScope', '$scope'];
+function HomeCtrl(localStorageService,$rootScope, $scope) {
+	localStorageService.set("returnLoc", "home");
 }
 ;HCDietsApp.controller('LoginCtrl', LoginCtrl);
 
@@ -59045,10 +59045,10 @@ function LoginCtrl(localStorageService, $location, $scope, AuthenticationService
     UserService.GetByEmail($scope.user.email).then(function (response) {
       if(response.data.user && response.data.user.records.length == 1) {
         $scope.id = response.data.user.records[0][0];
-        UserService.GetPass(id).then(function(response) {
+        UserService.GetPass($scope.id).then(function(response) {
           var code = CryptoJS.SHA256($scope.user.pass).toString();
           if (code == response.data.pass.records[0][1]) {
-            AuthenticationService.setCredentials($scope.user.email, code, id);
+            AuthenticationService.setCredentials($scope.user.email, code, $scope.id);
             if(localStorageService.get("returnLoc") == "recipe") {
               $location.path('/recipe');
             } else if (localStorageService.get("returnLoc") == "restaurant")  {

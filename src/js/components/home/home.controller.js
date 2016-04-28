@@ -1,6 +1,6 @@
 HCDietsApp.controller('HomeCtrl', HomeCtrl);
 
-HomeCtrl.$inject = ['$rootScope', '$scope'];
-function HomeCtrl($rootScope, $scope) {
-
+HomeCtrl.$inject = ['localStorageService','$rootScope', '$scope'];
+function HomeCtrl(localStorageService,$rootScope, $scope) {
+	localStorageService.set("returnLoc", "home");
 }
