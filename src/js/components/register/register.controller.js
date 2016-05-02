@@ -2,7 +2,7 @@ HCDietsApp.controller('RegisterCtrl', RegisterCtrl);
 
 RegisterCtrl.$inject = ['UserService', 'AuthenticationService', '$location', '$rootScope', '$scope'];
 function RegisterCtrl(UserService, AuthenticationService, $location, $rootScope, $scope) {
-
+  localStorageService.set("returnLoc", "register");
   $scope.register = register;
 
   $scope.checkEmail = checkEmail;

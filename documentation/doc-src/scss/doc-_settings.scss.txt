@@ -1,0 +1,5 @@
+====== Documentation for _settings.scss ======
+
+_settings.scss is the settings file for foundation.
+This contains a lot of variables used by foundationwhich
+may be used to customize the styling of the site without writing additonal scss code.

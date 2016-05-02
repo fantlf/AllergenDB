@@ -1,0 +1,6 @@
+====== Documentation for index.html ======
+
+High Country Diets is a single web page application.
+index.html is that single page on which the entire website exists.
+The ng-view directive is where the dynamic pages are loaded.
+Everything else in this page is included everywhere on the site.

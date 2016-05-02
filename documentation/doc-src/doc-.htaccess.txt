@@ -1,0 +1,4 @@
+====== Documentation for .htaccess ======
+
+Nothing in the src folder should be accessible for online.
+Only the public folder should be hosted.

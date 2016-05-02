@@ -1,0 +1,13 @@
+====== Documentation for .gitignore ======
+
+.gitignore is a small file containing the names of
+the folders and files that should not be included in the repository.
+
+Git reads this file and does not upload the files and folders within.
+
+node_modules is excluded because it is very large, and package.json allows
+npm to install the appropriate libraries in to this folder.
+
+npm-debug.log is sometimes generated when installing node_modules.
+This debug is only relevent to the person who is installing the node_modules,
+so it shouldn't be included in git.

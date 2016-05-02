@@ -1,0 +1,5 @@
+====== Documentation for authentication.service.js ======
+
+this service contains functions used for authenticating a user when they login.
+
+extensive documentation of each function to come..

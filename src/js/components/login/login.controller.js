@@ -4,7 +4,7 @@ LoginCtrl.$inject = ['localStorageService','$location', '$scope', 'Authenticatio
 function LoginCtrl(localStorageService, $location, $scope, AuthenticationService, UserService) {
   $scope.login = login;
   AuthenticationService.clearCredentials();
-
+localStorageService.set("returnLoc", "login");
   function login() {
     UserService.GetByEmail($scope.user.email).then(function (response) {
       if(response.data.user && response.data.user.records.length == 1) {

@@ -1,0 +1,5 @@
+====== Documentation for functions.php ======
+
+functions.php holds all of the functions used for interacting with the
+mysql database. It includes access.txt to make the connection to the database, and
+any other php files that wish to query the database, must do so through functions.php.

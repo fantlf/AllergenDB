@@ -6,6 +6,8 @@ function RestaurantCtrl(SearchService, $rootScope, $scope) {
   if (!$rootScope.currRestaurant) {
     $location.path('/');
   }
+  localStorageService.set("returnLoc", "restaurant");
+
   $scope.addComment = addComment;
   $scope.loadComments = loadComments;
   $scope.restaurant = {
@@ -85,11 +87,9 @@ function RestaurantCtrl(SearchService, $rootScope, $scope) {
 
   }
   function login() {
-    localStorageService.set("returnLoc", "restaurant");
     $location.path('/login');
   }
   function register() {
-    localStorageService.set("returnLoc", "restaurant");
     $location.path('/register');
   }
   //Private Functions

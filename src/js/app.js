@@ -1,3 +1,5 @@
+var path = '3430/161/team7/HighCountryDiets/public/';
+
 var HCDietsApp = angular.module("HCDietsApp", [
   'mm.foundation',
   'ngRoute',

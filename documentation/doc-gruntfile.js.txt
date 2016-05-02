@@ -1,0 +1,12 @@
+====== Documentation for Gruntfile.js ======
+
+Gruntfile.js is used by the grunt program, which is installed in node_modules
+You can see the various grunt libraries used in the devDependencies section of package.JSON
+
+Grunt requires that the grunt-cli is installed globally on the users development system.
+This must be installed by the user with the following command:
+
+  sudo npm install -g grunt-cli
+
+Grunt watches the js, scss, html, and php files in the src folder, and
+when they change it updates them in the public folder.

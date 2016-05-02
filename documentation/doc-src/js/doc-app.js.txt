@@ -1,0 +1,18 @@
+====== Documentation for app.js ======
+
+app.js is the main javascript file that holds the primary angular module: HCdietsApp
+
+app.js has three main sections
+
+config
+  - Handles the routing. Shows which page to display and with which
+  - controller based on the path after # in the address bar
+
+run
+  - Saves information through a page refresh.
+  - Important information is stored in cookies and the rootscope
+  - on a page refresh, the rootscope is dumped, so this file takes
+  - what is in the cookies and puts it back in the rootscope
+
+controller
+  - Handles logic for the topbar

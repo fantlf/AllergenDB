@@ -1,0 +1,5 @@
+push parameters
+push return value if it exists (isnt void)
+push return address; what the PC is
+push old activation record
+push local variables

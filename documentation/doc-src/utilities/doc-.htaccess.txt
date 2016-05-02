@@ -1,0 +1,5 @@
+====== Documentation for .htaccess ======
+
+Nothing in the utilities folder should be accessible.
+These files are included by other php files which are
+accessible, but these should not be able to be accessed directly.

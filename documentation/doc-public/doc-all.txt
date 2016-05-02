@@ -1,0 +1,5 @@
+====== Documentation for all files in public ======
+
+public is the folder hosted on the server. It is the only place where
+pages are actually accessed. None of the files in this folder should be manually edited.
+They are created automatically by grunt, based on the files in the src folder.

@@ -1,0 +1,4 @@
+====== Documentation for all files in .git ======
+
+The .git folder contains files and folders used by Github when
+managing the repository. They should not be manually edited.

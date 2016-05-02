@@ -1,0 +1,11 @@
+====== Documentation for api.php ======
+
+This file is being phased out.
+
+It was originally used for querying the database, but we
+have moved to query/index.php for this functionality.
+
+The login and register sections still use this, but they are in the process
+of being moved to our new system.
+
+Once this has happened, the api will be removed.

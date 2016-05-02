@@ -1,0 +1,10 @@
+====== Documentation for package.json  ======
+
+Package.json is a file used by npm to know what
+libraries are required by the repository.
+
+It has a devDependencies list, which are libraries required
+by the development team, but not the final product
+
+It also has a dependencies list, which are the libraries required
+by the final product. they include code that is actually used in the website's code

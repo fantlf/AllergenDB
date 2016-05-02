@@ -28,7 +28,7 @@ function SearchCtrl($cookies, $location, $rootScope, $scope, SearchService) {
     they make autmoatically update their results.
 
   */
-
+  localStorageService.set("returnLoc", "restaurant");
   $scope.search = search;
   $scope.update = update;
   $scope.dreqSelect = dreqSelect;

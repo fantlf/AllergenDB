@@ -1,12 +1,12 @@
 {
-  "name": "AppalachianWillow",
-  "version": "0.0.0",
-  "description": "",
-  "main": "index.js",
+  "name": "High Country Diets",
+  "version": "0.1.0",
+  "description": "A website application to help people find food meeting their dietary requirements.",
+  "main": "public/index.html",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "",
+  "author": "High Country Diets Team",
   "license": "ISC",
   "devDependencies": {
     "grunt": "^0.4.5",

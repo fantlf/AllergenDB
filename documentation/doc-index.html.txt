@@ -1,0 +1,5 @@
+====== Documentation for index.html ======
+
+This is a very simple html page that redirects the used to public/index.html
+
+It displays a small "redirecting" message.

@@ -1,0 +1,35 @@
+====== Documentation for index.php ======
+
+This is the main file used for querying.
+
+	Types of Valid Queries
+	SELECT
+	INSERT
+	UPDATE
+	BEGIN; INSERT
+	BEGIN; SELECT
+	BEGIN; UPDATE
+
+	Return Syntax
+	JSON Object
+	{Records : [
+		{},
+		{}...
+	]}
+
+	Object with property Records which is an array of objects.
+	There will always be at least one object in that array, even if the query fails
+
+	For Select Queries:
+		Objects in the records array will have the properties specified in the query, which correspond to thei results.
+		ie: Select a, b, c FROM ....
+		will return like this
+		{Records : [
+			{a : "result1vala", b : "result1valb", c : "result1valc"},
+			...for each result
+		]}
+
+	For Insert and Update Queries:
+		There will be one object in the records array. It will have two properies: success and message.
+		If the query is successful, then success will be true and message will say "Successfully Added Data" or "Successfully Updated Data"
+		If the query is failed, then success will be false and message will say "Error Adding Data" or "Error Updating Data"

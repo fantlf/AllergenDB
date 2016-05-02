@@ -1,0 +1,6 @@
+====== Documentation for access.txt ======
+
+access.txt connects the php to the database with a $connection object.
+This file contains our username, password, and database name.
+The functions.php file includes this file, and users the $connections
+object to make queries.

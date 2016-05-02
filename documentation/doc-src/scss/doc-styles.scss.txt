@@ -1,0 +1,8 @@
+====== Documentation for styles.scss ======
+
+This is the file that scss transpiles into public/css/styles.css
+
+This file SHOULD not have any actual code, it should just import the
+required scss files.
+
+Right now it has a bunch of code, which needs to be moved into their own files.

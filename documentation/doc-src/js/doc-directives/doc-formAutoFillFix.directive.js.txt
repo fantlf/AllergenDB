@@ -1,0 +1,5 @@
+====== Documentation for formAutoFillFix.directive.js ======
+
+This is a simple directive that makes it so that angular
+will recognize when a form has been auto-filled by the browser.
+This directive should be applied to a form html element.

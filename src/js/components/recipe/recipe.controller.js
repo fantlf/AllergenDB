@@ -7,7 +7,7 @@ function RecipeCtrl(localStorageService, $location, SearchService, $rootScope, $
   if (!$rootScope.currRecipe) {
     $location.path('/');
   }
-
+  localStorageService.set("returnLoc", "recipe");
   $scope.loggedIn = false;
   if ($rootScope.globals.currentUser) {
     $scope.loggedIn = true;
@@ -70,11 +70,9 @@ function RecipeCtrl(localStorageService, $location, SearchService, $rootScope, $
 
   }
   function login() {
-    localStorageService.set("returnLoc", "recipe");
     $location.path('/login');
   }
   function register() {
-    localStorageService.set("returnLoc", "recipe");
     $location.path('/register');
   }
   //Private Functions
